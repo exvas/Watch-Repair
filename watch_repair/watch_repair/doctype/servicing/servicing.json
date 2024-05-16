@@ -1,0 +1,178 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-05-16 14:38:23.836675",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "customer",
+  "customer_name",
+  "item",
+  "item_name",
+  "serial_no",
+  "model_no",
+  "warehouse",
+  "column_break_xdluq",
+  "status",
+  "naming_series",
+  "technician",
+  "technician_name",
+  "posting_date",
+  "time_in_mins",
+  "note_by_technician",
+  "section_break_3wpmp",
+  "job_work_item",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "time_in_mins",
+   "fieldtype": "Float",
+   "label": "Time In Mins"
+  },
+  {
+   "fieldname": "column_break_xdluq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Pending\nWorking In Progress\nCompleted"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "JW.YY.MM.###"
+  },
+  {
+   "fieldname": "technician",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Technician",
+   "options": "User"
+  },
+  {
+   "fetch_from": "technician.full_name",
+   "fieldname": "technician_name",
+   "fieldtype": "Data",
+   "label": "Technician Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "section_break_3wpmp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "job_work_item",
+   "fieldtype": "Table",
+   "label": "Service Materials",
+   "options": "Job Work Item"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Servicing",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "label": "Item",
+   "options": "Item"
+  },
+  {
+   "fetch_from": "item.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Data",
+   "label": "Serial No"
+  },
+  {
+   "fieldname": "model_no",
+   "fieldtype": "Data",
+   "label": "Model No"
+  },
+  {
+   "fieldname": "note_by_technician",
+   "fieldtype": "Data",
+   "label": "Note by Technician"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-05-16 15:22:00.221407",
+ "modified_by": "Administrator",
+ "module": "Watch Repair",
+ "name": "Servicing",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

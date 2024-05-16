@@ -1,0 +1,426 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-16 09:16:41.230818",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item",
+  "item_name",
+  "qty",
+  "column_break_d1fmn",
+  "serial_no",
+  "model_no",
+  "complaint_completion_status",
+  "section_break_znhyi",
+  "movement",
+  "movement_complaint_details",
+  "technical_remark_mc",
+  "service",
+  "service_complaint_details",
+  "technical_remark_sc",
+  "crown",
+  "crown_complaint_details",
+  "technical_remark_ccc",
+  "crystal",
+  "crystal_complaint_details",
+  "technical_remark_sc_ccd",
+  "dial",
+  "dial_complaint_details",
+  "technical_remark_scdc",
+  "hands",
+  "hands_complaint_details",
+  "technical_remark_schc",
+  "case",
+  "case_complaint_details",
+  "technical_remark_scccs",
+  "column_break_fb6fm",
+  "bezel",
+  "bezel_complaint_details",
+  "technical_remark_bcc",
+  "bracelet",
+  "bracelet_complaint_details",
+  "technical_remark_bccbc",
+  "strap",
+  "strap_complaint_details",
+  "technical_remark_bccst",
+  "battery",
+  "battery_complaint_details",
+  "technical_remark_bccbcc",
+  "checking_time_day__date",
+  "checking_time_day_date_complaint_details",
+  "technical_remark_bccch",
+  "stopped",
+  "stopped_complaint_details",
+  "technical_remark_bccsc",
+  "polish",
+  "polish_complaint_details",
+  "technical_remark_bccpc",
+  "other",
+  "other_complaint_details",
+  "technical_remark_bccocd"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name"
+  },
+  {
+   "columns": 1,
+   "default": "1",
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_d1fmn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 2,
+   "default": "Pending",
+   "fieldname": "complaint_completion_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Completion status",
+   "options": "Pending\nWorking In Progress\nCompleted",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_znhyi",
+   "fieldtype": "Section Break",
+   "label": "Complaint Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "movement",
+   "fieldtype": "Check",
+   "label": "Movement"
+  },
+  {
+   "depends_on": "eval:doc.movement==1",
+   "fieldname": "movement_complaint_details",
+   "fieldtype": "Link",
+   "label": "Movement Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "default": "0",
+   "fieldname": "service",
+   "fieldtype": "Check",
+   "label": "Service"
+  },
+  {
+   "depends_on": "eval:doc.service==1",
+   "fieldname": "service_complaint_details",
+   "fieldtype": "Link",
+   "label": "Service Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "default": "0",
+   "fieldname": "crown",
+   "fieldtype": "Check",
+   "label": "Crown"
+  },
+  {
+   "depends_on": "eval:doc.crown==1",
+   "fieldname": "crown_complaint_details",
+   "fieldtype": "Link",
+   "label": "Crown Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "default": "0",
+   "fieldname": "crystal",
+   "fieldtype": "Check",
+   "label": "Crystal"
+  },
+  {
+   "depends_on": "eval:doc.crystal==1",
+   "fieldname": "crystal_complaint_details",
+   "fieldtype": "Link",
+   "label": "Crystal Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "default": "0",
+   "fieldname": "dial",
+   "fieldtype": "Check",
+   "label": "Dial"
+  },
+  {
+   "depends_on": "eval:doc.dial==1",
+   "fieldname": "dial_complaint_details",
+   "fieldtype": "Link",
+   "label": "Dial Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "default": "0",
+   "fieldname": "hands",
+   "fieldtype": "Check",
+   "label": "Hands"
+  },
+  {
+   "depends_on": "eval:doc.hands==1",
+   "fieldname": "hands_complaint_details",
+   "fieldtype": "Link",
+   "label": "Hands Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "default": "0",
+   "fieldname": "case",
+   "fieldtype": "Check",
+   "label": "Case"
+  },
+  {
+   "depends_on": "eval:doc.case==1",
+   "fieldname": "case_complaint_details",
+   "fieldtype": "Link",
+   "label": "Case Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "fieldname": "column_break_fb6fm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "bezel",
+   "fieldtype": "Check",
+   "label": "Bezel"
+  },
+  {
+   "depends_on": "eval:doc.bezel==1",
+   "fieldname": "bezel_complaint_details",
+   "fieldtype": "Link",
+   "label": "Bezel Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "default": "0",
+   "fieldname": "bracelet",
+   "fieldtype": "Check",
+   "label": "Bracelet"
+  },
+  {
+   "depends_on": "eval:doc.bracelet==1",
+   "fieldname": "bracelet_complaint_details",
+   "fieldtype": "Link",
+   "label": "Bracelet Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "default": "0",
+   "fieldname": "strap",
+   "fieldtype": "Check",
+   "label": "Strap"
+  },
+  {
+   "depends_on": "eval:doc.strap==1",
+   "fieldname": "strap_complaint_details",
+   "fieldtype": "Link",
+   "label": "Strap Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "default": "0",
+   "fieldname": "battery",
+   "fieldtype": "Check",
+   "label": "Battery"
+  },
+  {
+   "depends_on": "eval:doc.battery==1",
+   "fieldname": "battery_complaint_details",
+   "fieldtype": "Link",
+   "label": "Battery Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "default": "0",
+   "fieldname": "checking_time_day__date",
+   "fieldtype": "Check",
+   "label": "Checking Time, Day & Date"
+  },
+  {
+   "depends_on": "eval:doc.checking_time_day__date==1",
+   "fieldname": "checking_time_day_date_complaint_details",
+   "fieldtype": "Link",
+   "label": "Checking Time, Day & Date Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "default": "0",
+   "fieldname": "stopped",
+   "fieldtype": "Check",
+   "label": "Stopped"
+  },
+  {
+   "depends_on": "eval:doc.stopped==1",
+   "fieldname": "stopped_complaint_details",
+   "fieldtype": "Link",
+   "label": "Stopped Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "default": "0",
+   "fieldname": "polish",
+   "fieldtype": "Check",
+   "label": "Polish"
+  },
+  {
+   "depends_on": "eval:doc.polish==1",
+   "fieldname": "polish_complaint_details",
+   "fieldtype": "Link",
+   "label": "Polish Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "default": "0",
+   "fieldname": "other",
+   "fieldtype": "Check",
+   "label": "Other"
+  },
+  {
+   "depends_on": "eval:doc.other==1",
+   "fieldname": "other_complaint_details",
+   "fieldtype": "Link",
+   "label": "Other Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.movement==1",
+   "fieldname": "technical_remark_mc",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "depends_on": "eval:doc.service==1",
+   "fieldname": "technical_remark_sc",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "depends_on": "eval:doc.crown==1",
+   "fieldname": "technical_remark_ccc",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "depends_on": "eval:doc.crystal==1",
+   "fieldname": "technical_remark_sc_ccd",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "depends_on": "eval:doc.dial==1",
+   "fieldname": "technical_remark_scdc",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "depends_on": "eval:doc.hands==1",
+   "fieldname": "technical_remark_schc",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "depends_on": "eval:doc.case==1",
+   "fieldname": "technical_remark_scccs",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "depends_on": "eval:doc.bezel==1",
+   "fieldname": "technical_remark_bcc",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "depends_on": "eval:doc.bracelet==1",
+   "fieldname": "technical_remark_bccbc",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "depends_on": "eval:doc.strap==1",
+   "fieldname": "technical_remark_bccst",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "depends_on": "eval:doc.battery==1",
+   "fieldname": "technical_remark_bccbcc",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "depends_on": "eval:doc.checking_time_day__date==1",
+   "fieldname": "technical_remark_bccch",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "depends_on": "eval:doc.stopped==1",
+   "fieldname": "technical_remark_bccsc",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "depends_on": "eval:doc.polish==1",
+   "fieldname": "technical_remark_bccpc",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "depends_on": "eval:doc.other==1",
+   "fieldname": "technical_remark_bccocd",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "columns": 2,
+   "fieldname": "model_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Model No"
+  },
+  {
+   "columns": 2,
+   "fieldname": "serial_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Serial No"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-05-16 14:46:03.285005",
+ "modified_by": "Administrator",
+ "module": "Watch Repair",
+ "name": "Repair Order Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,68 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-16 15:38:27.586104",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "general_settings_section",
+  "auto_create_job_work",
+  "auto_create_stock_entry",
+  "column_break_bs2rx",
+  "auto_create_servicing"
+ ],
+ "fields": [
+  {
+   "fieldname": "general_settings_section",
+   "fieldtype": "Section Break",
+   "label": "General Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_create_job_work",
+   "fieldtype": "Check",
+   "label": "Auto Create Job Work"
+  },
+  {
+   "fieldname": "column_break_bs2rx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_create_servicing",
+   "fieldtype": "Check",
+   "label": "Auto Create Servicing"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_create_stock_entry",
+   "fieldtype": "Check",
+   "label": "Auto Create Stock Entry"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-05-16 15:39:20.401431",
+ "modified_by": "Administrator",
+ "module": "Watch Repair",
+ "name": "Watch Service Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
