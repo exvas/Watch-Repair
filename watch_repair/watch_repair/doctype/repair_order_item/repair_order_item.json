@@ -14,6 +14,24 @@
   "model_no",
   "complaint_completion_status",
   "section_break_znhyi",
+  "polishing",
+  "polishing_complaint_details",
+  "technical_remark__polishing",
+  "pin_and_tube",
+  "pin_and_tube_complaint_details",
+  "technical_remark_pin_and_tube",
+  "loop_with_screw",
+  "loop_with_screw_complaint_details",
+  "technical_remark__loop_with_screw",
+  "push_pin",
+  "push_pin_complaint_details",
+  "technical_remark_push_pin",
+  "clasp",
+  "clasp_complaint_details",
+  "technical_remark_clasp",
+  "bra_links",
+  "bra_links_complaint_details",
+  "technical_remark_bra_links",
   "movement",
   "movement_complaint_details",
   "technical_remark_mc",
@@ -36,6 +54,21 @@
   "case_complaint_details",
   "technical_remark_scccs",
   "column_break_fb6fm",
+  "welding",
+  "welding_complaint_details",
+  "technical_remark_welding",
+  "drilling",
+  "drilling_complaint_details",
+  "technical_remark_drilling",
+  "glass_decor",
+  "glass_decor_complaint_details",
+  "technical_remark_glass_decor",
+  "anchor",
+  "anchor_complaint_details",
+  "technical_remark_anchor",
+  "b_gasket",
+  "b_gasket_complaint_details",
+  "technical_remark_b_gasket",
   "bezel",
   "bezel_complaint_details",
   "technical_remark_bcc",
@@ -59,7 +92,47 @@
   "technical_remark_bccpc",
   "other",
   "other_complaint_details",
-  "technical_remark_bccocd"
+  "technical_remark_bccocd",
+  "column_break_xlnl7",
+  "module",
+  "module_complaint_details",
+  "technical_remark_module",
+  "pusher",
+  "pusher_complaint_details",
+  "technical_remark_pusher",
+  "case_back",
+  "case_back_complaint_details",
+  "technical_remark_case_back",
+  "casing_ring",
+  "casing_ring_complaint_details",
+  "technical_remark_casing_ring",
+  "case_tube",
+  "case_tube_complaint_details",
+  "technical_remark_case_tube",
+  "case_back_screw",
+  "case_back_screw__complaint_details",
+  "technical_remark_case_back_screw",
+  "dial_ring",
+  "dial_ring_complaint_details",
+  "technical_remark_dial_ring",
+  "middle_part_of_case",
+  "middle_part_of_case_complaint_details",
+  "technical_remark_middle_part_of_case",
+  "bezel_screw",
+  "bezel_screw_complaint_details",
+  "technical_remark_bezel_screw",
+  "g_gasket",
+  "g_gasket_complaint_details",
+  "technical_remark_g_gasket",
+  "cb_gasket",
+  "cb_gasket_complaint_details",
+  "technical_remark_cb_gasket",
+  "back_washer",
+  "back_washer_complaint_details",
+  "technical_remark_back_washer",
+  "crown_seal",
+  "crown_seal_complaint_details",
+  "technical_remark_crown_seal"
  ],
  "fields": [
   {
@@ -409,12 +482,473 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Serial No"
+  },
+  {
+   "fieldname": "column_break_xlnl7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "module",
+   "fieldtype": "Check",
+   "label": "Module"
+  },
+  {
+   "depends_on": "eval:doc.module==1",
+   "fieldname": "module_complaint_details",
+   "fieldtype": "Link",
+   "label": "Module Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.module==1",
+   "fieldname": "technical_remark_module",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "pusher",
+   "fieldtype": "Check",
+   "label": "Pusher"
+  },
+  {
+   "depends_on": "eval:doc.pusher==1",
+   "fieldname": "pusher_complaint_details",
+   "fieldtype": "Link",
+   "label": "Pusher Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.pusher==1",
+   "fieldname": "technical_remark_pusher",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "case_back",
+   "fieldtype": "Check",
+   "label": "Case Back"
+  },
+  {
+   "depends_on": "eval:doc.case_back==1",
+   "fieldname": "case_back_complaint_details",
+   "fieldtype": "Link",
+   "label": "Case Back Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.case_back==1",
+   "fieldname": "technical_remark_case_back",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "casing_ring",
+   "fieldtype": "Check",
+   "label": "Casing Ring"
+  },
+  {
+   "depends_on": "eval:doc.casing_ring==1",
+   "fieldname": "casing_ring_complaint_details",
+   "fieldtype": "Link",
+   "label": "Casing Ring Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.casing_ring==1",
+   "fieldname": "technical_remark_casing_ring",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "case_tube",
+   "fieldtype": "Check",
+   "label": "Case Tube"
+  },
+  {
+   "depends_on": "eval:doc.case_tube==1",
+   "fieldname": "case_tube_complaint_details",
+   "fieldtype": "Link",
+   "label": "Case Tube Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.case_tube==1",
+   "fieldname": "technical_remark_case_tube",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "case_back_screw",
+   "fieldtype": "Check",
+   "label": "Case Back Screw"
+  },
+  {
+   "depends_on": "eval:doc.case_back_screw==1",
+   "fieldname": "case_back_screw__complaint_details",
+   "fieldtype": "Link",
+   "label": "Case Back Screw  Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.case_back_screw==1",
+   "fieldname": "technical_remark_case_back_screw",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "dial_ring",
+   "fieldtype": "Check",
+   "label": "Dial Ring"
+  },
+  {
+   "depends_on": "eval:doc.dial_ring==1",
+   "fieldname": "dial_ring_complaint_details",
+   "fieldtype": "Link",
+   "label": "Dial Ring Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.dial_ring==1",
+   "fieldname": "technical_remark_dial_ring",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "middle_part_of_case",
+   "fieldtype": "Check",
+   "label": "Middle Part Of Case"
+  },
+  {
+   "depends_on": "eval:doc.middle_part_of_case==1",
+   "fieldname": "middle_part_of_case_complaint_details",
+   "fieldtype": "Link",
+   "label": "Middle Part Of Case Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.middle_part_of_case==1",
+   "fieldname": "technical_remark_middle_part_of_case",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "bezel_screw",
+   "fieldtype": "Check",
+   "label": "Bezel Screw"
+  },
+  {
+   "depends_on": "eval:doc.bezel_screw==1",
+   "fieldname": "bezel_screw_complaint_details",
+   "fieldtype": "Link",
+   "label": "Bezel Screw Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.bezel_screw==1",
+   "fieldname": "technical_remark_bezel_screw",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "g_gasket",
+   "fieldtype": "Check",
+   "label": "G Gasket"
+  },
+  {
+   "depends_on": "eval:doc.g_gasket==1",
+   "fieldname": "g_gasket_complaint_details",
+   "fieldtype": "Link",
+   "label": "G Gasket Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.g_gasket==1",
+   "fieldname": "technical_remark_g_gasket",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "cb_gasket",
+   "fieldtype": "Check",
+   "label": "C.B Gasket"
+  },
+  {
+   "depends_on": "eval:doc.cb_gasket==1",
+   "fieldname": "cb_gasket_complaint_details",
+   "fieldtype": "Link",
+   "label": "C.B Gasket Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.cb_gasket==1",
+   "fieldname": "technical_remark_cb_gasket",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "b_gasket",
+   "fieldtype": "Check",
+   "label": "B Gasket"
+  },
+  {
+   "depends_on": "eval:doc.b_gasket==1",
+   "fieldname": "b_gasket_complaint_details",
+   "fieldtype": "Link",
+   "label": "B Gasket Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.b_gasket==1",
+   "fieldname": "technical_remark_b_gasket",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "anchor",
+   "fieldtype": "Check",
+   "label": "Anchor"
+  },
+  {
+   "depends_on": "eval:doc.anchor==1",
+   "fieldname": "anchor_complaint_details",
+   "fieldtype": "Link",
+   "label": "Anchor Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.anchor==1",
+   "fieldname": "technical_remark_anchor",
+   "fieldtype": "Data",
+   "label": "Technical Remark Anchor"
+  },
+  {
+   "default": "0",
+   "fieldname": "glass_decor",
+   "fieldtype": "Check",
+   "label": "Glass Decor"
+  },
+  {
+   "depends_on": "eval:doc.glass_decor==1",
+   "fieldname": "glass_decor_complaint_details",
+   "fieldtype": "Link",
+   "label": "Glass Decor Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.glass_decor==1",
+   "fieldname": "technical_remark_glass_decor",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "bra_links",
+   "fieldtype": "Check",
+   "label": "Bra Links"
+  },
+  {
+   "depends_on": "eval:doc.bra_links==1",
+   "fieldname": "bra_links_complaint_details",
+   "fieldtype": "Link",
+   "label": "Bra Links Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.bra_links==1",
+   "fieldname": "technical_remark_bra_links",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "clasp",
+   "fieldtype": "Check",
+   "label": "Clasp"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.clasp==1",
+   "fieldname": "clasp_complaint_details",
+   "fieldtype": "Link",
+   "label": "Clasp Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.clasp==1",
+   "fieldname": "technical_remark_clasp",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "push_pin",
+   "fieldtype": "Check",
+   "label": "Push Pin"
+  },
+  {
+   "depends_on": "eval:doc.push_pin==1",
+   "fieldname": "push_pin_complaint_details",
+   "fieldtype": "Link",
+   "label": "Push Pin Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.push_pin==1",
+   "fieldname": "technical_remark_push_pin",
+   "fieldtype": "Data",
+   "label": "Technical Remark "
+  },
+  {
+   "default": "0",
+   "fieldname": "loop_with_screw",
+   "fieldtype": "Check",
+   "label": "Loop With Screw"
+  },
+  {
+   "depends_on": "eval:doc.loop_with_screw==1",
+   "fieldname": "loop_with_screw_complaint_details",
+   "fieldtype": "Link",
+   "label": "Loop With Screw Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.loop_with_screw==1",
+   "fieldname": "technical_remark__loop_with_screw",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "pin_and_tube",
+   "fieldtype": "Check",
+   "label": "Pin and Tube"
+  },
+  {
+   "depends_on": "eval:doc.pin_and_tube==1",
+   "fieldname": "pin_and_tube_complaint_details",
+   "fieldtype": "Link",
+   "label": "Pin and Tube Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.pin_and_tube==1",
+   "fieldname": "technical_remark_pin_and_tube",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "polishing",
+   "fieldtype": "Check",
+   "label": "Polishing"
+  },
+  {
+   "depends_on": "eval:doc.polishing==1",
+   "fieldname": "polishing_complaint_details",
+   "fieldtype": "Link",
+   "label": "Polishing Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.polishing==1",
+   "fieldname": "technical_remark__polishing",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "drilling",
+   "fieldtype": "Check",
+   "label": "Drilling"
+  },
+  {
+   "depends_on": "eval:doc.drilling==1",
+   "fieldname": "drilling_complaint_details",
+   "fieldtype": "Link",
+   "label": "Drilling Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.drilling==1",
+   "fieldname": "technical_remark_drilling",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "welding",
+   "fieldtype": "Check",
+   "label": "Welding"
+  },
+  {
+   "depends_on": "eval:doc.welding==1",
+   "fieldname": "welding_complaint_details",
+   "fieldtype": "Link",
+   "label": "Welding Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.welding==1",
+   "fieldname": "technical_remark_welding",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "back_washer",
+   "fieldtype": "Check",
+   "label": "Back Washer"
+  },
+  {
+   "depends_on": "eval:doc.back_washer==1",
+   "fieldname": "back_washer_complaint_details",
+   "fieldtype": "Link",
+   "label": "Back Washer Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.back_washer==1",
+   "fieldname": "technical_remark_back_washer",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
+  },
+  {
+   "default": "0",
+   "fieldname": "crown_seal",
+   "fieldtype": "Check",
+   "label": "Crown Seal"
+  },
+  {
+   "depends_on": "eval:doc.crown_seal==1",
+   "fieldname": "crown_seal_complaint_details",
+   "fieldtype": "Link",
+   "label": "Crown Seal Complaint Details",
+   "options": "Complaint List"
+  },
+  {
+   "depends_on": "eval:doc.crown_seal==1",
+   "fieldname": "technical_remark_crown_seal",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-16 14:46:03.285005",
+ "modified": "2024-05-16 20:32:21.691023",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order Item",
