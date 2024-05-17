@@ -146,10 +146,12 @@
   },
   {
    "columns": 2,
+   "fetch_from": "item.item_name",
    "fieldname": "item_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Item Name"
+   "label": "Item Name",
+   "read_only": 1
   },
   {
    "columns": 1,
@@ -779,7 +781,6 @@
    "label": "Clasp"
   },
   {
-   "default": "0",
    "depends_on": "eval:doc.clasp==1",
    "fieldname": "clasp_complaint_details",
    "fieldtype": "Link",
@@ -948,7 +949,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-17 11:04:08.434388",
+ "modified": "2024-05-17 12:44:08.229171",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order Item",

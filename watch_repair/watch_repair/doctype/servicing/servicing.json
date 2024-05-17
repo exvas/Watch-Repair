@@ -8,6 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "repair_order",
   "company",
   "customer",
   "customer_name",
@@ -24,6 +25,8 @@
   "posting_date",
   "time_in_mins",
   "note_by_technician",
+  "complaint_details",
+  "technical_remark",
   "section_break_3wpmp",
   "job_work_item",
   "amended_from"
@@ -146,12 +149,29 @@
    "fieldname": "note_by_technician",
    "fieldtype": "Data",
    "label": "Note by Technician"
+  },
+  {
+   "fieldname": "repair_order",
+   "fieldtype": "Link",
+   "label": "Repair Order",
+   "options": "Repair Order",
+   "read_only": 1
+  },
+  {
+   "fieldname": "complaint_details",
+   "fieldtype": "Data",
+   "label": "Complaint Details"
+  },
+  {
+   "fieldname": "technical_remark",
+   "fieldtype": "Data",
+   "label": "Technical Remark"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-16 15:22:00.221407",
+ "modified": "2024-05-17 15:31:43.362399",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Servicing",

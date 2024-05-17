@@ -6,33 +6,44 @@ frappe.ui.form.on('Repair Order', {
 	  
 	  console.log("sarath")
 	  
-		  frm.set_query('warehouse', function() {
-			  return {
-				  filters: {
-					  company: frm.doc.company
-				  }
-			  };
-		  });
-		  
-  
-		  frm.add_custom_button(('Close'), function() {
-			  frappe.msgprint(('Close button clicked'));
-			  frm.set_value('status', 'Closed');
-			  frm.save();
-		  });
-  
-		  frm.add_custom_button(('Open'), function() {
-			  frappe.msgprint(('Open button clicked'));
-			  frm.set_value('status', 'Pending');
-			  frm.save();
-		  });
-	  frm.add_custom_button(('Repair Order'), function() {
-			  frappe.msgprint(('Repair Order clicked'));
-		  }, 'Create');
-  
-		  frm.add_custom_button(('Create Service'), function() {
-			  frappe.msgprint(('Service clicked'));
-		  }, 'Create');
+		frm.set_query('warehouse', function() {
+			return {
+				filters: {
+					company: frm.doc.company
+				}
+			};
+		});
+
+		if (cur_frm.doc.docstatus === 1) {
+			frm.add_custom_button(('Close'), function() {
+				frappe.msgprint(('Close button clicked'));
+				frm.set_value('status', 'Closed');
+				frm.save();
+			});
+		}
+
+		if (cur_frm.doc.status === 'Closed') {
+			frm.add_custom_button(('Open'), function() {
+				frappe.msgprint(('Open button clicked'));
+				frm.set_value('status', 'Pending');
+				frm.save();
+			});
+		}
+
+
+		if (cur_frm.doc.job_work_status === 'Not Completed') {
+			frm.add_custom_button(('Job Work'), function() {
+				frappe.msgprint(('Repair Order clicked'));
+			}, 'Create');
+		}
+		
+
+		if (cur_frm.doc.servicing_status === 'Not Completed') {
+			frm.add_custom_button(('Service'), function() {
+				frappe.msgprint(('Service clicked'));
+			}, 'Create');
+		}
+		
 	  
   
   
