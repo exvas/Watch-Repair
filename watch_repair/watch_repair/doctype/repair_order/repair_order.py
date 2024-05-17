@@ -1,6 +1,6 @@
 # Copyright (c) 2024, sammish and contributors
 # For license information, please see license.txt
-
+ 
 import frappe
 from frappe.utils import today
 from frappe.model.document import Document
@@ -97,43 +97,81 @@ class RepairOrder(Document):
 			for item in self.repair_order_item:
 				for checkbox, complaint_field, remark_field in [
 					("polishing", "polishing_complaint_details", "technical_remark__polishing"),
+
 					("pin_and_tube", "pin_and_tube_complaint_details", "technical_remark_pin_and_tube"),
+
 					("loop_with_screw", "loop_with_screw_complaint_details", "technical_remark__loop_with_screw"),
+
 					("push_pin", "push_pin_complaint_details", "technical_remark_push_pin"),
+
 					("clasp", "clasp_complaint_details", "technical_remark_clasp"),
+
 					("bra_links", "bra_links_complaint_details", "technical_remark_bra_links"),
+
 					("movement", "movement_complaint_details", "technical_remark_mc"),
+
 					("service", "service_complaint_details", "technical_remark_sc"),
+
 					("crown", "crown_complaint_details", "technical_remark_ccc"),
+
 					("crystal", "crystal_complaint_details", "technical_remark_sc_ccd"),
-					("dial", "dial_complaint_details", "technical_remark_dial"),
-					("hands", "hands_complaint_details", "technical_remark_hands"),
-					("case", "case_complaint_details", "technical_remark_case"),
+
+					("dial", "dial_complaint_details", "technical_remark_scdc"),
+
+					("hands", "hands_complaint_details", "technical_remark_schc"),
+
+					("case", "case_complaint_details", "technical_remark_scccs"),
+
 					("welding", "welding_complaint_details", "technical_remark_welding"),
+
 					("drilling", "drilling_complaint_details", "technical_remark_drilling"),
+
 					("glass_decor", "glass_decor_complaint_details", "technical_remark_glass_decor"),
-					("anchor", "anchor_complaint_details", "technical_remark_anchor"),
+
+					("anchor", "anchor_complaint_details", "technical_remark_b_gasket"),
+
 					("b_gasket", "b_gasket_complaint_details", "technical_remark_b_gasket"),
-					("bezel", "bezel_complaint_details", "technical_remark_bezel"),
-					("bracelet", "bracelet_complaint_details", "technical_remark_bracelet"),
-					("strap", "strap_complaint_details", "technical_remark_strap"),
-					("battery", "battery_complaint_details", "technical_remark_battery"),
-					("checking_time_day_date", "checking_time_day_date_complaint_details", "technical_remark_checking_time_day_date"),
-					("stopped", "stopped_complaint_details", "technical_remark_stopped"),
-					("polish", "polish_complaint_details", "technical_remark_polish"),
-					("other", "other_complaint_details", "technical_remark_other"),
+
+					("bezel", "bezel_complaint_details", "technical_remark_bcc"),
+
+					("bracelet", "bracelet_complaint_details", "technical_remark_bccbc"),
+
+					("strap", "strap_complaint_details", "technical_remark_bccst"),
+
+					("battery", "battery_complaint_details", "technical_remark_bccbcc"),
+
+					("checking_time_day_date", "checking_time_day_date_complaint_details", "technical_remark_bccch"),
+
+					("stopped", "stopped_complaint_details", "technical_remark_bccsc"),
+
+					("polish", "polish_complaint_details", "technical_remark_bccpc"),
+
+					("other", "polish_complaint_details", "technical_remark_bccocd"),
+
 					("module", "module_complaint_details", "technical_remark_module"),
+
 					("pusher", "pusher_complaint_details", "technical_remark_pusher"),
+
 					("case_back", "case_back_complaint_details", "technical_remark_case_back"),
+
 					("casing_ring", "casing_ring_complaint_details", "technical_remark_casing_ring"),
-					("case_tube", "case_tube_complaint_details", "technical_remark_case_tube"),
+
+					("case_tube", "case_back_complaint_details", "technical_remark_case_tube"),
+					
 					("case_back_screw", "case_back_screw_complaint_details", "technical_remark_case_back_screw"),
+
 					("dial_ring", "dial_ring_complaint_details", "technical_remark_dial_ring"),
+
 					("middle_part_of_case", "middle_part_of_case_complaint_details", "technical_remark_middle_part_of_case"),
+
 					("bezel_screw", "bezel_screw_complaint_details", "technical_remark_bezel_screw"),
+
 					("g_gasket", "g_gasket_complaint_details", "technical_remark_g_gasket"),
+
 					("cb_gasket", "cb_gasket_complaint_details", "technical_remark_cb_gasket"),
+
 					("back_washer", "back_washer_complaint_details", "technical_remark_back_washer"),
+
 					("crown_seal", "crown_seal_complaint_details", "technical_remark_crown_seal"),
 					]:
 					if item.get(checkbox):
