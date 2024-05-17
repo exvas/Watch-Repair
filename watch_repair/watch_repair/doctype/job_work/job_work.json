@@ -24,6 +24,7 @@
   "posting_time",
   "warehouse",
   "service_only",
+  "repair_order",
   "service_cost",
   "section_break_3wpmp",
   "job_work_item",
@@ -155,12 +156,19 @@
    "fieldname": "get_servicing_meterials",
    "fieldtype": "Button",
    "label": "Get Servicing Meterials"
+  },
+  {
+   "fieldname": "repair_order",
+   "fieldtype": "Link",
+   "label": "Repair Order",
+   "options": "Repair Order",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-16 15:01:06.524900",
+ "modified": "2024-05-17 11:29:51.876164",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",
