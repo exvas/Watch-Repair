@@ -141,9 +141,13 @@
   {
    "link_doctype": "Job Work",
    "link_fieldname": "repair_order"
+  },
+  {
+   "link_doctype": "Servicing",
+   "link_fieldname": "repair_order"
   }
  ],
- "modified": "2024-05-17 13:49:38.128517",
+ "modified": "2024-05-17 16:28:50.880337",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",
