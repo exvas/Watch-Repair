@@ -13,21 +13,16 @@ frappe.ui.form.on('Repair Order', {
 				  }
 			  };
 		  });
+		  
   
-	  // Adding 'Close' button
 		  frm.add_custom_button(('Close'), function() {
-			  // Define the functionality for the 'Close' button here
 			  frappe.msgprint(('Close button clicked'));
-			  // For example, you can change the status of the document
 			  frm.set_value('status', 'Closed');
 			  frm.save();
 		  });
   
-		  // Adding 'Open' button
 		  frm.add_custom_button(('Open'), function() {
-			  // Define the functionality for the 'Open' button here
 			  frappe.msgprint(('Open button clicked'));
-			  // For example, you can change the status of the document
 			  frm.set_value('status', 'Pending');
 			  frm.save();
 		  });
@@ -52,7 +47,7 @@ frappe.ui.form.on('Repair Order', {
 				  }
 			  };
 		  });
-		  frm.set_value('warehouse', ''); // Clear the warehouse field when company changes
+		  frm.set_value('warehouse', ''); 
 	  }
   });
  

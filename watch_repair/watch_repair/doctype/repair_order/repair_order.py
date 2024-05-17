@@ -12,7 +12,8 @@ class RepairOrder(Document):
 		
 		watch =frappe.get_doc('Watch Service Settings')
 		if watch.auto_create_job_work:
-			for item in self.get('repair_order_item'):
+
+			for item in self.repair_order_item:
 
 				mr = frappe.new_doc("Job Work")
 				mr.repair_order = self.name
@@ -29,11 +30,11 @@ class RepairOrder(Document):
 
 			
 			
-			mr.insert()
-			mr.save()
+				mr.insert()
+				mr.save()
 
 			self.reload()
-			frappe.msgprint("Job Work created successfully: {}".format(mr.name))
+			frappe.msgprint(" Job Work created successfully ")
 
 			return mr.name
  
