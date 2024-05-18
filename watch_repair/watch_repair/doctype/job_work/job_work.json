@@ -153,6 +153,7 @@
    "label": "Posting Time"
   },
   {
+   "depends_on": "eval:doc.service_only==!1",
    "fieldname": "get_servicing_meterials",
    "fieldtype": "Button",
    "label": "Get Servicing Meterials"
@@ -168,7 +169,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-17 11:29:51.876164",
+ "modified": "2024-05-18 13:16:06.932960",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",
