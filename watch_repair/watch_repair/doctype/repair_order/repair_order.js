@@ -15,7 +15,7 @@ frappe.ui.form.on('Repair Order', {
 
 		if (cur_frm.doc.docstatus === 1) {
 			frm.add_custom_button(('Close'), function() {
-				frappe.msgprint(('Close button clicked'));
+				frappe.msgprint((`${cur_frm.doc.name} - This document was closed`));
 				frm.set_value('status', 'Closed');
 				frm.save();
 			});
@@ -23,7 +23,7 @@ frappe.ui.form.on('Repair Order', {
 
 		if (cur_frm.doc.status === 'Closed') {
 			frm.add_custom_button(('Open'), function() {
-				frappe.msgprint(('Open button clicked'));
+				frappe.msgprint((`${cur_frm.doc.name} - This document was Open`));
 				frm.set_value('status', 'Pending');
 				frm.save();
 			});
@@ -31,16 +31,38 @@ frappe.ui.form.on('Repair Order', {
 
 
 		if (cur_frm.doc.job_work_status === 'Not Completed') {
-			frm.add_custom_button(('Job Work'), function() {
-				frappe.msgprint(('Repair Order clicked'));
-			}, 'Create');
+			frm.add_custom_button(__('Job Work '), function() {
+                console.log("testing")
+                cur_frm.call({
+                    doc: cur_frm.doc,
+                    method: 'create_job_work',
+                    args: {
+                        // order_and_dispatch: frm.doc.name
+                    },
+                    callback: function(response) {
+                        // frappe.set_route("Form", "SFG BOM", response.message);                  
+                    }
+                });
+            
+            }, __("Create"));
 		}
 		
 
 		if (cur_frm.doc.servicing_status === 'Not Completed') {
-			frm.add_custom_button(('Service'), function() {
-				frappe.msgprint(('Service clicked'));
-			}, 'Create');
+			frm.add_custom_button(__('Servicing '), function() {
+                console.log("testing service")
+                cur_frm.call({
+                    doc: cur_frm.doc,
+                    method: 'create_servicing',
+                    args: {
+                        // order_and_dispatch: frm.doc.name
+                    },
+                    callback: function(response) {
+                        // frappe.set_route("Form", "SFG BOM", response.message);                  
+                    }
+                });
+            
+            }, __("Create"));
 		}
 		
 	  

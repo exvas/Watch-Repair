@@ -1,9 +1,7 @@
 frappe.ui.form.on('Job Work', {
     refresh: function(frm) {
-        console.log("sarath");
     },
     get_servicing_meterials: function(frm) {
-        console.log("hiiii");
         if (frm.doc.customer && frm.doc.service_item && frm.doc.repair_order) {
             cur_frm.call({
                 doc: cur_frm.doc,
@@ -14,7 +12,6 @@ frappe.ui.form.on('Job Work', {
                     repair_order: frm.doc.repair_order
                 },
                 callback: function(r) {
-                    // Handle submitted data
                     if (r.message.submitted_data && r.message.submitted_data.length > 0) {
                         frm.clear_table("job_work_item");
                         $.each(r.message.submitted_data, function(i, d) {
@@ -28,7 +25,6 @@ frappe.ui.form.on('Job Work', {
                         frm.refresh_field("job_work_item");
                     }
                     
-                    // Handle unsubmitted data
                     if (r.message.unsubmitted_data && r.message.unsubmitted_data.length > 0) {
                         let unsubmitted_names = r.message.unsubmitted_data.map(d => d.name).join(", ");
                         frappe.msgprint(`The Status of The ${unsubmitted_names} Servicing Are Pending. Please submit these document(s).`);
@@ -39,6 +35,8 @@ frappe.ui.form.on('Job Work', {
             frappe.msgprint("Please fill in Customer, Service Item and Repair Order");
         }
     },
+
+    
     before_submit: function(frm) {
         if (frm.doc.service_only) {
             cur_frm.call({
@@ -59,3 +57,4 @@ frappe.ui.form.on('Job Work', {
         }
     }
 });
+ 

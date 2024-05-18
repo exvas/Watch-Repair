@@ -3,8 +3,7 @@
 
 frappe.ui.form.on('Servicing', {
 	refresh: function(frm) {
-        console.log("sarath")
     },
   
 });
- 
+  

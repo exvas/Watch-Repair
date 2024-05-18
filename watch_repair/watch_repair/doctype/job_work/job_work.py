@@ -3,9 +3,29 @@ from frappe.model.document import Document
 
 class JobWork(Document):
 
+    def on_submit(self):
+        self.db_set('status', 'Completed')
+
+        repair_order = frappe.get_doc('Repair Order', self.repair_order)
+
+        all_job_work = frappe.get_all('Job Work', filters={'repair_order': self.repair_order}, fields=['status'])
+
+        statuses = [job_work['status'] for job_work in all_job_work]
+        
+        if all(status == 'Completed' for status in statuses):
+            new_status = 'Completed'
+        else:
+            new_status = 'Working In Progress'
+
+        if repair_order.status != new_status:
+            repair_order.db_set('status', new_status)
+        
+        repair_order.reload()
+
+
+
     @frappe.whitelist()
     def get_linked_data(self, customer, service_item, repair_order):
-        # Fetch submitted servicing items
         submitted_query = """
             SELECT 
                 jwi.item, 
@@ -25,7 +45,6 @@ class JobWork(Document):
         """
         submitted_data = frappe.db.sql(submitted_query, (customer, service_item, repair_order), as_dict=True)
         
-        # Check for unsubmitted servicing items
         unsubmitted_query = """
             SELECT name 
             FROM `tabServicing`
@@ -40,3 +59,4 @@ class JobWork(Document):
             "submitted_data": submitted_data,
             "unsubmitted_data": unsubmitted_data
         }
+ 

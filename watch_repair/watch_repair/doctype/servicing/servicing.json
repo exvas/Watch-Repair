@@ -9,6 +9,7 @@
  "engine": "InnoDB",
  "field_order": [
   "repair_order",
+  "job_work",
   "company",
   "customer",
   "customer_name",
@@ -67,7 +68,8 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Pending\nWorking In Progress\nCompleted"
+   "options": "Pending\nWorking In Progress\nCompleted",
+   "read_only": 1
   },
   {
    "fieldname": "naming_series",
@@ -80,10 +82,10 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Technician",
-   "options": "User"
+   "options": "Employee"
   },
   {
-   "fetch_from": "technician.full_name",
+   "fetch_from": "technician.employee_name",
    "fieldname": "technician_name",
    "fieldtype": "Data",
    "label": "Technician Name",
@@ -166,12 +168,19 @@
    "fieldname": "technical_remark",
    "fieldtype": "Data",
    "label": "Technical Remark"
+  },
+  {
+   "fieldname": "job_work",
+   "fieldtype": "Link",
+   "label": "Job Work",
+   "options": "Job Work",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-17 15:31:43.362399",
+ "modified": "2024-05-18 15:36:09.733414",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Servicing",
