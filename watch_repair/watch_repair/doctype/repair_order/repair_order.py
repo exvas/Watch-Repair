@@ -156,9 +156,9 @@ class RepairOrder(Document):
 
 					("casing_ring", "casing_ring_complaint_details", "technical_remark_casing_ring"),
 
-					("case_tube", "case_back_complaint_details", "technical_remark_case_tube"),
+					("case_tube", "case_tube_complaint_details", "technical_remark_case_tube"),
 					
-					("case_back_screw", "case_back_screw_complaint_details", "technical_remark_case_back_screw"),
+					("case_back_screw", "case_back_screw__complaint_details", "technical_remark_case_back_screw"),
 
 					("dial_ring", "dial_ring_complaint_details", "technical_remark_dial_ring"),
 

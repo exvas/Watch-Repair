@@ -4,7 +4,6 @@
 
 frappe.ui.form.on('Job Work', {
     refresh: function(frm) {
-        console.log("sarath");
     },
     get_servicing_meterials: function(frm) {
         console.log("hiiii");
@@ -36,4 +35,4 @@ frappe.ui.form.on('Job Work', {
             frappe.msgprint("Please fill in Customer, Service Item and Repair Order");
         }
     }
-});
+}); 

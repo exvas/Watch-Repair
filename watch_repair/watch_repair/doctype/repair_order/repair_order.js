@@ -4,7 +4,6 @@
 frappe.ui.form.on('Repair Order', { 
 	refresh: function(frm) {
 	  
-	  console.log("sarath")
 	  
 		frm.set_query('warehouse', function() {
 			return {

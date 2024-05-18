@@ -72,7 +72,8 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Pending\nWorking In Progress\nCompleted\nClosed"
+   "options": "Pending\nWorking In Progress\nCompleted\nClosed",
+   "read_only": 1
   },
   {
    "fetch_from": "customer.mobile_no",
@@ -117,8 +118,10 @@
   {
    "fieldname": "job_work_status",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Job Work Status",
-   "options": "\nCompleted\nNot Completed"
+   "options": "\nCompleted\nNot Completed",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_mcuhl",
@@ -127,8 +130,10 @@
   {
    "fieldname": "servicing_status",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Servicing Status",
-   "options": "\nCompleted\nNot Completed"
+   "options": "\nCompleted\nNot Completed",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_45r5x",
@@ -147,7 +152,7 @@
    "link_fieldname": "repair_order"
   }
  ],
- "modified": "2024-05-17 16:28:50.880337",
+ "modified": "2024-05-18 11:57:50.352214",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",
