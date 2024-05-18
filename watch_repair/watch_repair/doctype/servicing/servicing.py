@@ -1,9 +1,7 @@
-# Copyright (c) 2024, sammish and contributors
-# For license information, please see license.txt
-
 import frappe
 from frappe.model.document import Document
 
 class Servicing(Document):
-	pass
- 
+    def on_submit(self):
+        # Update the status to 'Completed' upon submission
+        self.db_set('status', 'Completed')

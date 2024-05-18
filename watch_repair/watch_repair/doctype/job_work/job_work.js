@@ -1,9 +1,6 @@
-// Copyright (c) 2024, sammish and contributors
-// For license information, please see license.txt
-
-
 frappe.ui.form.on('Job Work', {
     refresh: function(frm) {
+        console.log("sarath");
     },
     get_servicing_meterials: function(frm) {
         console.log("hiiii");
@@ -17,9 +14,10 @@ frappe.ui.form.on('Job Work', {
                     repair_order: frm.doc.repair_order
                 },
                 callback: function(r) {
-                    if (r.message) {
+                    // Handle submitted data
+                    if (r.message.submitted_data && r.message.submitted_data.length > 0) {
                         frm.clear_table("job_work_item");
-                        $.each(r.message, function(i, d) {
+                        $.each(r.message.submitted_data, function(i, d) {
                             var row = frappe.model.add_child(frm.doc, "Job Work Item", "job_work_item");
                             row.item = d.item;
                             row.item_name = d.item_name;
@@ -29,10 +27,16 @@ frappe.ui.form.on('Job Work', {
                         });
                         frm.refresh_field("job_work_item");
                     }
+                    
+                    // Handle unsubmitted data
+                    if (r.message.unsubmitted_data && r.message.unsubmitted_data.length > 0) {
+                        let unsubmitted_names = r.message.unsubmitted_data.map(d => d.name).join(", ");
+                        frappe.msgprint(`The Status of The ${unsubmitted_names} Servicing Are Pending. Please submit these document(s).`);
+                    }
                 }
             });
         } else {
             frappe.msgprint("Please fill in Customer, Service Item and Repair Order");
         }
     }
-}); 
+});
