@@ -12,6 +12,8 @@ frappe.ui.form.on('Servicing', {
 
 
 frappe.ui.form.on('Job Work Item', {
+
+
     item: function(frm, cdt, cdn) {
         var child = locals[cdt][cdn];
         if (child.item) {
@@ -24,12 +26,15 @@ frappe.ui.form.on('Job Work Item', {
                 callback: function(r) {
                     if (r.message) {
                         // frappe.model.set_value(cdt, cdn, 'available_qty', r.message);
-                        // frm.refresh_field('job_work_item');
+                        frm.refresh_field('job_work_item');
                     }
                 }
             });
         }
-    }
+    },
+
+
+
 });
 
 
