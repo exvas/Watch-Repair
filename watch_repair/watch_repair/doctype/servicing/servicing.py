@@ -18,4 +18,34 @@ class Servicing(Document):
             job_work.db_set('status', new_status)
         
         job_work.reload()
- 
+
+
+
+    @frappe.whitelist()
+    def get_item(self,item):
+        if not self.warehouse:
+            frappe.throw("Please specify a Warehouse.")
+
+        warehouse = self.warehouse
+        bin_entries = frappe.get_all("Bin",
+                                     filters={
+                                    "item_code": item ,
+                                    "warehouse": warehouse
+                                },
+                                fields=["actual_qty", "valuation_rate"],
+                                limit=1)
+        
+        if not bin_entries:
+            frappe.throw(f"No bin entry found for item {item} in warehouse {warehouse}.")
+                            
+        print("xxxx",bin_entries)
+
+        if bin_entries:
+            available_qty = bin_entries[0].actual_qty 
+            if available_qty > 0:
+                valuation_rate = bin_entries[0].valuation_rate
+                self.append("job_work_item",{
+                    "available_qty":available_qty,
+                    "valuation_rate":valuation_rate
+                })
+        

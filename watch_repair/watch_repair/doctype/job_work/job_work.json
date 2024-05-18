@@ -28,7 +28,8 @@
   "service_cost",
   "section_break_3wpmp",
   "job_work_item",
-  "amended_from"
+  "amended_from",
+  "connections_tab"
  ],
  "fields": [
   {
@@ -165,12 +166,23 @@
    "label": "Repair Order",
    "options": "Repair Order",
    "read_only": 1
+  },
+  {
+   "fieldname": "connections_tab",
+   "fieldtype": "Tab Break",
+   "label": "Connections",
+   "show_dashboard": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2024-05-18 16:15:24.134215",
+ "links": [
+  {
+   "link_doctype": "Servicing",
+   "link_fieldname": "job_work"
+  }
+ ],
+ "modified": "2024-05-18 21:07:50.512460",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",

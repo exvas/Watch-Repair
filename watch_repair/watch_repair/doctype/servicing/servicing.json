@@ -30,7 +30,8 @@
   "technical_remark",
   "section_break_3wpmp",
   "job_work_item",
-  "amended_from"
+  "amended_from",
+  "connections_tab"
  ],
  "fields": [
   {
@@ -175,12 +176,18 @@
    "label": "Job Work",
    "options": "Job Work",
    "read_only": 1
+  },
+  {
+   "fieldname": "connections_tab",
+   "fieldtype": "Tab Break",
+   "label": "Connections",
+   "show_dashboard": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-18 15:36:09.733414",
+ "modified": "2024-05-18 21:14:09.456250",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Servicing",

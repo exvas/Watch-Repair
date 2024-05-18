@@ -71,6 +71,7 @@ frappe.ui.form.on('Repair Order', {
   
   
 	  },
+
 	  company: function(frm) {
 		  frm.set_query('warehouse', function() {
 			  return {
@@ -80,6 +81,41 @@ frappe.ui.form.on('Repair Order', {
 			  };
 		  });
 		  frm.set_value('warehouse', ''); 
-	  }
+	  },
+
+//////////////////////////////////////////////////////////////////////////
+//////// For Must Select a check box in child table  ////////////////
+
+
+	  validate: function(frm) {
+        let has_checked_item = false;
+
+        frm.doc.repair_order_item.forEach(item => {
+            if (item.polishing || item.pin_and_tube || item.loop_with_screw || item.push_pin || item.clasp || item.bra_links ||
+                item.movement || item.service || item.crown || item.crystal || item.dial || item.hands || item.case || 
+                item.welding || item.drilling || item.glass_decor || item.anchor || item.b_gasket || item.bezel || 
+                item.bracelet || item.strap || item.battery || item.checking_time_day_date || item.stopped || 
+                item.polish || item.other || item.module || item.pusher || item.case_back || item.casing_ring || 
+                item.case_tube || item.case_back_screw || item.dial_ring || item.middle_part_of_case || item.bezel_screw || 
+                item.g_gasket || item.cb_gasket || item.back_washer || item.crown_seal) {
+                    has_checked_item = true;
+            }
+        });
+
+        if (!has_checked_item) {
+            frappe.msgprint(__('Please select at least one Complaint item checkbox in Complaint Details before saving.'));
+            frappe.validated = false;
+        }
+    }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
   });
  
