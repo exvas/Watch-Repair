@@ -36,7 +36,7 @@ class Servicing(Document):
                                 limit=1)
         
         if not bin_entries:
-            frappe.throw(f"No bin entry found for item {item} in warehouse {warehouse}.")
+            frappe.throw(f"No Stock {item} Item in {warehouse} Warehouse.")
                             
         print("xxxx",bin_entries)
 

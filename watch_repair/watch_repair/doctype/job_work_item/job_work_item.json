@@ -9,6 +9,7 @@
   "item",
   "item_name",
   "qty",
+  "uom",
   "available_qty",
   "valuation_rate"
  ],
@@ -48,14 +49,22 @@
    "columns": 1,
    "fieldname": "valuation_rate",
    "fieldtype": "Float",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Valu. Rate"
+  },
+  {
+   "fetch_from": "item.stock_uom",
+   "fieldname": "uom",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "UOM"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-17 14:54:36.584846",
+ "modified": "2024-05-19 21:09:08.456285",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work Item",
