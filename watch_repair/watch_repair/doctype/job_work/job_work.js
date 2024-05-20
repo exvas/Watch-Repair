@@ -55,6 +55,27 @@ frappe.ui.form.on('Job Work', {
                 }
             });
         }
+    },
+    before_submit: function(frm) {
+        console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
+
+        
+        cur_frm.call({
+            doc: cur_frm.doc,
+            method: 'get_linked_data',
+            args: {
+                customer: frm.doc.customer,
+                service_item: frm.doc.service_item,
+                repair_order: frm.doc.repair_order
+            },
+            callback: function(r) {
+                if (r.message.unsubmitted_data && r.message.unsubmitted_data.length > 0) {
+                    frappe.msgprint("There are pending servicing documents. Please submit all servicing documents before submitting this document.");
+                    frappe.validated = false;
+                }
+            }
+        });
+        
     }
 });
  

@@ -135,12 +135,14 @@
    "label": "Model No"
   },
   {
+   "allow_on_submit": 1,
    "default": "0",
    "fieldname": "service_only",
    "fieldtype": "Check",
    "label": "Service Only"
   },
   {
+   "allow_on_submit": 1,
    "depends_on": "eval:doc.service_only==1",
    "fieldname": "service_cost",
    "fieldtype": "Currency",
@@ -182,7 +184,7 @@
    "link_fieldname": "job_work"
   }
  ],
- "modified": "2024-05-18 21:07:50.512460",
+ "modified": "2024-05-20 09:45:59.639970",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",
