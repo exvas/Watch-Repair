@@ -22,7 +22,7 @@ class JobWork(Document):
         
         repair_order.reload()
 
-
+ 
 
     @frappe.whitelist()
     def get_linked_data(self, customer, service_item, repair_order):

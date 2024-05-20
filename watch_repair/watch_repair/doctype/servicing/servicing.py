@@ -38,14 +38,16 @@ class Servicing(Document):
         if not bin_entries:
             frappe.throw(f"No Stock {item} Item in {warehouse} Warehouse.")
                             
-        print("xxxx",bin_entries)
-
         if bin_entries:
-            available_qty = bin_entries[0].actual_qty 
-            if available_qty > 0:
-                valuation_rate = bin_entries[0].valuation_rate
-                self.append("job_work_item",{
-                    "available_qty":available_qty,
-                    "valuation_rate":valuation_rate
-                })
-        
+            print("xxxx",bin_entries)
+        return bin_entries
+
+        # if bin_entries:
+        #     available_qty = bin_entries[0].actual_qty 
+        #     if available_qty > 0:
+        #         valuation_rate = bin_entries[0].valuation_rate
+        #         self.append("job_work_item",{
+        #             "available_qty":available_qty,
+        #             "valuation_rate":valuation_rate
+        #         })
+         

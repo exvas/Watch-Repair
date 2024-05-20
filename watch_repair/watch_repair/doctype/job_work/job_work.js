@@ -35,7 +35,7 @@ frappe.ui.form.on('Job Work', {
             frappe.msgprint("Please fill in Customer, Service Item and Repair Order");
         }
     },
-
+ 
     
     before_submit: function(frm) {
         if (frm.doc.service_only) {

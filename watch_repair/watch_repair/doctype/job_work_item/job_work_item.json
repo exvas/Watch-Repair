@@ -8,8 +8,8 @@
  "field_order": [
   "item",
   "item_name",
-  "qty",
   "uom",
+  "qty",
   "available_qty",
   "valuation_rate"
  ],
@@ -64,7 +64,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-19 21:09:08.456285",
+ "modified": "2024-05-20 10:42:46.695994",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work Item",

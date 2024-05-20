@@ -15,17 +15,18 @@ frappe.ui.form.on('Job Work Item', {
 
 
     item: function(frm, cdt, cdn) {
-        var child = locals[cdt][cdn];
-        if (child.item) {
+        var d = locals[cdt][cdn];
+        if (d.item) {
             cur_frm.call({
                 doc: cur_frm.doc,
                 method: 'get_item',
                 args: {
-                    item: child.item,
+                    item: d.item,
                 },
                 callback: function(r) {
                     if (r.message) {
-                        // frappe.model.set_value(cdt, cdn, 'available_qty', r.message);
+                        frappe.model.set_value(d.doctype,d.name,"available_qty",r.message[0].actual_qty);
+                        frappe.model.set_value(d.doctype,d.name,"valuation_rate",r.message[0].valuation_rate);
                         frm.refresh_field('job_work_item');
                     }
                 }
@@ -38,4 +39,4 @@ frappe.ui.form.on('Job Work Item', {
 });
 
 
-  
+   
