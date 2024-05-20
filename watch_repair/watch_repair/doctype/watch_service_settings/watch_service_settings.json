@@ -11,7 +11,11 @@
   "auto_create_job_work",
   "auto_create_stock_entry",
   "column_break_bs2rx",
-  "auto_create_servicing"
+  "auto_create_servicing",
+  "additional_costs_section",
+  "expense_account",
+  "column_break_t199t",
+  "description"
  ],
  "fields": [
   {
@@ -40,12 +44,32 @@
    "fieldname": "auto_create_stock_entry",
    "fieldtype": "Check",
    "label": "Auto Create Stock Entry"
+  },
+  {
+   "fieldname": "additional_costs_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Costs"
+  },
+  {
+   "fieldname": "expense_account",
+   "fieldtype": "Link",
+   "label": "Expense Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description"
+  },
+  {
+   "fieldname": "column_break_t199t",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-05-16 15:39:20.401431",
+ "modified": "2024-05-20 09:35:26.341071",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Watch Service Settings",
