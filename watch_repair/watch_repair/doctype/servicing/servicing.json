@@ -187,7 +187,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-18 21:14:09.456250",
+ "modified": "2024-05-20 17:59:39.381182",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Servicing",
@@ -209,6 +209,19 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
+ "states": [
+  {
+   "color": "Blue",
+   "title": "Pending"
+  },
+  {
+   "color": "Pink",
+   "title": "Working In Progress"
+  },
+  {
+   "color": "Green",
+   "title": "Completed"
+  }
+ ],
  "track_changes": 1
 }
