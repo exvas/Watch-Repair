@@ -14,6 +14,7 @@
   "customer_name",
   "service_item",
   "service_item_name",
+  "uom",
   "qty",
   "serial_no",
   "model_no",
@@ -32,6 +33,7 @@
   "is_return",
   "section_break_3wpmp",
   "job_work_item",
+  "stock_entry_status",
   "amended_from",
   "connections_tab"
  ],
@@ -132,7 +134,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "Pending\nWorking In Progress\nCompleted\nServicing Completed\nCancelled",
+   "options": "Pending\nWorking In Progress\nCompleted\nServicing Completed\nCancelled\nTo Invoice",
    "read_only": 1
   },
   {
@@ -211,6 +213,22 @@
    "fieldname": "is_return",
    "fieldtype": "Check",
    "label": "Is Return"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "stock_entry_status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Stock Entry Status",
+   "options": "\nStock Entry Created\nStock Entry Not Created",
+   "read_only": 1
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "uom",
+   "options": "UOM",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -223,9 +241,13 @@
   {
    "link_doctype": "Stock Entry",
    "link_fieldname": "custom_job_work"
+  },
+  {
+   "link_doctype": "Sales Invoice",
+   "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-05-21 13:17:45.218794",
+ "modified": "2024-05-21 17:08:30.545826",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",
@@ -263,6 +285,14 @@
   {
    "color": "Orange",
    "title": "Servicing Completed"
+  },
+  {
+   "color": "Red",
+   "title": "Cancelled"
+  },
+  {
+   "color": "Yellow",
+   "title": "To Invoice"
   }
  ],
  "track_changes": 1

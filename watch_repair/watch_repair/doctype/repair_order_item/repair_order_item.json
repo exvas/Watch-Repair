@@ -8,6 +8,7 @@
  "field_order": [
   "item",
   "item_name",
+  "uom",
   "qty",
   "column_break_d1fmn",
   "serial_no",
@@ -945,12 +946,21 @@
    "fieldname": "technical_remark_crown_seal",
    "fieldtype": "Data",
    "label": "Technical Remark"
+  },
+  {
+   "fetch_from": "item.stock_uom",
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UOM",
+   "options": "UOM",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-21 10:02:32.437859",
+ "modified": "2024-05-21 15:13:56.721047",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order Item",

@@ -236,6 +236,7 @@ fixtures = [
                 "in",
                 [
 					"Stock Entry-custom_job_work",
+                    "Sales Invoice-custom_job_work",
 
 
 

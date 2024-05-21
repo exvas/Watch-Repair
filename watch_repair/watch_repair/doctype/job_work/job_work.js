@@ -7,7 +7,7 @@ frappe.ui.form.on('Job Work', {
 
     refresh: function(frm) {
 
-        if (cur_frm.doc.status === 'Completed') {
+        if (cur_frm.doc.status === 'To Invoice' && cur_frm.doc.stock_entry_status !== 'Stock Entry Created') {
 			frm.add_custom_button(__('Stock Entry '), function() {
                 console.log("stock entry created")
                 cur_frm.call({
@@ -23,7 +23,7 @@ frappe.ui.form.on('Job Work', {
             }, __("Create"));
 		}
 
-        if (cur_frm.doc.status === 'Completed') {
+        if (cur_frm.doc.status === 'To Invoice') {
 			frm.add_custom_button(__('Sales Invoice '), function() {
                 console.log("testing")
                 cur_frm.call({
@@ -32,7 +32,7 @@ frappe.ui.form.on('Job Work', {
                     args: {
                     },
                     callback: function(response) {
-                        // frappe.set_route("Form", "SFG BOM", response.message);                  
+                        frappe.set_route("Form", "Sales Invoice", response.message);                  
                     }
                 });
             

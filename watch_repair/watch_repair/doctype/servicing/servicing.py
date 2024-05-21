@@ -15,8 +15,11 @@ class Servicing(Document):
         repair_order.save()
 
         job_work = frappe.get_doc('Job Work', self.job_work)
+
         all_servicings = frappe.get_all('Servicing', filters={'job_work': self.job_work}, fields=['status'])
+
         statuses = [servicing['status'] for servicing in all_servicings]
+        
         if all(status == 'Completed' for status in statuses):
             new_status = 'Servicing Completed'
         else:

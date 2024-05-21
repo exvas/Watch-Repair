@@ -37,6 +37,7 @@ class RepairOrder(Document):
 				jw.service_item = item.item
 				jw.service_item_name = item.item_name
 				jw.qty = item.qty
+				jw.uom = item.uom
 				jw.serial_no = item.serial_no
 				jw.model_no = item.model_no
 
@@ -193,6 +194,7 @@ class RepairOrder(Document):
 				job.service_item = item.item
 				job.service_item_name = item.item_name
 				job.qty = item.qty
+				job.uom = item.uom
 				job.serial_no = item.serial_no
 				job.model_no = item.model_no
 
