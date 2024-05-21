@@ -219,9 +219,13 @@
   {
    "link_doctype": "Servicing",
    "link_fieldname": "job_work"
+  },
+  {
+   "link_doctype": "Stock Entry",
+   "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-05-21 10:14:26.272688",
+ "modified": "2024-05-21 13:17:45.218794",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",

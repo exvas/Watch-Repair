@@ -4,6 +4,9 @@ from frappe.model.document import Document
 class JobWork(Document):
 
     def on_submit(self):
+
+        watch =frappe.get_doc('Watch Service Settings')
+
         self.db_set('status', 'Completed')
 
         repair_order = frappe.get_doc('Repair Order', self.repair_order)
@@ -77,41 +80,43 @@ class JobWork(Document):
 
     @frappe.whitelist()
     def create_stock_entry(self):
-        pass
+        
+        watch =frappe.get_doc('Watch Service Settings')
+ 
+        if watch.auto_create_stock_entry:
 
         # frappe.db.sql("""UPDATE `tabProject Material Usage Log` SET status= 'Approved' WHERE name=%s""",self.name)
         # frappe.db.commit()
         #     # self.reload()
 
-        # mom = frappe.get_doc('Moms Custom Settings')
 
-        # se = frappe.new_doc("Stock Entry")
-        # se.stock_entry_type = mom.project_material_usage_log
-        # # se.purpose = 'Material Transfer'
-        # se.from_warehouse = self.source_warehouse
-        # se.to_warehouse = self.target_warehouse
-        # se.custom_project_material_usage_log = self.name
-        # # se.custom_project_material_usage_log = self.project_material_request
-        # # se.add_to_transit = 1
+            se = frappe.new_doc("Stock Entry")
+            se.stock_entry_type = watch.stock_entry_with_service_materials
+            se.from_warehouse = self.warehouse
+            se.to_warehouse = self.warehouse
+            se.custom_job_work = self.name
+            se.set_posting_time = 1
+            se.posting_date = self.posting_date
+            se.posting_time = self.posting_time
 
-        # if self.items: 
-        #     for i in self.items:
-        #         se.append('items', {
-        #             's_warehouse': self.source_warehouse,
-        #             't_warehouse': self.target_warehouse,
-        #             'item_code': i.item_code,
-        #             'qty': i.qty,
-        #             'uom': i.uom,
-        #             'stock_uom': i.uom,
-        #             'conversion_factor': i.conversion_factor,
-        #             'cost_center': self.cost_center,
-        #             # 'cost_center': "AMS-PRJ-2024-25-003 - AMS",
-        #             'project': self.project
-        #         })
+            if self.job_work_item: 
+                for i in self.job_work_item:
+                    se.append('items', {
+                        'item_code': i.item,
+                        's_warehouse': self.warehouse,
+                        't_warehouse': self.warehouse,
+                        
+                        'qty': i.qty,
+                        'uom': i.uom,
+                        'stock_uom': i.uom,
+                        'conversion_factor': 1,
+                        # 'cost_center': self.cost_center,
+                        # 'project': self.project
+                    })
 
-        # se.insert(ignore_permissions=True)
-        # se.submit()
-        # frappe.msgprint("Stock Entry Created")
-        
+                    se.insert(ignore_permissions=True)
+                    se.save()
+                    frappe.msgprint("Stock Entry Created")
+                
 
-        # self.reload()
+            self.reload()

@@ -213,3 +213,34 @@ app_license = "MIT"
 # auth_hooks = [
 # 	"watch_repair.auth.validate"
 # ]
+fixtures = [
+	{
+		"doctype": "Property Setter",
+		"filters": [
+			[
+				"name",
+				"in",
+				[
+					# "Attendance Request-to_date-read_only",
+					# "Employee-employment_type-reqd",
+					
+				]
+			]
+		]
+	},
+    {
+        "doctype": "Custom Field",
+        "filters": [
+            [
+                "name",
+                "in",
+                [
+					"Stock Entry-custom_job_work",
+
+
+
+				]
+			]
+		]
+	},
+]

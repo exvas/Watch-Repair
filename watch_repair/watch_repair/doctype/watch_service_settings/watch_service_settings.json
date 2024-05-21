@@ -15,7 +15,11 @@
   "additional_costs_section",
   "expense_account",
   "column_break_t199t",
-  "description"
+  "description",
+  "stock_entry_type_section",
+  "stock_entry_with_service_materials",
+  "column_break_lwqow",
+  "stock_entry_without_service_materials"
  ],
  "fields": [
   {
@@ -64,12 +68,33 @@
   {
    "fieldname": "column_break_t199t",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stock_entry_type_section",
+   "fieldtype": "Section Break",
+   "label": "Stock Entry Type"
+  },
+  {
+   "fieldname": "stock_entry_with_service_materials",
+   "fieldtype": "Link",
+   "label": "Stock Entry With Service Materials",
+   "options": "Stock Entry Type"
+  },
+  {
+   "fieldname": "column_break_lwqow",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stock_entry_without_service_materials",
+   "fieldtype": "Link",
+   "label": "Stock Entry Without Service Materials",
+   "options": "Stock Entry Type"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-05-20 09:35:26.341071",
+ "modified": "2024-05-21 12:56:45.292784",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Watch Service Settings",

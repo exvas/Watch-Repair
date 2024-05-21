@@ -9,14 +9,14 @@ frappe.ui.form.on('Job Work', {
 
         if (cur_frm.doc.status === 'Completed') {
 			frm.add_custom_button(__('Stock Entry '), function() {
-                console.log("testing")
+                console.log("stock entry created")
                 cur_frm.call({
                     doc: cur_frm.doc,
                     method: 'create_stock_entry',
                     args: {
                     },
                     callback: function(response) {
-                        // frappe.set_route("Form", "SFG BOM", response.message);                  
+                        frappe.set_route("Form", "Stock Entry", response.message);                  
                     }
                 });
             
