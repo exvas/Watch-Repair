@@ -16,7 +16,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Service Module",
-   "link_count": 4,
+   "link_count": 5,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -54,7 +54,17 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Watch Service Settings",
+   "label": "Service Warranty",
+   "link_count": 0,
+   "link_to": "Service Warranty",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Service Settings",
    "link_count": 0,
    "link_to": "Watch Service Settings",
    "link_type": "DocType",
@@ -62,7 +72,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-05-16 15:53:52.122371",
+ "modified": "2024-05-21 09:56:49.017900",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Watch Service",

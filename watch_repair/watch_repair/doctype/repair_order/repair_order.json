@@ -31,7 +31,7 @@
   {
    "fieldname": "company",
    "fieldtype": "Link",
-   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Company",
    "options": "Company",
    "reqd": 1
@@ -39,6 +39,7 @@
   {
    "fieldname": "customer",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Customer",
    "options": "Customer",
    "reqd": 1
@@ -47,6 +48,8 @@
    "fetch_from": "customer.customer_name",
    "fieldname": "customer_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Customer Name",
    "read_only": 1
   },
@@ -58,12 +61,14 @@
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Naming Series",
-   "options": "RO.YY.MM.###"
+   "options": "R.#####"
   },
   {
    "default": "Today",
    "fieldname": "posting_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Posting Date",
    "reqd": 1
   },
@@ -72,6 +77,8 @@
    "default": "Pending",
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Status",
    "options": "Pending\nWorking In Progress\nCompleted\nClosed",
    "read_only": 1
@@ -143,6 +150,8 @@
   {
    "fieldname": "expected_delivery_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Expected Delivery Date",
    "reqd": 1
   }
@@ -159,7 +168,7 @@
    "link_fieldname": "repair_order"
   }
  ],
- "modified": "2024-05-21 09:43:10.845593",
+ "modified": "2024-05-21 10:01:36.844609",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",

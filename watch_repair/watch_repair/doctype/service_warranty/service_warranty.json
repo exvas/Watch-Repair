@@ -58,6 +58,8 @@
    "default": "Under Warranty",
    "fieldname": "warranty_status",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Warranty Status",
    "options": "Under Warranty\nOut of Warranty"
   },
@@ -77,6 +79,7 @@
   {
    "fieldname": "customer",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Customer",
    "options": "Customer"
   },
@@ -84,6 +87,8 @@
    "fetch_from": "customer.customer_name",
    "fieldname": "customer_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Customer Name",
    "read_only": 1
   },
@@ -98,6 +103,8 @@
   {
    "fieldname": "warranty_expiry_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Warranty Expiry Date"
   },
   {
@@ -115,7 +122,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-21 09:42:04.457618",
+ "modified": "2024-05-21 10:04:25.692959",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Service Warranty",
