@@ -69,7 +69,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Pending\nWorking In Progress\nCompleted",
+   "options": "Pending\nWorking In Progress\nCompleted\nCancelled",
    "read_only": 1
   },
   {
@@ -83,6 +83,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Technician",
+   "mandatory_depends_on": "eval:doc.repair_order",
    "options": "Employee"
   },
   {
@@ -151,7 +152,8 @@
   {
    "fieldname": "note_by_technician",
    "fieldtype": "Data",
-   "label": "Note by Technician"
+   "label": "Note by Technician",
+   "mandatory_depends_on": "eval:doc.technician"
   },
   {
    "fieldname": "repair_order",
@@ -187,7 +189,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-20 17:59:39.381182",
+ "modified": "2024-05-21 11:26:50.944023",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Servicing",

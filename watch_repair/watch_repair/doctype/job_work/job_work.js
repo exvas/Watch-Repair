@@ -1,6 +1,47 @@
+
+
+
+
+
 frappe.ui.form.on('Job Work', {
+
     refresh: function(frm) {
+
+        if (cur_frm.doc.status === 'Completed') {
+			frm.add_custom_button(__('Stock Entry '), function() {
+                console.log("testing")
+                cur_frm.call({
+                    doc: cur_frm.doc,
+                    method: 'create_stock_entry',
+                    args: {
+                    },
+                    callback: function(response) {
+                        // frappe.set_route("Form", "SFG BOM", response.message);                  
+                    }
+                });
+            
+            }, __("Create"));
+		}
+
+        if (cur_frm.doc.status === 'Completed') {
+			frm.add_custom_button(__('Sales Invoice '), function() {
+                console.log("testing")
+                cur_frm.call({
+                    doc: cur_frm.doc,
+                    method: 'create_sales_invoice',
+                    args: {
+                    },
+                    callback: function(response) {
+                        // frappe.set_route("Form", "SFG BOM", response.message);                  
+                    }
+                });
+            
+            }, __("Create"));
+		}
+
     },
+
+
     get_servicing_meterials: function(frm) {
         if (frm.doc.customer && frm.doc.service_item && frm.doc.repair_order) {
             cur_frm.call({
@@ -18,6 +59,7 @@ frappe.ui.form.on('Job Work', {
                             var row = frappe.model.add_child(frm.doc, "Job Work Item", "job_work_item");
                             row.item = d.item;
                             row.item_name = d.item_name;
+                            row.uom = d.uom;
                             row.qty = d.qty;
                             row.available_qty = d.available_qty;
                             row.valuation_rate = d.valuation_rate;

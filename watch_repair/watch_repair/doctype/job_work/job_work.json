@@ -8,6 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "repair_order",
   "company",
   "customer",
   "customer_name",
@@ -24,7 +25,6 @@
   "posting_time",
   "warehouse",
   "service_only",
-  "repair_order",
   "service_cost",
   "section_break_3wpmp",
   "job_work_item",
@@ -98,7 +98,9 @@
    "fieldname": "job_work_item",
    "fieldtype": "Table",
    "label": "Service Materials",
-   "options": "Job Work Item"
+   "mandatory_depends_on": "eval:!doc.service_only",
+   "options": "Job Work Item",
+   "read_only": 1
   },
   {
    "fieldname": "warehouse",
@@ -121,7 +123,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Pending\nWorking In Progress\nCompleted\nServicing Completed",
+   "options": "Pending\nWorking In Progress\nCompleted\nServicing Completed\nCancelled",
    "read_only": 1
   },
   {
@@ -184,7 +186,7 @@
    "link_fieldname": "job_work"
   }
  ],
- "modified": "2024-05-20 17:59:11.540090",
+ "modified": "2024-05-21 11:27:37.890975",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",

@@ -1,6 +1,6 @@
 // Copyright (c) 2024, sammish and contributors
 // For license information, please see license.txt
-
+ 
 frappe.ui.form.on('Repair Order', { 
 	refresh: function(frm) {
 	  
@@ -17,7 +17,15 @@ frappe.ui.form.on('Repair Order', {
 			frm.add_custom_button(('Close'), function() {
 				frappe.msgprint((`${cur_frm.doc.name} - This document was closed`));
 				frm.set_value('status', 'Closed');
-				frm.save();
+                cur_frm.call({
+                    doc: cur_frm.doc,
+                    method: 'delete_job_ser',
+                    args: {
+                    },
+                    callback: function(response) {
+                    }
+                });
+                
 			});
 		}
 
@@ -28,6 +36,8 @@ frappe.ui.form.on('Repair Order', {
 				frm.save();
 			});
 		}
+
+      
 
 
 		if (cur_frm.doc.job_work_status === 'Not Completed') {
@@ -88,23 +98,52 @@ frappe.ui.form.on('Repair Order', {
 //////// For Must Select a check box in child table  ////////////////
 
 
-	  validate: function(frm) {
-        let has_checked_item = false;
+	//   validate: function(frm) {
+    //     let has_checked_item = false;
 
+    //     frm.doc.repair_order_item.forEach(item => {
+    //         if (item.polishing || item.pin_and_tube || item.loop_with_screw || item.push_pin || item.clasp || item.bra_links ||
+    //             item.movement || item.service || item.crown || item.crystal || item.dial || item.hands || item.case || 
+    //             item.welding || item.drilling || item.glass_decor || item.anchor || item.b_gasket || item.bezel || 
+    //             item.bracelet || item.strap || item.battery || item.checking_time_day_date || item.stopped || 
+    //             item.polish || item.other || item.module || item.pusher || item.case_back || item.casing_ring || 
+    //             item.case_tube || item.case_back_screw || item.dial_ring || item.middle_part_of_case || item.bezel_screw || 
+    //             item.g_gasket || item.cb_gasket || item.back_washer || item.crown_seal) {
+    //                 has_checked_item = true;
+    //         }
+    //     });
+
+    //     if (!has_checked_item) {
+    //         frappe.msgprint(__('Please select at least one Complaint item checkbox in Complaint Details before saving.'));
+    //         frappe.validated = false;
+    //     }
+    // }
+
+    validate: function(frm) {
+        let all_items_valid = true;
+    
         frm.doc.repair_order_item.forEach(item => {
-            if (item.polishing || item.pin_and_tube || item.loop_with_screw || item.push_pin || item.clasp || item.bra_links ||
+            let has_checked_item = false;
+    
+            if (
+                item.polishing || item.pin_and_tube || item.loop_with_screw || item.push_pin || item.clasp || item.bra_links ||
                 item.movement || item.service || item.crown || item.crystal || item.dial || item.hands || item.case || 
                 item.welding || item.drilling || item.glass_decor || item.anchor || item.b_gasket || item.bezel || 
                 item.bracelet || item.strap || item.battery || item.checking_time_day_date || item.stopped || 
                 item.polish || item.other || item.module || item.pusher || item.case_back || item.casing_ring || 
                 item.case_tube || item.case_back_screw || item.dial_ring || item.middle_part_of_case || item.bezel_screw || 
-                item.g_gasket || item.cb_gasket || item.back_washer || item.crown_seal) {
-                    has_checked_item = true;
+                item.g_gasket || item.cb_gasket || item.back_washer || item.crown_seal
+            ) {
+                has_checked_item = true;
+            }
+    
+            if (!has_checked_item) {
+                all_items_valid = false;
             }
         });
-
-        if (!has_checked_item) {
-            frappe.msgprint(__('Please select at least one Complaint item checkbox in Complaint Details before saving.'));
+    
+        if (!all_items_valid) {
+            frappe.msgprint(__('Please select at least one Complaint item checkbox in each row of Complaint Details before saving.'));
             frappe.validated = false;
         }
     }

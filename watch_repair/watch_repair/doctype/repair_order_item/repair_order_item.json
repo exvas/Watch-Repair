@@ -167,6 +167,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "columns": 2,
    "default": "Pending",
    "fieldname": "complaint_completion_status",
@@ -949,7 +950,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-17 12:44:08.229171",
+ "modified": "2024-05-21 10:02:32.437859",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order Item",

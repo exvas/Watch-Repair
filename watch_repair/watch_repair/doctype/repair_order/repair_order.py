@@ -1,6 +1,6 @@
 # Copyright (c) 2024, sammish and contributors
 # For license information, please see license.txt
- 
+  
 import frappe
 from frappe.utils import today
 from frappe.model.document import Document
@@ -328,8 +328,64 @@ class RepairOrder(Document):
 				frappe.db.sql("""UPDATE `tabRepair Order` SET servicing_status='Completed' WHERE name=%s""", self.name)
 				frappe.db.commit()
 			
+	
+	# def on_cancel(self):
 
 
+	# 	frappe.db.sql("""update `tabRepair Order` set status='Cancelled' where name=%s""", self.name)
+		
+	# 	frappe.db.commit()
+
+	# 	psr_name = frappe.db.get_value("Job Work", {"repair_order": self.name}, "name")
+
+	# 	if psr_name:
+	# 		psr_doc = frappe.get_doc("Job Work", psr_name)
+
+	# 		if psr_doc.docstatus == 0:
+	# 			frappe.delete_doc("Job Work", psr_name)
+	# 		elif psr_doc.docstatus == 1:
+	# 			psr_doc.cancel()
+	# 		else:
+	# 			pass
+
+
+	# 	service = frappe.db.get_value("Servicing", {"repair_order": self.name}, "name")
+
+	# 	if service:
+	# 		psr_doc = frappe.get_doc("Servicing", service)
+
+	# 		if psr_doc.docstatus == 0:
+	# 			frappe.delete_doc("Servicing", service)
+	# 		elif psr_doc.docstatus == 1:
+	# 			psr_doc.cancel()
+	# 		else:
+	# 			pass
+
+	
+	# 	self.reload()
+
+	@frappe.whitelist()
+	def delete_job_ser(self):
+
+		job_work = frappe.db.get_value("Job Work", {"repair_order": self.name}, "name")
+		service = frappe.db.get_value("Servicing", {"repair_order": self.name}, "name")
+
+
+		if service:
+			serv = frappe.get_doc("Servicing",service)
+
+			if serv.docstatus == 0:
+				frappe.delete_doc("Servicing", service)
+
+		if job_work:
+			job = frappe.get_doc("Job Work", job_work)
+
+			if job.docstatus == 0:
+				frappe.delete_doc("Job Work",job_work)
+
+		
+
+		frappe.msgprint("Related Job Work and Servicing documents deleted successfully.")
 
 
 
