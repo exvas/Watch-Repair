@@ -29,6 +29,7 @@
   "add_additional_cost",
   "additional_cost",
   "is_free_service",
+  "is_return",
   "section_break_3wpmp",
   "job_work_item",
   "amended_from",
@@ -204,6 +205,12 @@
    "fieldname": "is_free_service",
    "fieldtype": "Check",
    "label": "Is Free Service"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_return",
+   "fieldtype": "Check",
+   "label": "Is Return"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -214,7 +221,7 @@
    "link_fieldname": "job_work"
   }
  ],
- "modified": "2024-05-21 10:03:12.625586",
+ "modified": "2024-05-21 10:14:26.272688",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",
