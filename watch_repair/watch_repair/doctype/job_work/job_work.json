@@ -26,6 +26,9 @@
   "warehouse",
   "service_only",
   "service_cost",
+  "add_additional_cost",
+  "additional_cost",
+  "is_free_service",
   "section_break_3wpmp",
   "job_work_item",
   "amended_from",
@@ -176,6 +179,26 @@
    "fieldtype": "Tab Break",
    "label": "Connections",
    "show_dashboard": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.service_only==!1",
+   "fieldname": "add_additional_cost",
+   "fieldtype": "Check",
+   "label": "Add Additional Cost"
+  },
+  {
+   "depends_on": "eval:doc.add_additional_cost==1",
+   "fieldname": "additional_cost",
+   "fieldtype": "Currency",
+   "label": "Additional Cost",
+   "options": "Currency"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_free_service",
+   "fieldtype": "Check",
+   "label": "Is Free Service"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -186,7 +209,7 @@
    "link_fieldname": "job_work"
   }
  ],
- "modified": "2024-05-21 11:27:37.890975",
+ "modified": "2024-05-21 09:27:48.519376",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",
