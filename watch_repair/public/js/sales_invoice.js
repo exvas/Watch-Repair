@@ -25,45 +25,49 @@ frappe.ui.form.on('Sales Invoice', {
             },
             action(selections) {
                 // Process selected job work items
-                get_job_work_items(selections, frm);
+                frappe.call({
+                    method: 'watch_repair.doc_events.sales_invoice.get_items',
+                    args: {
+                        job_work_ids: selections
+                    },
+                    callback: function(r) {
+                        if (r.message) {
+                            let items = r.message;
+
+                            // Check if all items are from the same customer
+                            let customers = items.map(item => item.customer);
+                            let uniqueCustomers = [...new Set(customers)];
+
+                            if (uniqueCustomers.length > 1) {
+                                frappe.msgprint(__('Please select Job Work entries from the same customer.'));
+                                return;
+                            }
+
+                            frm.clear_table("items");
+
+                            if (items.length > 0) {
+                                // Assuming all selected Job Work IDs have the same customer
+                                let customer = items[0].customer;
+                                frm.set_value("customer", customer);
+                            }
+
+                            items.forEach(item => {
+                                let row = frm.add_child("items");
+                                row.item_code = item.service_item;  // Assuming 'service_item' is the field you want to populate
+                                row.qty = item.qty || 1;
+                                row.custom_name = item.name;  // Assign Job Work ID to custom_name field
+                                // Add other fields as necessary
+                                // row.custom_name = 'job_work_ids';
+                                // row.custom_name = JSON.stringify(selections);
+                            });
+                            frm.refresh_field('items');
+                        } else {
+                            frappe.msgprint(__('No items found for the selected Job Work IDs.'));
+                        }
+                    }
+                });
                 d.dialog.hide();
             }
         });
     }
 });
-
-function get_job_work_items(selections, frm) {
-    // Ensure selections is an array of strings
-    if (typeof selections === 'string') {
-        selections = [selections];
-    }
-    
-    frappe.call({
-        method: 'watch_repair.doc_events.sales_invoice.get_items',
-        args: {
-            job_work_ids: selections
-        },
-        callback: function(r) {
-            if (r.message) {
-                let items = r.message;
-                frm.clear_table("items");
-
-                if (items.length > 0) {
-                    // Assuming all selected Job Work IDs have the same customer
-                    let customer = items[0].customer;
-                    frm.set_value("customer", customer);
-                }
-
-                items.forEach(item => {
-                    let row = frm.add_child("items");
-                    row.item_code = item.service_item;  // Assuming 'service_item' is the field you want to populate
-                    row.qty = item.qty || 1;
-                    // Add other fields as necessary
-                });
-                frm.refresh_field('items');
-            } else {
-                frappe.msgprint(__('No items found for the selected Job Work IDs.'));
-            }
-        }
-    });
-}

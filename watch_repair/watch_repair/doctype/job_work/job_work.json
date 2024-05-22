@@ -134,8 +134,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "Pending\nWorking In Progress\nCompleted\nServicing Completed\nCancelled\nTo Invoice",
-   "read_only": 1
+   "options": "Pending\nWorking In Progress\nCompleted\nServicing Completed\nCancelled\nTo Invoice"
   },
   {
    "fieldname": "serial_no",
@@ -247,7 +246,7 @@
    "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-05-22 12:25:56.301044",
+ "modified": "2024-05-22 12:40:43.025931",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",
