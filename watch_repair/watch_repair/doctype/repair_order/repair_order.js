@@ -13,7 +13,7 @@ frappe.ui.form.on('Repair Order', {
 			};
 		});
 
-		if (cur_frm.doc.docstatus === 1) {
+		if (cur_frm.doc.docstatus === 1 && cur_frm.doc.status !== 'Closed') {
 			frm.add_custom_button(('Close'), function() {
 				frappe.msgprint((`${cur_frm.doc.name} - This document was closed`));
 				frm.set_value('status', 'Closed');

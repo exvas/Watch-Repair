@@ -7,7 +7,7 @@ frappe.ui.form.on('Job Work', {
 
     refresh: function(frm) {
 
-        if (cur_frm.doc.status === 'To Invoice' && cur_frm.doc.stock_entry_status !== 'Stock Entry Created') {
+        if (cur_frm.doc.docstatus === 1 && cur_frm.doc.status === 'Servicing Completed' && cur_frm.doc.stock_entry_status !== 'Stock Entry Created') {
 			frm.add_custom_button(__('Stock Entry '), function() {
                 console.log("stock entry created")
                 cur_frm.call({

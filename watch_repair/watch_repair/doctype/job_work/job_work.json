@@ -148,14 +148,13 @@
    "label": "Model No"
   },
   {
-   "allow_on_submit": 1,
    "default": "0",
+   "depends_on": "eval:!doc.add_additional_cost && !doc.is_free_service && !doc.is_return",
    "fieldname": "service_only",
    "fieldtype": "Check",
    "label": "Service Only"
   },
   {
-   "allow_on_submit": 1,
    "depends_on": "eval:doc.service_only==1",
    "fieldname": "service_cost",
    "fieldtype": "Currency",
@@ -170,7 +169,7 @@
    "label": "Posting Time"
   },
   {
-   "depends_on": "eval:doc.service_only==!1",
+   "depends_on": "eval:doc.service_only==!1 && !doc.is_return",
    "fieldname": "get_servicing_meterials",
    "fieldtype": "Button",
    "label": "Get Servicing Meterials"
@@ -190,7 +189,7 @@
   },
   {
    "default": "0",
-   "depends_on": "eval:doc.service_only==!1",
+   "depends_on": "eval:doc.service_only==!1  && !doc.is_free_service && !doc.is_return",
    "fieldname": "add_additional_cost",
    "fieldtype": "Check",
    "label": "Add Additional Cost"
@@ -200,16 +199,19 @@
    "fieldname": "additional_cost",
    "fieldtype": "Currency",
    "label": "Additional Cost",
+   "mandatory_depends_on": "eval:doc.add_additional_cost",
    "options": "Currency"
   },
   {
    "default": "0",
+   "depends_on": "eval:!doc.service_only && !doc.add_additional_cost && !doc.is_return",
    "fieldname": "is_free_service",
    "fieldtype": "Check",
    "label": "Is Free Service"
   },
   {
    "default": "0",
+   "depends_on": "eval:!doc.service_only && !doc.add_additional_cost && !doc.is_free_service",
    "fieldname": "is_return",
    "fieldtype": "Check",
    "label": "Is Return"
@@ -247,7 +249,7 @@
    "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-05-22 16:01:23.624212",
+ "modified": "2024-05-22 17:54:03.676449",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",
@@ -275,7 +277,7 @@
    "title": "Pending"
   },
   {
-   "color": "Pink",
+   "color": "Green",
    "title": "Working In Progress"
   },
   {
