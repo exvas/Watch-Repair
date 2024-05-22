@@ -1,9 +1,3 @@
-
-
-
-
-
-
 frappe.ui.form.on('Sales Invoice', {
     refresh: function(frm) {
         console.log("sarath");
@@ -22,6 +16,7 @@ frappe.ui.form.on('Sales Invoice', {
             get_query() {
                 let filters = {
                     docstatus: 0,
+                    status: "To Invoice"  // Add the custom field filter here
                 };
                 return {
                     filters: filters,
@@ -36,6 +31,7 @@ frappe.ui.form.on('Sales Invoice', {
         });
     }
 });
+
 function get_job_work_items(selections, frm) {
     // Ensure selections is an array of strings
     if (typeof selections === 'string') {
@@ -71,4 +67,3 @@ function get_job_work_items(selections, frm) {
         }
     });
 }
-
