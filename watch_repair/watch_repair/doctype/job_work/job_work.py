@@ -434,7 +434,8 @@ class JobWork(Document):
         sales_inv.append('items', {
                         'item_code':self.service_item,
                         'qty':self.qty,
-                        'uom':self.uom
+                        'uom':self.uom,
+                        'custom_name':self.name,
                     })
 
        
