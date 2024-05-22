@@ -119,6 +119,9 @@ doctype_list_js = {"Sales Invoice" : "public/js/sales_invoice.js",
 
 doc_events = {
     "Sales Invoice": {
+         "on_submit": "watch_repair.doc_events.sales_invoice.update_job_work_status",
+		"on_cancel": "watch_repair.doc_events.sales_invoice.update_job_work_status_to_invoice",
+
         
 	},
 	

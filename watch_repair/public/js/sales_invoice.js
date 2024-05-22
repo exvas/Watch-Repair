@@ -15,7 +15,7 @@ frappe.ui.form.on('Sales Invoice', {
             },
             get_query() {
                 let filters = {
-                    docstatus: 0,
+                    // docstatus: 0,
                     status: "To Invoice"  // Add the custom field filter here
                 };
                 return {
@@ -55,6 +55,9 @@ frappe.ui.form.on('Sales Invoice', {
                                 let row = frm.add_child("items");
                                 row.item_code = item.service_item;  // Assuming 'service_item' is the field you want to populate
                                 row.qty = item.qty || 1;
+                                row.uom = item.uom;
+                                row.item_name = item.service_item_name;
+                                row.description = item.service_item_name;
                                 row.custom_name = item.name;  // Assign Job Work ID to custom_name field
                                 // Add other fields as necessary
                                 // row.custom_name = 'job_work_ids';

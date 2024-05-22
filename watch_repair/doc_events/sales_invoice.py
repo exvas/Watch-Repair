@@ -26,7 +26,7 @@ def get_items(job_work_ids):
         items = frappe.db.get_all(
             'Job Work', 
             filters={'name': ['in', job_work_ids]},  # Apply filter to fetch only selected job work ids
-            fields=["customer", "service_item", "qty" ,"name"]  # Add customer field here
+            fields=["customer", "service_item", "qty" ,"name" , "service_item_name" , "uom"]  # Add customer field here
         )
         
         # Debugging output
@@ -38,3 +38,28 @@ def get_items(job_work_ids):
         return []
 
     return items
+
+def update_job_work_status(doc, method):
+    print("submit")
+    # Iterate over the items in the Sales Invoice
+    for item in doc.items:
+        if item.custom_name:
+            try:
+                job_work = frappe.get_doc("Job Work", item.custom_name)
+                job_work.status = "Completed"
+                job_work.save()
+                frappe.db.commit()
+            except Exception as e:
+                frappe.log_error(message=str(e), title="Error in updating Job Work status")
+
+def update_job_work_status_to_invoice(doc, method):
+    # Iterate over the items in the Sales Invoice
+    for item in doc.items:
+        if item.custom_name:
+            try:
+                job_work = frappe.get_doc("Job Work", item.custom_name)
+                job_work.status = "To Invoice"
+                job_work.save()
+                frappe.db.commit()
+            except Exception as e:
+                frappe.log_error(message=str(e), title="Error in updating Job Work status to To Invoice")
