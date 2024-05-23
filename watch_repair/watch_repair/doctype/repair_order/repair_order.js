@@ -13,29 +13,71 @@ frappe.ui.form.on('Repair Order', {
 			};
 		});
 
-		if (cur_frm.doc.docstatus === 1 && cur_frm.doc.status !== 'Closed') {
-			frm.add_custom_button(('Close'), function() {
-				frappe.msgprint((`${cur_frm.doc.name} - This document was closed`));
-				frm.set_value('status', 'Closed');
-                cur_frm.call({
-                    doc: cur_frm.doc,
-                    method: 'delete_job_ser',
-                    args: {
-                    },
-                    callback: function(response) {
-                    }
-                });
-                
-			});
-		}
 
-		if (cur_frm.doc.status === 'Closed') {
-			frm.add_custom_button(('Open'), function() {
-				frappe.msgprint((`${cur_frm.doc.name} - This document was Open`));
-				frm.set_value('status', 'Pending');
-				frm.save();
-			});
-		}
+
+        if (cur_frm.doc.docstatus === 1 && cur_frm.doc.status !== 'Closed' && cur_frm.doc.status == 'Pending') {
+            frm.add_custom_button(('Close'), function() {
+                frappe.prompt(
+                    [
+                        {
+                            label: 'Close Reason',
+                            fieldname: 'close_reason',
+                            fieldtype: 'Small Text',
+                            reqd: 1
+                        }
+                    ],
+                    function(values){
+                        // frappe.msgprint((`${cur_frm.doc.name} - This document was closed`));
+                        // frm.set_value('status', 'Closed');
+                        // frm.set_value('close_reason', values.close_reason);
+                        frm.save_or_update();
+                        // frm.refresh();
+                        cur_frm.call({
+                            doc: cur_frm.doc,
+                            method: 'delete_job_ser',
+                            args: {
+                                close_reason: values.close_reason
+                            },
+                            callback: function(response) {
+                                if(response.message) {
+                                    frappe.show_alert({
+                                        message: response.message,
+                                        indicator: 'green'
+                                    });
+                                }
+                            }
+                        });
+                    },
+                    'Close Repair Order',
+                    'Close'
+                );
+            });
+            
+        }
+
+		// if (cur_frm.doc.docstatus === 1 && cur_frm.doc.status !== 'Closed') {
+		// 	frm.add_custom_button(('Close'), function() {
+		// 		frappe.msgprint((`${cur_frm.doc.name} - This document was closed`));
+		// 		frm.set_value('status', 'Closed');
+        //         cur_frm.call({
+        //             doc: cur_frm.doc,
+        //             method: 'delete_job_ser',
+        //             args: {
+        //             },
+        //             callback: function(response) {
+        //             }
+        //         });
+                
+		// 	});
+		// }
+
+		// if (cur_frm.doc.status === 'Closed') {
+		// 	frm.add_custom_button(('Open'), function() {
+		// 		frappe.msgprint((`${cur_frm.doc.name} - This document was Open`));
+		// 		frm.set_value('status', 'Pending');
+		// 		frm.save();
+		// 	});
+		// }
 
       
 

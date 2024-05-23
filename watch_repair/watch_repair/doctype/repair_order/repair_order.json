@@ -24,6 +24,8 @@
   "job_work_status",
   "column_break_mcuhl",
   "servicing_status",
+  "section_break_c3y0m",
+  "close_reason",
   "amended_from",
   "connections_tab"
  ],
@@ -154,6 +156,17 @@
    "in_standard_filter": 1,
    "label": "Expected Delivery Date",
    "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "close_reason",
+   "fieldtype": "Small Text",
+   "label": "Close Reason",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_c3y0m",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -168,7 +181,7 @@
    "link_fieldname": "repair_order"
   }
  ],
- "modified": "2024-05-22 17:20:37.857346",
+ "modified": "2024-05-23 09:44:24.111340",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",

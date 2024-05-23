@@ -367,7 +367,9 @@ class RepairOrder(Document):
 	# 	self.reload()
 
 	@frappe.whitelist()
-	def delete_job_ser(self):
+	def delete_job_ser(self, close_reason):
+
+		
 
 		job_work = frappe.db.get_value("Job Work", {"repair_order": self.name}, "name")
 		service = frappe.db.get_value("Servicing", {"repair_order": self.name}, "name")
@@ -385,11 +387,22 @@ class RepairOrder(Document):
 			if job.docstatus == 0:
 				frappe.delete_doc("Job Work",job_work)
 
+		self.submit()
+
+		# frappe.show_alert({
+        # 'message': 'Related Job Work and Servicing documents deleted successfully.',
+        # 'indicator': 'green'
+    	# })
+
+		# frappe.msgprint("Related Job Work and Servicing documents deleted successfully.")
+		frappe.db.sql("""UPDATE `tabRepair Order` SET status='Closed' WHERE name=%s""", self.name)
+		frappe.db.sql("""UPDATE `tabRepair Order` SET close_reason = %s WHERE name=%s""",(close_reason, self.name))
+		frappe.db.commit()
+
+		return "Related Job Work and Servicing documents deleted successfully."
 		
-
-		frappe.msgprint("Related Job Work and Servicing documents deleted successfully.")
-
-
+		
+		
 
 	
 		
