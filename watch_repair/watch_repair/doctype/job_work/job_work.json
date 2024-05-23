@@ -20,6 +20,7 @@
   "model_no",
   "get_servicing_meterials",
   "column_break_xdluq",
+  "service_warranty",
   "status",
   "naming_series",
   "posting_date",
@@ -29,6 +30,7 @@
   "service_cost",
   "add_additional_cost",
   "additional_cost",
+  "description",
   "is_free_service",
   "is_return",
   "section_break_3wpmp",
@@ -107,7 +109,7 @@
    "fieldname": "job_work_item",
    "fieldtype": "Table",
    "label": "Service Materials",
-   "mandatory_depends_on": "eval:!doc.service_only",
+   "mandatory_depends_on": "eval:!doc.service_only && !doc.is_return && !doc.add_additional_cost && !doc.is_free_service && !doc.is_return",
    "options": "Job Work Item",
    "read_only": 1
   },
@@ -231,6 +233,19 @@
    "label": "uom",
    "options": "UOM",
    "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.add_additional_cost",
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "mandatory_depends_on": "eval:doc.add_additional_cost"
+  },
+  {
+   "fieldname": "service_warranty",
+   "fieldtype": "Select",
+   "label": "Service Warranty",
+   "options": "Warranty Not Create\nUnder Warranty"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -249,7 +264,7 @@
    "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-05-22 17:54:03.676449",
+ "modified": "2024-05-23 17:23:53.347703",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",

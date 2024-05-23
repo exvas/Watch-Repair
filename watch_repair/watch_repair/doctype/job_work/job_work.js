@@ -39,6 +39,22 @@ frappe.ui.form.on('Job Work', {
             }, __("Create"));
 		}
 
+        if (cur_frm.doc.status === 'Warranty Not Create' && cur_frm.doc.docstatus === 1) {
+			frm.add_custom_button(__('Service Warranty'), function() {
+                console.log("testing")
+                cur_frm.call({
+                    doc: cur_frm.doc,
+                    method: 'create_sales_invoice',
+                    args: {
+                    },
+                    callback: function(response) {
+                        frappe.set_route("Form", "Sales Invoice", response.message);                  
+                    }
+                });
+            
+            }, __("Create"));
+		}
+
     },
 
 

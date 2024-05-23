@@ -10,6 +10,47 @@ class JobWork(Document):
  
         if watch.auto_create_stock_entry:
 
+
+
+            if self.is_free_service:
+
+                frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""",self.name)
+                frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""",self.name)
+                frappe.db.commit()
+                self.reload()
+
+
+                se = frappe.new_doc("Stock Entry")
+                se.stock_entry_type = watch.stock_entry_without_service_materials
+                # se.from_warehouse = self.warehouse
+                se.to_warehouse = self.warehouse
+                se.custom_job_work = self.name
+                se.set_posting_time = 1
+                se.posting_date = self.posting_date
+                se.posting_time = self.posting_time
+
+                se.append('items', {
+                    'item_code': self.service_item,
+                    # 's_warehouse': self.warehouse,
+                    't_warehouse': self.warehouse,
+                    
+                    'qty': self.qty,
+                    'uom': self.uom,
+                    'stock_uom': self.uom,
+                    'conversion_factor': 1,
+                    'allow_zero_valuation_rate':1,
+                    # 'is_finished_item':1,
+                    # 'basic_rate':self.service_cost,
+                    
+                })
+
+                se.insert(ignore_permissions=True)
+                se.save()
+                frappe.msgprint("Stock Entry Created")
+                    
+
+                self.reload()
+
 #service only Stock Entry creation  --------------------         
 
             if self.service_only:
@@ -22,7 +63,7 @@ class JobWork(Document):
 
                 se = frappe.new_doc("Stock Entry")
                 se.stock_entry_type = watch.stock_entry_without_service_materials
-                se.from_warehouse = self.warehouse
+                # se.from_warehouse = self.warehouse
                 se.to_warehouse = self.warehouse
                 se.custom_job_work = self.name
                 se.set_posting_time = 1
@@ -31,7 +72,7 @@ class JobWork(Document):
 
                 se.append('items', {
                     'item_code': self.service_item,
-                    's_warehouse': self.warehouse,
+                    # 's_warehouse': self.warehouse,
                     't_warehouse': self.warehouse,
                     
                     'qty': self.qty,
@@ -274,7 +315,47 @@ class JobWork(Document):
         
         watch =frappe.get_doc('Watch Service Settings')
  
- # if Servic only Stock Entry Creation -------------------
+ # if Service only Stock Entry Creation -------------------
+
+        if self.is_free_service:
+                
+                frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""",self.name)
+                frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""",self.name)
+                frappe.db.commit()
+                self.reload()
+
+
+                se = frappe.new_doc("Stock Entry")
+                se.stock_entry_type = watch.stock_entry_without_service_materials
+                # se.from_warehouse = self.warehouse
+                se.to_warehouse = self.warehouse
+                se.custom_job_work = self.name
+                se.set_posting_time = 1
+                se.posting_date = self.posting_date
+                se.posting_time = self.posting_time
+
+                se.append('items', {
+                    'item_code': self.service_item,
+                    # 's_warehouse': self.warehouse,
+                    't_warehouse': self.warehouse,
+                    
+                    'qty': self.qty,
+                    'uom': self.uom,
+                    'stock_uom': self.uom,
+                    'conversion_factor': 1,
+                    'allow_zero_valuation_rate':1,
+                    # 'is_finished_item':1,
+                    # 'basic_rate':self.service_cost,
+                    
+                })
+
+                se.insert(ignore_permissions=True)
+                se.save()
+                frappe.msgprint("Stock Entry Created")
+                    
+
+                self.reload()
+
 
         if self.service_only:
 
@@ -286,7 +367,7 @@ class JobWork(Document):
 
             se = frappe.new_doc("Stock Entry")
             se.stock_entry_type = watch.stock_entry_without_service_materials
-            se.from_warehouse = self.warehouse
+            # se.from_warehouse = self.warehouse
             se.to_warehouse = self.warehouse
             se.custom_job_work = self.name
             se.set_posting_time = 1
@@ -295,13 +376,14 @@ class JobWork(Document):
 
             se.append('items', {
                 'item_code': self.service_item,
-                's_warehouse': self.warehouse,
+                # 's_warehouse': self.warehouse,
                 't_warehouse': self.warehouse,
                 
                 'qty': self.qty,
                 'uom': self.uom,
                 'stock_uom': self.uom,
                 'conversion_factor': 1,
+                'basic_rate':self.service_cost,
                 
             })
 
@@ -431,6 +513,7 @@ class JobWork(Document):
         sales_inv.set_posting_time = 1
         sales_inv.due_date = self.posting_date
         sales_inv.custom_job_work = self.name
+        sales_inv.set_warehouse = self.warehouse
         sales_inv.append('items', {
                         'item_code':self.service_item,
                         'qty':self.qty,

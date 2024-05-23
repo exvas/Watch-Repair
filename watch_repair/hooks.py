@@ -124,6 +124,9 @@ doc_events = {
 
         
 	},
+    "Stock Entry": {
+        "on_cancel":"watch_repair.doc_events.stock_entry.on_cancel_se"
+	}
 	
 }
 

@@ -389,11 +389,6 @@ class RepairOrder(Document):
 
 		self.submit()
 
-		# frappe.show_alert({
-        # 'message': 'Related Job Work and Servicing documents deleted successfully.',
-        # 'indicator': 'green'
-    	# })
-
 		# frappe.msgprint("Related Job Work and Servicing documents deleted successfully.")
 		frappe.db.sql("""UPDATE `tabRepair Order` SET status='Closed' WHERE name=%s""", self.name)
 		frappe.db.sql("""UPDATE `tabRepair Order` SET close_reason = %s WHERE name=%s""",(close_reason, self.name))
