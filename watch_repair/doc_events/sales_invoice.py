@@ -26,7 +26,7 @@ def get_items(job_work_ids):
         items = frappe.db.get_all(
             'Job Work', 
             filters={'name': ['in', job_work_ids]},  # Apply filter to fetch only selected job work ids
-            fields=["customer", "service_item", "qty" ,"name" , "service_item_name" , "uom"]  # Add customer field here
+            fields=["customer", "service_item", "qty" ,"name" , "service_item_name" , "uom" , "warehouse"]  # Add customer field here
         )
         
         # Debugging output

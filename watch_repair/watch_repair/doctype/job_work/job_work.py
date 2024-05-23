@@ -46,6 +46,7 @@ class JobWork(Document):
 
                 se.insert(ignore_permissions=True)
                 se.save()
+                se.submit()
                 frappe.msgprint("Stock Entry Created")
                     
 
@@ -86,6 +87,7 @@ class JobWork(Document):
 
                 se.insert(ignore_permissions=True)
                 se.save()
+                se.submit()
                 frappe.msgprint("Stock Entry Created")
                     
 
@@ -142,6 +144,7 @@ class JobWork(Document):
 
                     se.insert(ignore_permissions=True)
                     se.save()
+                    se.submit()
                     frappe.msgprint("Stock Entry Created")
                         
 
@@ -178,6 +181,7 @@ class JobWork(Document):
 
                     se.insert(ignore_permissions=True)
                     se.save()
+                    se.submit()
                     frappe.msgprint("Stock Entry Created")
                         
 
@@ -225,6 +229,7 @@ class JobWork(Document):
 
                 se.insert(ignore_permissions=True)
                 se.save()
+                se.submit()
                 frappe.msgprint("Stock Entry Created")
                     
 
@@ -269,6 +274,9 @@ class JobWork(Document):
         frappe.db.commit()
  
 
+
+# get service material from servicing ----------------------------
+
     @frappe.whitelist()
     def get_linked_data(self, customer, service_item, repair_order):
         submitted_query = """
@@ -305,6 +313,7 @@ class JobWork(Document):
             "submitted_data": submitted_data,
             "unsubmitted_data": unsubmitted_data
         }
+    
     
 #############################################################################################
 ########################     Button wise Stock Entry creation    #############################
@@ -351,6 +360,7 @@ class JobWork(Document):
 
                 se.insert(ignore_permissions=True)
                 se.save()
+                se.submit()
                 frappe.msgprint("Stock Entry Created")
                     
 
@@ -389,6 +399,7 @@ class JobWork(Document):
 
             se.insert(ignore_permissions=True)
             se.save()
+            se.submit()
             frappe.msgprint("Stock Entry Created")
                 
 
@@ -444,6 +455,7 @@ class JobWork(Document):
 
                 se.insert(ignore_permissions=True)
                 se.save()
+                se.submit()
                 frappe.msgprint("Stock Entry Created")
                     
 
@@ -492,6 +504,7 @@ class JobWork(Document):
 
             se.insert(ignore_permissions=True)
             se.save()
+            se.submit()
             frappe.msgprint("Stock Entry Created")
                 
 
@@ -543,3 +556,30 @@ class JobWork(Document):
         
         repair_order.reload()
         repair_order.save()
+
+
+
+ # service Warranty creation --------------------------------------       
+    
+    @frappe.whitelist()
+    def create_service_warranty(self):
+        frappe.msgprint("hiiii")
+
+        frappe.db.sql("""UPDATE `tabJob Work` SET service_warranty= 'Under Warranty' WHERE name=%s""",self.name)
+        frappe.db.commit()
+
+        ser_wty = frappe.new_doc("Service Warranty")
+
+        ser_wty.customer = self.customer
+        ser_wty.item = self.service_item
+        ser_wty.qty = self.qty
+
+        repair_order_items = frappe.get_all('Repair Order Item', filters={'parent': self.repair_order}, fields=['serial_no', 'model_no'])
+
+        for item in repair_order_items:
+            ser_wty.serial_no= item.serial_no
+            ser_wty.model_no= item.model_no
+
+        ser_wty.insert(ignore_permissions=True)
+        ser_wty.save()
+        frappe.msgprint("Service Warranty Created")

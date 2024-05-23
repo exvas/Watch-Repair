@@ -245,7 +245,8 @@
    "fieldname": "service_warranty",
    "fieldtype": "Select",
    "label": "Service Warranty",
-   "options": "Warranty Not Create\nUnder Warranty"
+   "options": "Warranty Not Create\nUnder Warranty",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -264,7 +265,7 @@
    "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-05-23 17:23:53.347703",
+ "modified": "2024-05-23 21:48:33.649274",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",

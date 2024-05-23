@@ -105,7 +105,8 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Warranty Expiry Date"
+   "label": "Warranty Expiry Date",
+   "mandatory_depends_on": "eval:doc.customer"
   },
   {
    "fieldname": "naming_series",
@@ -122,7 +123,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-21 10:04:25.692959",
+ "modified": "2024-05-23 21:45:02.912419",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Service Warranty",

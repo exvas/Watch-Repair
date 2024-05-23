@@ -133,13 +133,13 @@ doc_events = {
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
+scheduler_events = {
 # 	"all": [
 # 		"watch_repair.tasks.all"
 # 	],
-# 	"daily": [
-# 		"watch_repair.tasks.daily"
-# 	],
+	"daily": [
+		"watch_repair.service_warranty.update_warranty_status"
+	],
 # 	"hourly": [
 # 		"watch_repair.tasks.hourly"
 # 	],
@@ -149,7 +149,7 @@ doc_events = {
 # 	"monthly": [
 # 		"watch_repair.tasks.monthly"
 # 	],
-# }
+}
 
 # Testing
 # -------

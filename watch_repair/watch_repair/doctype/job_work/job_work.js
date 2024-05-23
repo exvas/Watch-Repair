@@ -39,16 +39,16 @@ frappe.ui.form.on('Job Work', {
             }, __("Create"));
 		}
 
-        if (cur_frm.doc.status === 'Warranty Not Create' && cur_frm.doc.docstatus === 1) {
+        if (cur_frm.doc.service_warranty === 'Warranty Not Create' && cur_frm.doc.docstatus === 1 && cur_frm.doc.status === 'Completed') {
 			frm.add_custom_button(__('Service Warranty'), function() {
                 console.log("testing")
                 cur_frm.call({
                     doc: cur_frm.doc,
-                    method: 'create_sales_invoice',
+                    method: 'create_service_warranty',
                     args: {
                     },
                     callback: function(response) {
-                        frappe.set_route("Form", "Sales Invoice", response.message);                  
+                        frappe.set_route("Form", "Service Warranty", response.message);                  
                     }
                 });
             
@@ -69,23 +69,32 @@ frappe.ui.form.on('Job Work', {
                     repair_order: frm.doc.repair_order
                 },
                 callback: function(r) {
-                    if (r.message.submitted_data && r.message.submitted_data.length > 0) {
-                        frm.clear_table("job_work_item");
-                        $.each(r.message.submitted_data, function(i, d) {
-                            var row = frappe.model.add_child(frm.doc, "Job Work Item", "job_work_item");
-                            row.item = d.item;
-                            row.item_name = d.item_name;
-                            row.uom = d.uom;
-                            row.qty = d.qty;
-                            row.available_qty = d.available_qty;
-                            row.valuation_rate = d.valuation_rate;
-                        });
-                        frm.refresh_field("job_work_item");
-                    }
-                    
-                    if (r.message.unsubmitted_data && r.message.unsubmitted_data.length > 0) {
-                        let unsubmitted_names = r.message.unsubmitted_data.map(d => d.name).join(", ");
-                        frappe.msgprint(`The Status of The ${unsubmitted_names} Servicing Are Pending. Please submit these document(s).`);
+                    if (r.message) {
+                        if (r.message.submitted_data && r.message.submitted_data.length > 0) {
+                            frm.clear_table("job_work_item");
+                            $.each(r.message.submitted_data, function(i, d) {
+                                var row = frappe.model.add_child(frm.doc, "Job Work Item", "job_work_item");
+                                row.item = d.item;
+                                row.item_name = d.item_name;
+                                row.uom = d.uom;
+                                row.qty = d.qty;
+                                row.available_qty = d.available_qty;
+                                row.valuation_rate = d.valuation_rate;
+                            });
+                            frm.refresh_field("job_work_item");
+                        }
+    
+                        if (r.message.unsubmitted_data && r.message.unsubmitted_data.length > 0) {
+                            let unsubmitted_names = r.message.unsubmitted_data.map(d => d.name).join(", ");
+                            frappe.msgprint(`The Status of The ${unsubmitted_names} Servicing Are Pending. Please submit these document(s).`);
+                        }
+    
+                        if ((!r.message.submitted_data || r.message.submitted_data.length === 0) && 
+                            (!r.message.unsubmitted_data || r.message.unsubmitted_data.length === 0)) {
+                            frappe.msgprint("No Service Materials found, Please enbale Service Only check box");
+                        }
+                    } else {
+                        frappe.msgprint("No servicing documents found 111.");
                     }
                 }
             });
@@ -93,6 +102,7 @@ frappe.ui.form.on('Job Work', {
             frappe.msgprint("Please fill in Customer, Service Item and Repair Order");
         }
     },
+    
  
     
     before_submit: function(frm) {

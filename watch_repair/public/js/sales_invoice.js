@@ -49,6 +49,8 @@ frappe.ui.form.on('Sales Invoice', {
                                 // Assuming all selected Job Work IDs have the same customer
                                 let customer = items[0].customer;
                                 frm.set_value("customer", customer);
+                                let warehouse = items[0].warehouse;
+                                frm.set_value("set_warehouse", warehouse);
                             }
 
                             items.forEach(item => {
