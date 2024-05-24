@@ -134,12 +134,12 @@ doc_events = {
 # ---------------
 
 scheduler_events = {
-# 	"all": [
-# 		"watch_repair.tasks.all"
-# 	],
-	"daily": [
-		"watch_repair.service_warranty.update_warranty_status"
+	"all": [
+		"watch_repair.schedular.schedule_jobs"
 	],
+	# "daily": [
+	# 	"watch_repair.service_warranty.update_warranty_status"
+	# ],
 # 	"hourly": [
 # 		"watch_repair.tasks.hourly"
 # 	],

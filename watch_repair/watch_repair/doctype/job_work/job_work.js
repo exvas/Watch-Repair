@@ -92,9 +92,12 @@ frappe.ui.form.on('Job Work', {
                         if ((!r.message.submitted_data || r.message.submitted_data.length === 0) && 
                             (!r.message.unsubmitted_data || r.message.unsubmitted_data.length === 0)) {
                             frappe.msgprint("No Service Materials found, Please enbale Service Only check box");
+
+                            frm.set_value('service_only', 1);
+                            frm.refresh_field('service_only');
                         }
                     } else {
-                        frappe.msgprint("No servicing documents found 111.");
+                        frappe.msgprint("No servicing documents found.");
                     }
                 }
             });

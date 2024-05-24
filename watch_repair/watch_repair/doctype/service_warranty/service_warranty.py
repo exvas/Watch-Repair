@@ -4,6 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe.utils import today
+from frappe.utils import nowdate
 
 class ServiceWarranty(Document):
 	def update_warranty_status():
