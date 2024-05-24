@@ -175,7 +175,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Completion status",
-   "options": "Pending\nWorking In Progress\nCompleted",
+   "options": "Pending\nWorking In Progress\nCompleted\nReturn",
    "read_only": 1,
    "reqd": 1
   },
@@ -960,7 +960,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-21 15:13:56.721047",
+ "modified": "2024-05-24 13:31:21.996658",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order Item",

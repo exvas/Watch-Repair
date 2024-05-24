@@ -5,6 +5,18 @@ class JobWork(Document):
 
     def on_submit(self):
 
+        if self.is_return == 1 and self.status == 'Return':
+            repair_order = frappe.get_doc('Repair Order', self.repair_order)
+
+            for item in repair_order.repair_order_item:
+                if item.item == self.service_item:
+                    if self.is_return and self.status == 'Return':
+                        item.complaint_completion_status = 'Return'
+                        
+            repair_order.save()
+
+
+
 
         watch =frappe.get_doc('Watch Service Settings')
  
@@ -583,3 +595,30 @@ class JobWork(Document):
         ser_wty.insert(ignore_permissions=True)
         ser_wty.save()
         frappe.msgprint("Service Warranty Created")
+
+    
+    @frappe.whitelist()
+    def isreturn(self,return_reason):
+
+        if self.is_return == 1:
+
+            service = frappe.db.get_value("Servicing", {"job_work": self.name}, "name")
+
+            if service:
+                serv = frappe.get_doc("Servicing",service)
+
+                if serv.docstatus == 0:
+                    frappe.delete_doc("Servicing", service)
+                    return "Servicing Deleted"
+                    # frappe.msgprint("Servicing Deleted")
+            self.save()
+
+            frappe.db.sql("""UPDATE `tabJob Work` SET status='Return' WHERE name=%s""", self.name)
+
+            frappe.db.sql("""UPDATE `tabJob Work` SET return_reason = %s WHERE name=%s""",(return_reason, self.name))
+            
+            frappe.db.commit()
+            
+            
+                
+        

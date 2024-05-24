@@ -108,25 +108,26 @@ frappe.ui.form.on('Job Work', {
     
  
     
-    before_submit: function(frm) {
-        if (frm.doc.service_only) {
-            cur_frm.call({
-                doc: cur_frm.doc,
-                method: 'get_linked_data',
-                args: {
-                    customer: frm.doc.customer,
-                    service_item: frm.doc.service_item,
-                    repair_order: frm.doc.repair_order
-                },
-                callback: function(r) {
-                    if (r.message.unsubmitted_data && r.message.unsubmitted_data.length > 0) {
-                        frappe.msgprint("There are pending servicing documents. Please submit all servicing documents before submitting this document.");
-                        frappe.validated = false;
-                    }
-                }
-            });
-        }
-    },
+    // before_submit: function(frm) {
+    //     if (frm.doc.service_only) {
+    //         cur_frm.call({
+    //             doc: cur_frm.doc,
+    //             method: 'get_linked_data',
+    //             args: {
+    //                 customer: frm.doc.customer,
+    //                 service_item: frm.doc.service_item,
+    //                 repair_order: frm.doc.repair_order
+    //             },
+    //             callback: function(r) {
+    //                 if (r.message.unsubmitted_data && r.message.unsubmitted_data.length > 0) {
+    //                     frappe.msgprint("There are pending servicing documents. Please submit all servicing documents before submitting this document.");
+    //                     frappe.validated = false;
+    //                 }
+    //             }
+    //         });
+    //     }
+    // },
+
     before_submit: function(frm) {
         console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
 
@@ -147,6 +148,46 @@ frappe.ui.form.on('Job Work', {
             }
         });
         
-    }
+    },
+
+
+    validate: function(frm){
+        console.log("validate check ---------")
+        if (frm.doc.is_return && !frm.doc.return_reason) {
+            frappe.prompt(
+                [
+                    {
+                        label: 'Return Reason',
+                        fieldname: 'return_reason',
+                        fieldtype: 'Small Text',
+                        reqd: 1
+                    }
+                ],
+                function(values){
+                    // frm.set_value('return_reason', values.return_reason);
+                    frm.save_or_update();
+                    cur_frm.call({
+                        doc: cur_frm.doc,
+                        method: 'isreturn',
+                        args: {
+                            return_reason: values.return_reason
+                        },
+                        callback: function(response) {
+                            if(response.message) {
+                                frappe.show_alert({
+                                    message: response.message,
+                                    indicator: 'green'
+                                });
+                               
+                            }
+                        }
+                    });
+                },
+                'Return Reason',
+                'Submit Return'
+            );
+        }
+    },
+    
 });
  
