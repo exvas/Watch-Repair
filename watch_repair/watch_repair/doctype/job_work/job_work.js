@@ -187,6 +187,13 @@ frappe.ui.form.on('Job Work', {
                 'Submit Return'
             );
         }
+        if(frm.doc.service_only==1){
+
+            if (frm.doc.service_cost === 0) {
+                frappe.msgprint(__('Please enter a non-zero amount for Service Cost'));
+                frappe.validated = false;
+            }
+        }
     },
     
 });
