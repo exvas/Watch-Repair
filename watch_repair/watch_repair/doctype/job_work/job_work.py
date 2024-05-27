@@ -575,7 +575,7 @@ class JobWork(Document):
     
     @frappe.whitelist()
     def create_service_warranty(self):
-        frappe.msgprint("hiiii")
+        # frappe.msgprint("hiiii")
 
         frappe.db.sql("""UPDATE `tabJob Work` SET service_warranty= 'Under Warranty' WHERE name=%s""",self.name)
         frappe.db.commit()
