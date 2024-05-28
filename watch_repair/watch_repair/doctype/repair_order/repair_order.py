@@ -5,7 +5,7 @@ import frappe
 from frappe.utils import today
 from frappe.model.document import Document
 
-class RepairOrder(Document):
+class RepairOrder(Document): 
 	
 
 	@frappe.whitelist()
@@ -33,6 +33,7 @@ class RepairOrder(Document):
 				jw.customer = self.customer
 				jw.customer_name = self.customer_name
 				jw.warehouse = self.warehouse
+				jw.status = "Pending"
 
 				jw.service_item = item.item
 				jw.service_item_name = item.item_name
