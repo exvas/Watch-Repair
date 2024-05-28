@@ -1,5 +1,5 @@
 import frappe
-from frappe.model.document import Document
+from frappe.model.document import Document 
 
 class JobWork(Document):
 
@@ -14,12 +14,17 @@ class JobWork(Document):
                         item.complaint_completion_status = 'Return'
                         
             repair_order.save()
+            frappe.db.sql("""UPDATE `tabJob Work` SET status= 'Return' WHERE name=%s""",self.name)
+            frappe.db.commit()
+            
+        
+        
 
 
         else:
 
             watch =frappe.get_doc('Watch Service Settings')
-    
+
             if watch.auto_create_stock_entry:
 
 
@@ -246,6 +251,46 @@ class JobWork(Document):
                         
 
                     self.reload()
+
+        # repair_order = frappe.get_doc('Repair Order', self.repair_order)
+
+        # # Update the complaint completion status for the related service item
+        # item_returned = False
+        # item_completed = False
+
+        # for item in repair_order.repair_order_item:
+        #     if item.item == self.service_item:
+        #         if self.status == 'Return':
+        #             item.complaint_completion_status = 'Return'
+        #             item_returned = True
+        #         elif self.status == 'Completed':
+        #             item.complaint_completion_status = 'Completed'
+        #             item_completed = True
+
+        # # Save the updated Repair Order
+        # repair_order.save()
+
+        # # Fetch all Job Work records related to the same Repair Order
+        # all_job_work = frappe.get_all('Job Work', filters={'repair_order': self.repair_order}, fields=['status'])
+
+        # # Extract the statuses of all related Job Work records
+        # statuses = [job_work['status'] for job_work in all_job_work]
+
+        # # Determine the new status for the Repair Order
+        # if all(status == 'Completed' for status in statuses):
+        #     new_status = 'Completed'
+        # elif any(status == 'Completed' for status in statuses) and any(status == 'Return' for status in statuses):
+        #     new_status = 'Completed'
+        # else:
+        #     new_status = 'Working In Progress'
+
+        # # Update the status of the Repair Order if it has changed
+        # if repair_order.status != new_status:
+        #     repair_order.db_set('status', new_status)
+        
+        # # Reload and save the Repair Order to ensure the changes are persistent
+        # repair_order.reload()
+        # repair_order.save()
 
 
             
@@ -598,10 +643,10 @@ class JobWork(Document):
 
     
     @frappe.whitelist()
-    def isreturn(self,return_reason):
+    def isreturn(self):
 
         if self.is_return == 1:
-
+            
             service = frappe.db.get_value("Servicing", {"job_work": self.name}, "name")
 
             if service:
@@ -611,13 +656,15 @@ class JobWork(Document):
                     frappe.delete_doc("Servicing", service)
                     return "Servicing Deleted"
                     # frappe.msgprint("Servicing Deleted")
-            self.save()
+                self.save()
+                self.reload()
 
-            frappe.db.sql("""UPDATE `tabJob Work` SET status='Return' WHERE name=%s""", self.name)
+            # frappe.db.sql("""UPDATE `tabJob Work` SET status='Return' WHERE name=%s""", self.name)
 
-            frappe.db.sql("""UPDATE `tabJob Work` SET return_reason = %s WHERE name=%s""",(return_reason, self.name))
+            # # frappe.db.sql("""UPDATE `tabJob Work` SET return_reason = %s WHERE name=%s""",(return_reason, self.name))
             
-            frappe.db.commit()
+            # frappe.db.commit()
+        
             
             
                 

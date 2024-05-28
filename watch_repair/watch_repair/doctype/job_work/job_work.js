@@ -1,5 +1,5 @@
 
-
+ 
 
 
 
@@ -153,24 +153,26 @@ frappe.ui.form.on('Job Work', {
 
     validate: function(frm){
         console.log("validate check ---------")
-        if (frm.doc.is_return && !frm.doc.return_reason) {
-            frappe.prompt(
-                [
-                    {
-                        label: 'Return Reason',
-                        fieldname: 'return_reason',
-                        fieldtype: 'Small Text',
-                        reqd: 1
-                    }
-                ],
-                function(values){
+        if (frm.doc.is_return ) {
+            frm.set_value('status', 'Return');
+           
+            // frappe.prompt(
+            //     [
+            //         {
+            //             label: 'Return Reason',
+            //             fieldname: 'return_reason',
+            //             fieldtype: 'Small Text',
+            //             reqd: 1
+            //         }
+            //     ],
+            //     function(values){
                     // frm.set_value('return_reason', values.return_reason);
-                    frm.save_or_update();
+                    // frm.save_or_update();
                     cur_frm.call({
                         doc: cur_frm.doc,
                         method: 'isreturn',
                         args: {
-                            return_reason: values.return_reason
+                            // return_reason: values.return_reason
                         },
                         callback: function(response) {
                             if(response.message) {
@@ -182,10 +184,10 @@ frappe.ui.form.on('Job Work', {
                             }
                         }
                     });
-                },
-                'Return Reason',
-                'Submit Return'
-            );
+                // },
+                // 'Return Reason',
+                // 'Submit Return'
+            // );
         }
         if(frm.doc.service_only==1){
 

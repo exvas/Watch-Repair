@@ -236,12 +236,14 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.add_additional_cost",
    "fieldname": "description",
    "fieldtype": "Small Text",
-   "hidden": 1,
-   "label": "Description"
+   "label": "Description",
+   "mandatory_depends_on": "eval:doc.add_additional_cost"
   },
   {
+   "depends_on": "eval:doc.status == 'Completed'",
    "fieldname": "service_warranty",
    "fieldtype": "Select",
    "label": "Service Warranty",
@@ -249,10 +251,11 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.is_return",
    "fieldname": "return_reason",
    "fieldtype": "Small Text",
    "label": "Return Reason",
-   "read_only": 1
+   "mandatory_depends_on": "eval:doc.is_return"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -271,7 +274,7 @@
    "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-05-27 19:19:53.066241",
+ "modified": "2024-05-28 13:19:29.181899",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",
