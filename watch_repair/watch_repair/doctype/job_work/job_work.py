@@ -375,63 +375,17 @@ class JobWork(Document):
 
     @frappe.whitelist()
     def create_stock_entry(self):
-        
-        watch =frappe.get_doc('Watch Service Settings')
- 
- # if Service only Stock Entry Creation -------------------
+        watch = frappe.get_doc('Watch Service Settings')
 
+        # if Service only Stock Entry Creation
         if self.is_free_service:
-                
-                frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""",self.name)
-                frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""",self.name)
-                frappe.db.commit()
-                self.reload()
-
-
-                se = frappe.new_doc("Stock Entry")
-                se.stock_entry_type = watch.stock_entry_without_service_materials
-                # se.from_warehouse = self.warehouse
-                se.to_warehouse = self.warehouse
-                se.custom_job_work = self.name
-                se.set_posting_time = 1
-                se.posting_date = self.posting_date
-                se.posting_time = self.posting_time
-
-                se.append('items', {
-                    'item_code': self.service_item,
-                    # 's_warehouse': self.warehouse,
-                    't_warehouse': self.warehouse,
-                    
-                    'qty': self.qty,
-                    'uom': self.uom,
-                    'stock_uom': self.uom,
-                    'conversion_factor': 1,
-                    'allow_zero_valuation_rate':1,
-                    # 'is_finished_item':1,
-                    # 'basic_rate':self.service_cost,
-                    
-                })
-
-                se.insert(ignore_permissions=True)
-                se.save()
-                se.submit()
-                frappe.msgprint("Stock Entry Created")
-                    
-
-                self.reload()
-
-
-        if self.service_only:
-
-            frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""",self.name)
-            frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""",self.name)
+            frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""", self.name)
+            frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""", self.name)
             frappe.db.commit()
             self.reload()
 
-
             se = frappe.new_doc("Stock Entry")
             se.stock_entry_type = watch.stock_entry_without_service_materials
-            # se.from_warehouse = self.warehouse
             se.to_warehouse = self.warehouse
             se.custom_job_work = self.name
             se.set_posting_time = 1
@@ -440,88 +394,105 @@ class JobWork(Document):
 
             se.append('items', {
                 'item_code': self.service_item,
-                # 's_warehouse': self.warehouse,
                 't_warehouse': self.warehouse,
-                
                 'qty': self.qty,
                 'uom': self.uom,
                 'stock_uom': self.uom,
                 'conversion_factor': 1,
-                'basic_rate':self.service_cost,
-                
+                'allow_zero_valuation_rate': 1,
             })
 
             se.insert(ignore_permissions=True)
             se.save()
             se.submit()
             frappe.msgprint("Stock Entry Created")
-                
 
             self.reload()
 
-        if self.add_additional_cost:
+        elif self.service_only:
+            frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""", self.name)
+            frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""", self.name)
+            frappe.db.commit()
+            self.reload()
 
-                frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""",self.name)
-                frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""",self.name)
-                frappe.db.commit()
-                self.reload()
+            se = frappe.new_doc("Stock Entry")
+            se.stock_entry_type = watch.stock_entry_without_service_materials
+            se.to_warehouse = self.warehouse
+            se.custom_job_work = self.name
+            se.set_posting_time = 1
+            se.posting_date = self.posting_date
+            se.posting_time = self.posting_time
 
+            se.append('items', {
+                'item_code': self.service_item,
+                't_warehouse': self.warehouse,
+                'qty': self.qty,
+                'uom': self.uom,
+                'stock_uom': self.uom,
+                'conversion_factor': 1,
+                'basic_rate': self.service_cost,
+            })
 
-                se = frappe.new_doc("Stock Entry")
-                se.stock_entry_type = watch.stock_entry_without_service_materials
-                se.from_warehouse = self.warehouse
-                se.to_warehouse = self.warehouse
-                se.custom_job_work = self.name
-                se.set_posting_time = 1
-                se.posting_date = self.posting_date
-                se.posting_time = self.posting_time
-                se.append('additional_costs',{
-                    'expense_account':watch.expense_account,
-                    'description': self.description,
-                    'amount':self.additional_cost,
-                })
+            se.insert(ignore_permissions=True)
+            se.save()
+            se.submit()
+            frappe.msgprint("Stock Entry Created")
 
-                if self.job_work_item: 
-                    for i in self.job_work_item:
-                        se.append('items', {
-                            'item_code': i.item,
-                            's_warehouse': self.warehouse,
-                            't_warehouse': self.warehouse,
-                            
-                            'qty': i.qty,
-                            'uom': i.uom,
-                            'stock_uom': i.uom,
-                            'conversion_factor': 1,
-                        })
-                else:
+            self.reload()
+
+        elif self.add_additional_cost:
+            frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""", self.name)
+            frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""", self.name)
+            frappe.db.commit()
+            self.reload()
+
+            se = frappe.new_doc("Stock Entry")
+            se.stock_entry_type = watch.stock_entry_without_service_materials
+            se.from_warehouse = self.warehouse
+            se.to_warehouse = self.warehouse
+            se.custom_job_work = self.name
+            se.set_posting_time = 1
+            se.posting_date = self.posting_date
+            se.posting_time = self.posting_time
+            se.append('additional_costs', {
+                'expense_account': watch.expense_account,
+                'description': self.description,
+                'amount': self.additional_cost,
+            })
+
+            if self.job_work_item:
+                for i in self.job_work_item:
                     se.append('items', {
-                        'item_code': self.service_item,
+                        'item_code': i.item,
                         's_warehouse': self.warehouse,
                         't_warehouse': self.warehouse,
-                        
-                        'qty': self.qty,
-                        'uom': self.uom,
-                        'stock_uom': self.uom,
+                        'qty': i.qty,
+                        'uom': i.uom,
+                        'stock_uom': i.uom,
                         'conversion_factor': 1,
-                        
                     })
-                
+            else:
+                se.append('items', {
+                    'item_code': self.service_item,
+                    's_warehouse': self.warehouse,
+                    't_warehouse': self.warehouse,
+                    'qty': self.qty,
+                    'uom': self.uom,
+                    'stock_uom': self.uom,
+                    'conversion_factor': 1,
+                })
 
-                se.insert(ignore_permissions=True)
-                se.save()
-                se.submit()
-                frappe.msgprint("Stock Entry Created")
-                    
+            se.insert(ignore_permissions=True)
+            se.save()
+            se.submit()
+            frappe.msgprint("Stock Entry Created")
 
-                self.reload()
-
+            self.reload()
 
         else:
-
-# Manufacturing Stock Entry Creation ---------------
-
-            frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""",self.name)
-            frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""",self.name)
+            # Manufacturing Stock Entry Creation
+            frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""", self.name)
+            frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""", self.name)
             frappe.db.commit()
             self.reload()
 
@@ -560,9 +531,9 @@ class JobWork(Document):
             se.save()
             se.submit()
             frappe.msgprint("Stock Entry Created")
-                
 
             self.reload()
+
 
 
 #################################################################################
