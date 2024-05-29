@@ -55,6 +55,50 @@ frappe.ui.form.on('Job Work', {
             
             }, __("Create"));
 		}
+        // if (frm.doc.docstatus === 1) {
+        //     // Add a custom button named 'Whatsapp' next to the Save button
+        //     frm.add_custom_button(__('Send Whatsapp Notification'), function() {
+                
+        //         let mobile_number = frm.doc.whats_app_number;
+                
+        //         // Check if the mobile number is present
+        //         if (!mobile_number) {
+        //             frappe.msgprint(__('Please Enter The Customer Whats App Number.'));
+        //             return;
+        //         }
+                
+        //         // Construct the WhatsApp URL with the mobile number and message
+        //         let whatsapp_url = `https://wa.me/${mobile_number}?text=Hi`;
+
+        //         // Open the WhatsApp Web URL in a new browser tab
+        //         window.open(whatsapp_url, '_blank');
+        //     });
+        // }
+        if (frm.doc.docstatus === 1) {
+            // Add a custom button named 'Send Whatsapp Notification' next to the Save button
+            frm.add_custom_button(__('Send Whatsapp Notification'), function() {
+                
+                let mobile_number = frm.doc.whats_app_number;
+                
+                // Check if the mobile number is present
+                if (!mobile_number) {
+                    frappe.msgprint(__('Please Enter The Customer Whats App Number.'));
+                    return;
+                }
+                
+                // Construct the message with dynamic content
+                let message = `Dear ${frm.doc.customer}, Your ${frm.doc.service_item_name}, Model Number ${frm.doc.model_no}, Serial No ${frm.doc.serial_no}, Service Has been Completed. Please Collect Your ${frm.doc.service_item_name} From Our ${frm.doc.company}. - Thank you -`;
+
+                // Encode the message for the URL
+                let encoded_message = encodeURIComponent(message);
+                
+                // Construct the WhatsApp URL with the mobile number and encoded message
+                let whatsapp_url = `https://wa.me/${mobile_number}?text=${encoded_message}`;
+
+                // Open the WhatsApp Web URL in a new browser tab
+                window.open(whatsapp_url, '_blank');
+            });
+        }
 
     },
 

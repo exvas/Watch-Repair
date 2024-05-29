@@ -12,6 +12,7 @@
   "company",
   "customer",
   "customer_name",
+  "whats_app_number",
   "service_item",
   "service_item_name",
   "uom",
@@ -256,6 +257,12 @@
    "fieldtype": "Small Text",
    "label": "Return Reason",
    "mandatory_depends_on": "eval:doc.is_return"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "whats_app_number",
+   "fieldtype": "Data",
+   "label": "Whats App Number"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -274,7 +281,7 @@
    "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-05-29 14:55:55.166692",
+ "modified": "2024-05-29 20:05:23.512227",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",
