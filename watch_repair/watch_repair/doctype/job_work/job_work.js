@@ -5,6 +5,7 @@
 
 frappe.ui.form.on('Job Work', {
 
+
     refresh: function(frm) {
 
         if (cur_frm.doc.docstatus === 1 && cur_frm.doc.status === 'Servicing Completed' && cur_frm.doc.stock_entry_status !== 'Stock Entry Created') {
@@ -199,4 +200,4 @@ frappe.ui.form.on('Job Work', {
     },
     
 });
- 
+

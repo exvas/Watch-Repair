@@ -3,24 +3,10 @@ from frappe.model.document import Document
 
 class JobWork(Document):
 
+
+
     def on_submit(self):
 
-        if self.is_return == 1 and self.status == 'Return':
-            repair_order = frappe.get_doc('Repair Order', self.repair_order)
-
-            for item in repair_order.repair_order_item:
-                if item.item == self.service_item:
-                    if self.is_return and self.status == 'Return':
-                        item.complaint_completion_status = 'Return'
-                        
-            repair_order.save()
-            frappe.db.sql("""UPDATE `tabJob Work` SET status= 'Return' WHERE name=%s""",self.name)
-            frappe.db.commit()
-            
-       
-
-
-        
         watch =frappe.get_doc('Watch Service Settings')
 
         if watch.auto_create_stock_entry:
@@ -68,7 +54,8 @@ class JobWork(Document):
                     se.insert(ignore_permissions=True)
                     se.save()
                     se.submit()
-                    frappe.msgprint("Stock Entry Created")
+                    print("Free Service Manufacturing Stock Entry Created ")
+                    frappe.msgprint("Free Service Manufacturing Stock Entry Created")
 
                     self.reload()
 
@@ -191,94 +178,50 @@ class JobWork(Document):
 
             else:
                 # Manufacturing Stock Entry Creation
-                frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""", self.name)
-                frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""", self.name)
-                frappe.db.commit()
-                self.reload()
-
-                se = frappe.new_doc("Stock Entry")
-                se.stock_entry_type = watch.stock_entry_with_service_materials
-                se.from_warehouse = self.warehouse
-                se.to_warehouse = self.warehouse
-                se.custom_job_work = self.name
-                se.set_posting_time = 1
-                se.posting_date = self.posting_date
-                se.posting_time = self.posting_time
-
                 if self.job_work_item:
-                    for i in self.job_work_item:
+                    frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""", self.name)
+                    frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""", self.name)
+                    frappe.db.commit()
+                    self.reload()
+
+                    se = frappe.new_doc("Stock Entry")
+                    se.stock_entry_type = watch.stock_entry_with_service_materials
+                    se.from_warehouse = self.warehouse
+                    se.to_warehouse = self.warehouse
+                    se.custom_job_work = self.name
+                    se.set_posting_time = 1
+                    se.posting_date = self.posting_date
+                    se.posting_time = self.posting_time
+
+                    if self.job_work_item:
+                        for i in self.job_work_item:
+                            se.append('items', {
+                                'item_code': i.item,
+                                's_warehouse': self.warehouse,
+                                'qty': i.qty,
+                                'uom': i.uom,
+                                'stock_uom': i.uom,
+                                'conversion_factor': 1,
+                            })
+
+                        # Append the service item
                         se.append('items', {
-                            'item_code': i.item,
-                            's_warehouse': self.warehouse,
-                            'qty': i.qty,
-                            'uom': i.uom,
-                            'stock_uom': i.uom,
+                            'item_code': self.service_item,
+                            't_warehouse': self.warehouse,
+                            'qty': self.qty,
+                            'uom': self.uom,
+                            'stock_uom': self.uom,
                             'conversion_factor': 1,
+                            'is_finished_item': 1
                         })
 
-                    # Append the service item
-                    se.append('items', {
-                        'item_code': self.service_item,
-                        't_warehouse': self.warehouse,
-                        'qty': self.qty,
-                        'uom': self.uom,
-                        'stock_uom': self.uom,
-                        'conversion_factor': 1,
-                        'is_finished_item': 1
-                    })
+                    se.insert(ignore_permissions=True)
+                    se.save()
+                    se.submit()
+                    frappe.msgprint("Stock Entry Created")
 
-                se.insert(ignore_permissions=True)
-                se.save()
-                se.submit()
-                frappe.msgprint("Stock Entry Created")
+                    self.reload()
 
-                self.reload()
-
-        # repair_order = frappe.get_doc('Repair Order', self.repair_order)
-
-        # # Update the complaint completion status for the related service item
-        # item_returned = False
-        # item_completed = False
-
-        # for item in repair_order.repair_order_item:
-        #     if item.item == self.service_item:
-        #         if self.status == 'Return':
-        #             item.complaint_completion_status = 'Return'
-        #             item_returned = True
-        #         elif self.status == 'Completed':
-        #             item.complaint_completion_status = 'Completed'
-        #             item_completed = True
-
-        # # Save the updated Repair Order
-        # repair_order.save()
-
-        # # Fetch all Job Work records related to the same Repair Order
-        # all_job_work = frappe.get_all('Job Work', filters={'repair_order': self.repair_order}, fields=['status'])
-
-        # # Extract the statuses of all related Job Work records
-        # statuses = [job_work['status'] for job_work in all_job_work]
-
-        # # Determine the new status for the Repair Order
-        # if all(status == 'Completed' for status in statuses):
-        #     new_status = 'Completed'
-        # elif any(status == 'Completed' for status in statuses) and any(status == 'Return' for status in statuses):
-        #     new_status = 'Completed'
-        # else:
-        #     new_status = 'Working In Progress'
-
-        # # Update the status of the Repair Order if it has changed
-        # if repair_order.status != new_status:
-        #     repair_order.db_set('status', new_status)
-        
-        # # Reload and save the Repair Order to ensure the changes are persistent
-        # repair_order.reload()
-        # repair_order.save()
-
-
-            
-
-
-        
 
         # self.db_set('status', 'To Stock Entry')
 
@@ -286,24 +229,37 @@ class JobWork(Document):
 
         for item in repair_order.repair_order_item:
             if item.item == self.service_item:
-                item.complaint_completion_status = 'Completed'
+                if self.status == 'Completed':
+                    item.complaint_completion_status = 'Completed'
+                elif self.status == 'Return':
+                    item.complaint_completion_status = 'Return'
         repair_order.save()
 
-        all_job_work = frappe.get_all('Job Work', filters={'repair_order': self.repair_order}, fields=['status'])
 
-        statuses = [job_work['status'] for job_work in all_job_work]
-        
-        if all(status == 'Completed' for status in statuses):
+        repair_order = frappe.get_doc('Repair Order', self.repair_order)
+
+        complaint_completion_statuses = [item.complaint_completion_status for item in repair_order.repair_order_item]
+
+        if all(status == 'Completed' for status in complaint_completion_statuses):
+            new_status = 'Completed'
+        elif 'Return' in complaint_completion_statuses and 'Completed' in complaint_completion_statuses:
             new_status = 'Completed'
         else:
-            new_status = 'Working In Progress'
+            if self.status == 'To Invoice':
+                new_status = 'Working In Progress'
+
+            elif self.status == 'Return':
+                new_status = 'Completed'
+            else:
+                # self.status == 'Completed'
+                new_status = 'Completed'
 
         if repair_order.status != new_status:
             repair_order.db_set('status', new_status)
-        
+
         repair_order.reload()
         repair_order.save()
-        
+                
     
     def on_cancel(self):
 
@@ -318,6 +274,37 @@ class JobWork(Document):
 
     @frappe.whitelist()
     def get_linked_data(self, customer, service_item, repair_order):
+
+        if self.is_return == 1 and self.status == 'Return':
+                repair_order = frappe.get_doc('Repair Order', self.repair_order)
+
+                all_completed = True
+                for item in repair_order.repair_order_item:
+                    if item.item == self.service_item:
+                        if self.is_return and self.status == 'Return':
+                            item.complaint_completion_status = 'Return'
+                    
+                    if item.complaint_completion_status != 'Completed':
+                        all_completed = False
+
+                repair_order.save()
+                frappe.db.sql("""UPDATE `tabJob Work` SET status= 'Return' WHERE name=%s""", self.name)
+                frappe.db.commit()
+
+                if all_completed:
+                    repair_order_status = 'Completed'
+                    for item in repair_order.repair_order_item:
+                        if item.complaint_completion_status == 'Return':
+                            repair_order_status = 'Completed'
+                            break
+                        elif item.complaint_completion_status != 'Completed':
+                            repair_order_status = 'Work In Progress'
+                            
+
+                    repair_order.status = repair_order_status
+                    repair_order.save()
+                    frappe.db.commit()
+
         submitted_query = """
             SELECT 
                 jwi.item, 
@@ -602,20 +589,38 @@ class JobWork(Document):
         sales_inv.save()
         frappe.msgprint("Sales Invoice Created")
 
+        
+
         repair_order = frappe.get_doc('Repair Order', self.repair_order)
 
-        all_job_work = frappe.get_all('Job Work', filters={'repair_order': self.repair_order}, fields=['status'])
+        for item in repair_order.repair_order_item:
+            if item.item == self.service_item:
+               item.complaint_completion_status = 'Completed'
+                
+        repair_order.save()
 
-        statuses = [job_work['status'] for job_work in all_job_work]
-        
-        if all(status == 'Completed' for status in statuses):
+
+        repair_order = frappe.get_doc('Repair Order', self.repair_order)
+
+        complaint_completion_statuses = [item.complaint_completion_status for item in repair_order.repair_order_item]
+
+        if all(status == 'Completed' for status in complaint_completion_statuses):
+            new_status = 'Completed'
+        elif 'Return' in complaint_completion_statuses and 'Completed' in complaint_completion_statuses:
             new_status = 'Completed'
         else:
-            new_status = 'Working In Progress'
+            if self.status == 'To Invoice':
+                new_status = 'Working In Progress'
+
+            elif self.status == 'Return':
+                new_status = 'Completed'
+            else:
+                # self.status == 'Completed'
+                new_status = 'Completed'
 
         if repair_order.status != new_status:
             repair_order.db_set('status', new_status)
-        
+
         repair_order.reload()
         repair_order.save()
 
