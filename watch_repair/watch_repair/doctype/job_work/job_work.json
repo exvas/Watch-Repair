@@ -131,14 +131,14 @@
    "search_index": 1
   },
   {
-   "allow_on_submit": 1,
    "default": "Pending",
    "fieldname": "status",
    "fieldtype": "Select",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "Pending\nWorking In Progress\nCompleted\nServicing Completed\nCancelled\nTo Invoice\nReturn"
+   "options": "Pending\nWorking In Progress\nCompleted\nServicing Completed\nCancelled\nTo Invoice\nReturn",
+   "read_only": 1
   },
   {
    "fieldname": "serial_no",
@@ -223,8 +223,10 @@
    "allow_on_submit": 1,
    "fieldname": "stock_entry_status",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Stock Entry Status",
-   "options": "\nStock Entry Created\nStock Entry Not Created"
+   "options": "\nStock Entry Created\nStock Entry Not Created",
+   "read_only": 1
   },
   {
    "fieldname": "uom",
@@ -272,7 +274,7 @@
    "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-05-28 23:06:19.388829",
+ "modified": "2024-05-29 14:55:55.166692",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",
