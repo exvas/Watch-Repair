@@ -129,56 +129,6 @@ class JobWork(Document):
 
             elif self.add_additional_cost:
 
-                frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""", self.name)
-                frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""", self.name)
-                frappe.db.commit()
-                self.reload()
-
-                se = frappe.new_doc("Stock Entry")
-                se.stock_entry_type = watch.stock_entry_without_service_materials
-                se.from_warehouse = self.warehouse
-                se.to_warehouse = self.warehouse
-                se.custom_job_work = self.name
-                se.set_posting_time = 1
-                se.posting_date = self.posting_date
-                se.posting_time = self.posting_time
-                se.append('additional_costs', {
-                    'expense_account': watch.expense_account,
-                    'description': self.description,
-                    'amount': self.additional_cost,
-                })
-
-                if self.job_work_item:
-                    for i in self.job_work_item:
-                        se.append('items', {
-                            'item_code': i.item,
-                            's_warehouse': self.warehouse,
-                            't_warehouse': self.warehouse,
-                            'qty': i.qty,
-                            'uom': i.uom,
-                            'stock_uom': i.uom,
-                            'conversion_factor': 1,
-                        })
-                else:
-                    se.append('items', {
-                        'item_code': self.service_item,
-                        's_warehouse': self.warehouse,
-                        't_warehouse': self.warehouse,
-                        'qty': self.qty,
-                        'uom': self.uom,
-                        'stock_uom': self.uom,
-                        'conversion_factor': 1,
-                    })
-
-                se.insert(ignore_permissions=True)
-                se.save()
-                se.submit()
-                frappe.msgprint("Stock Entry Created")
-
-                self.reload()
-
-            else:
-
                 if self.job_work_item:
                     frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""", self.name)
                     frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""", self.name)
@@ -220,6 +170,58 @@ class JobWork(Document):
                             'conversion_factor': 1,
                             'is_finished_item': 1
                         })
+
+                    se.insert(ignore_permissions=True)
+                    se.save()
+                    se.submit()
+                    frappe.msgprint("Stock Entry Created")
+
+                    self.reload()
+
+                
+
+                else:
+
+                    frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""", self.name)
+                    frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""", self.name)
+                    frappe.db.commit()
+                    self.reload()
+
+                    se = frappe.new_doc("Stock Entry")
+                    se.stock_entry_type = watch.stock_entry_without_service_materials
+                    se.from_warehouse = self.warehouse
+                    se.to_warehouse = self.warehouse
+                    se.custom_job_work = self.name
+                    se.set_posting_time = 1
+                    se.posting_date = self.posting_date
+                    se.posting_time = self.posting_time
+                    se.append('additional_costs', {
+                        'expense_account': watch.expense_account,
+                        'description': self.description,
+                        'amount': self.additional_cost,
+                    })
+
+                    # if self.job_work_item:
+                    #     for i in self.job_work_item:
+                    #         se.append('items', {
+                    #             'item_code': i.item,
+                    #             's_warehouse': self.warehouse,
+                    #             't_warehouse': self.warehouse,
+                    #             'qty': i.qty,
+                    #             'uom': i.uom,
+                    #             'stock_uom': i.uom,
+                    #             'conversion_factor': 1,
+                    #         })
+                    # else:
+                    se.append('items', {
+                        'item_code': self.service_item,
+                        's_warehouse': self.warehouse,
+                        't_warehouse': self.warehouse,
+                        'qty': self.qty,
+                        'uom': self.uom,
+                        'stock_uom': self.uom,
+                        'conversion_factor': 1,
+                    })
 
                     se.insert(ignore_permissions=True)
                     se.save()
