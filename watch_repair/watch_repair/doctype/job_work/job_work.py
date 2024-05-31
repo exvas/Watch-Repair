@@ -128,6 +128,7 @@ class JobWork(Document):
                 self.reload()
 
             elif self.add_additional_cost:
+
                 frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""", self.name)
                 frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""", self.name)
                 frappe.db.commit()
@@ -177,7 +178,7 @@ class JobWork(Document):
                 self.reload()
 
             else:
-                # Manufacturing Stock Entry Creation
+
                 if self.job_work_item:
                     frappe.db.sql("""UPDATE `tabJob Work` SET stock_entry_status= 'Stock Entry Created' WHERE name=%s""", self.name)
                     frappe.db.sql("""UPDATE `tabJob Work` SET status= 'To Invoice' WHERE name=%s""", self.name)
@@ -192,6 +193,11 @@ class JobWork(Document):
                     se.set_posting_time = 1
                     se.posting_date = self.posting_date
                     se.posting_time = self.posting_time
+                    se.append('additional_costs', {
+                        'expense_account': watch.expense_account,
+                        'description': self.description,
+                        'amount': self.additional_cost,
+                    })
 
                     if self.job_work_item:
                         for i in self.job_work_item:
