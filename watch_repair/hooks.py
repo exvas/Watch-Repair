@@ -245,6 +245,9 @@ fixtures = [
 					"Stock Entry-custom_job_work",
                     "Sales Invoice-custom_job_work",
                     "Sales Invoice Item-custom_name",
+                    "Company-custom_additional_cost",
+                    "Company-custom_expense_account",
+                    
 
 
 

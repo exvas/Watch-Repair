@@ -10,6 +10,7 @@
  "field_order": [
   "company",
   "customer",
+  "expense_account",
   "customer_name",
   "contact_no",
   "column_break_6vopj",
@@ -167,6 +168,14 @@
   {
    "fieldname": "section_break_c3y0m",
    "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "company.custom_expense_account",
+   "fieldname": "expense_account",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Expense Account",
+   "options": "Account"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -181,7 +190,7 @@
    "link_fieldname": "repair_order"
   }
  ],
- "modified": "2024-05-29 13:51:00.753958",
+ "modified": "2024-05-31 16:46:48.538019",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",

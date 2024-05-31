@@ -13,6 +13,7 @@
   "customer",
   "customer_name",
   "whats_app_number",
+  "expense_account",
   "service_item",
   "service_item_name",
   "uom",
@@ -263,6 +264,13 @@
    "fieldname": "whats_app_number",
    "fieldtype": "Data",
    "label": "Whats App Number"
+  },
+  {
+   "fieldname": "expense_account",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Expense Account",
+   "options": "Account"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -281,7 +289,7 @@
    "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-05-29 20:05:23.512227",
+ "modified": "2024-05-31 16:46:36.319987",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",

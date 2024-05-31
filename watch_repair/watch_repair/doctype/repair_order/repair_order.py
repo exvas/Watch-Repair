@@ -32,6 +32,8 @@ class RepairOrder(Document):
 				jw.company = self.company
 				jw.customer = self.customer
 				jw.customer_name = self.customer_name
+				jw.expense_account = self.expense_account
+				# jw.description1 = self.description
 				jw.warehouse = self.warehouse
 				jw.status = "Pending"
 

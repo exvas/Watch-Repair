@@ -144,7 +144,7 @@ class JobWork(Document):
                     se.posting_date = self.posting_date
                     se.posting_time = self.posting_time
                     se.append('additional_costs', {
-                        'expense_account': watch.expense_account,
+                        'expense_account': self.expense_account,
                         'description': self.description,
                         'amount': self.additional_cost,
                     })
@@ -196,7 +196,7 @@ class JobWork(Document):
                     se.posting_date = self.posting_date
                     se.posting_time = self.posting_time
                     se.append('additional_costs', {
-                        'expense_account': watch.expense_account,
+                        'expense_account': self.expense_account,
                         'description': self.description,
                         'amount': self.additional_cost,
                     })
@@ -487,7 +487,7 @@ class JobWork(Document):
             se.posting_date = self.posting_date
             se.posting_time = self.posting_time
             se.append('additional_costs', {
-                'expense_account': watch.expense_account,
+                'expense_account': self.expense_account,
                 'description': self.description,
                 'amount': self.additional_cost,
             })
