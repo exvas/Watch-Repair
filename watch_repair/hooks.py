@@ -29,6 +29,7 @@ app_license = "MIT"
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
 doctype_list_js = {"Sales Invoice" : "public/js/sales_invoice.js",
+                   "Item" : "public/js/item.js",
                    }
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -127,7 +128,10 @@ doc_events = {
 	},
     "Stock Entry": {
         "on_cancel":"watch_repair.doc_events.stock_entry.on_cancel_se"
-	}
+	},
+    "Item": {
+        
+	},
 	
 }
 
@@ -247,6 +251,9 @@ fixtures = [
                     "Sales Invoice Item-custom_name",
                     "Company-custom_additional_cost",
                     "Company-custom_expense_account",
+                    "Item-custom_is_customer_item",
+                    "Item-custom_category",
+                    "Item Group-custom_category_table",
                     
 
 
