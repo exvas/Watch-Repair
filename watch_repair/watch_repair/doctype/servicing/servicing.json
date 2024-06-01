@@ -152,8 +152,7 @@
   {
    "fieldname": "note_by_technician",
    "fieldtype": "Data",
-   "label": "Note by Technician",
-   "mandatory_depends_on": "eval:doc.technician"
+   "label": "Note by Technician"
   },
   {
    "fieldname": "repair_order",
@@ -189,7 +188,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-22 17:21:03.946904",
+ "modified": "2024-06-01 08:15:13.473911",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Servicing",
