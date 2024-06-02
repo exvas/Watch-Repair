@@ -3,6 +3,15 @@
 
 frappe.ui.form.on('Servicing', {
 	refresh: function(frm) {
+
+        cur_frm.set_query("item", "job_work_item", (frm, cdt, cdn) => {
+			let d = locals[cdt][cdn];
+            return {
+                "filters": {
+					"custom_is_customer_item":0,
+				}
+			}
+        })
     },
 
 
