@@ -1,98 +1,63 @@
 
-// frappe.ui.form.on("Item",{
-//     refresh:function(){
-//         console.log("rrrrrrrrrrrrrrrrrrrr")
-//         frm.set_query('custom_category', function() {
-// 			return {
-// 				filters: {
-// 					company: frm.doc.item_group
-// 				}
-// 			};
-// 		});
 
-        
-//     },
-    
-   
-// // });
-// frappe.ui.form.on("Item", {
-//     refresh: function(frm) {
-//         // Log message to console for debugging
-//         console.log("Refresh function triggered");
-
-//         // Setting query for custom_category field
-//         frm.set_query('custom_category', function() {
-//             // Get the selected item_group
-//             let item_group = frm.doc.item_group;
-//             if (!item_group) {
-//                 return {};
-//             }
-
-//             // Fetch categories from the selected item group
-//             return {
-//                 query: 'watch_repair.doc_events.item.get_categories_for_item_group',
-//                 filters: {
-//                     item_group: item_group
+// frappe.ui.form.on('Item', {
+//     item_group: function(frm) {
+//         if (frm.doc.item_group) {
+//             frappe.call({
+//                 method: 'watch_repair.doc_events.item.get_categories',
+//                 args: {
+//                     item_group: frm.doc.item_group
+//                 },
+//                 callback: function(response) {
+//                     if (response.message) {
+//                         // Clear the existing options
+//                         frm.set_df_property('custom_category', 'options', []);
+//                         // Add the new options from the response
+//                         frm.set_df_property('custom_category', 'options', response.message);
+//                         frm.refresh_field('custom_category');
+//                     }
 //                 }
-//             };
-//         });
+//             });
+//         } else {
+//             frm.set_df_property('custom_category', 'options', []);
+//             frm.refresh_field('custom_category');
+//         }
 //     }
 // });
 
 
 
-
-// frappe.ui.form.on("Item", {
-//     refresh: function(frm) {
-//         // Log message to console for debugging
-//         console.log("Refresh function triggered");
-
-//         // Setting query for custom_category field
-//         frm.set_query('custom_category', function() {
-//             // Get the selected item_group
-//             let item_group = frm.doc.item_group;
-//             if (!item_group) {
-//                 return {};
-//             }
-
-//             // Fetch categories from the selected item group
-//             return {
-//                 query: 'watch_repair.doc_events.item.get_categories_for_item_group',
-//                 filters: {
-//                     item_group: item_group
-//                 }
-//             };
-//         });
-//     }
-// });
-
-
-
-frappe.ui.form.on("Item", {
-    refresh: function(frm) {
-        // Log message to console for debugging
-        console.log("Refresh function triggered");
-
-        // Setting query for custom_category field
-        frm.set_query('custom_category', function() {
-            // Get the selected item_group
-            let item_group = frm.doc.item_group;
-            if (!item_group) {
-                return {};
-            }
-
-            // Fetch categories from the selected item group
-            return {
-                query: 'watch_repair.doc_events.item.get_categories_for_item_group',
-                filters: {
-                    item_group: item_group
+frappe.ui.form.on('Item', {
+    item_group: function(frm) {
+        if (frm.doc.item_group) {
+            frappe.call({
+                method: 'watch_repair.doc_events.item.get_categories',
+                args: {
+                    item_group: frm.doc.item_group
                 },
                 callback: function(response) {
-                    // Set the options for custom_category field based on the response
-                    frm.set_df_property('custom_category', 'options', response);
+                    if (response.message) {
+                        // Apply the filter to the custom_category field
+                        frm.set_query('custom_category', function() {
+                            return {
+                                filters: [
+                                    ['Category', 'name', 'in', response.message]
+                                ]
+                            };
+                        });
+                        frm.refresh_field('custom_category');
+                    }
                 }
-            };
-        });
+            });
+        } else {
+            frm.set_query('custom_category', function() {
+                return {
+                    filters: [
+                        ['Category', 'name', 'in', []]
+                    ]
+                };
+            });
+            frm.refresh_field('custom_category');
+        }
     }
 });
-
