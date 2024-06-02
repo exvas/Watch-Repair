@@ -66,3 +66,18 @@ def on_trash(doc, method):
             WHERE name = %s
         """, job_work_id)
         frappe.db.commit()
+
+
+
+
+def disable_items_on_sales_invoice_submit(doc, method):
+    for item in doc.items:
+        item_code = item.item_code
+        frappe.db.set_value('Item', item_code, 'disabled', 1)
+        frappe.db.commit()  # Ensure the change is committed to the database
+
+def enable_items_on_sales_invoice_cancel(doc, method):
+    for item in doc.items:
+        item_code = item.item_code
+        frappe.db.set_value('Item', item_code, 'disabled', 0)
+        frappe.db.commit()  # Ensure the change is committed to the database

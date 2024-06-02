@@ -123,6 +123,8 @@ doc_events = {
         "on_submit": "watch_repair.doc_events.sales_invoice.update_job_work_status",
 		"on_cancel": "watch_repair.doc_events.sales_invoice.update_job_work_status_to_invoice",
         "on_trash": "watch_repair.doc_events.sales_invoice.on_trash",
+        "on_submit": "watch_repair.doc_events.sales_invoice.disable_items_on_sales_invoice_submit",
+        "on_cancel": "watch_repair.doc_events.sales_invoice.enable_items_on_sales_invoice_cancel",
 
         
 	},
