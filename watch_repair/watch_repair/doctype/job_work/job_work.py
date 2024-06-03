@@ -581,7 +581,7 @@ class JobWork(Document):
 
         sales_inv.customer = self.customer
         sales_inv.set_posting_time = 1
-        sales_inv.due_date = self.posting_date
+        # sales_inv.due_date = self.posting_date
         sales_inv.custom_job_work = self.name
         sales_inv.set_warehouse = self.warehouse
         sales_inv.append('items', {
