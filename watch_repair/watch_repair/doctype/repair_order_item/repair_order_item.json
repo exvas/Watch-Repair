@@ -17,12 +17,15 @@
   "section_break_znhyi",
   "polishing",
   "polishing_complaint_details",
+  "skip_job_work_creation1",
   "technical_remark__polishing",
   "pin_and_tube",
   "pin_and_tube_complaint_details",
+  "skip_job_work_creation2",
   "technical_remark_pin_and_tube",
   "loop_with_screw",
   "loop_with_screw_complaint_details",
+  "skip_job_work_creation3",
   "technical_remark__loop_with_screw",
   "push_pin",
   "push_pin_complaint_details",
@@ -195,7 +198,7 @@
    "fieldname": "movement_complaint_details",
    "fieldtype": "Link",
    "label": "Movement Complaint Details",
-   "options": "Complaint List"
+   "options": "Movement"
   },
   {
    "default": "0",
@@ -208,7 +211,7 @@
    "fieldname": "service_complaint_details",
    "fieldtype": "Link",
    "label": "Service Complaint Details",
-   "options": "Complaint List"
+   "options": "Service"
   },
   {
    "default": "0",
@@ -221,7 +224,7 @@
    "fieldname": "crown_complaint_details",
    "fieldtype": "Link",
    "label": "Crown Complaint Details",
-   "options": "Complaint List"
+   "options": "Crown"
   },
   {
    "default": "0",
@@ -234,7 +237,7 @@
    "fieldname": "crystal_complaint_details",
    "fieldtype": "Link",
    "label": "Crystal Complaint Details",
-   "options": "Complaint List"
+   "options": "Crystal"
   },
   {
    "default": "0",
@@ -247,7 +250,7 @@
    "fieldname": "dial_complaint_details",
    "fieldtype": "Link",
    "label": "Dial Complaint Details",
-   "options": "Complaint List"
+   "options": "Dial"
   },
   {
    "default": "0",
@@ -260,7 +263,7 @@
    "fieldname": "hands_complaint_details",
    "fieldtype": "Link",
    "label": "Hands Complaint Details",
-   "options": "Complaint List"
+   "options": "Hands"
   },
   {
    "default": "0",
@@ -273,7 +276,7 @@
    "fieldname": "case_complaint_details",
    "fieldtype": "Link",
    "label": "Case Complaint Details",
-   "options": "Complaint List"
+   "options": "Case"
   },
   {
    "fieldname": "column_break_fb6fm",
@@ -290,7 +293,7 @@
    "fieldname": "bezel_complaint_details",
    "fieldtype": "Link",
    "label": "Bezel Complaint Details",
-   "options": "Complaint List"
+   "options": "Bezel"
   },
   {
    "default": "0",
@@ -303,7 +306,7 @@
    "fieldname": "bracelet_complaint_details",
    "fieldtype": "Link",
    "label": "Bracelet Complaint Details",
-   "options": "Complaint List"
+   "options": "Bracelet"
   },
   {
    "default": "0",
@@ -316,7 +319,7 @@
    "fieldname": "strap_complaint_details",
    "fieldtype": "Link",
    "label": "Strap Complaint Details",
-   "options": "Complaint List"
+   "options": "Strap"
   },
   {
    "default": "0",
@@ -329,7 +332,7 @@
    "fieldname": "battery_complaint_details",
    "fieldtype": "Link",
    "label": "Battery Complaint Details",
-   "options": "Complaint List"
+   "options": "Battery"
   },
   {
    "default": "0",
@@ -342,7 +345,7 @@
    "fieldname": "checking_time_day_date_complaint_details",
    "fieldtype": "Link",
    "label": "Checking Time, Day & Date Complaint Details",
-   "options": "Complaint List"
+   "options": "Checking Time Day and  Date"
   },
   {
    "default": "0",
@@ -355,7 +358,7 @@
    "fieldname": "stopped_complaint_details",
    "fieldtype": "Link",
    "label": "Stopped Complaint Details",
-   "options": "Complaint List"
+   "options": "Stopped"
   },
   {
    "default": "0",
@@ -368,7 +371,7 @@
    "fieldname": "polish_complaint_details",
    "fieldtype": "Link",
    "label": "Polish Complaint Details",
-   "options": "Complaint List"
+   "options": "Polish"
   },
   {
    "default": "0",
@@ -381,7 +384,7 @@
    "fieldname": "other_complaint_details",
    "fieldtype": "Link",
    "label": "Other Complaint Details",
-   "options": "Complaint List"
+   "options": "Other"
   },
   {
    "depends_on": "eval:doc.movement==1",
@@ -502,7 +505,7 @@
    "fieldname": "module_complaint_details",
    "fieldtype": "Link",
    "label": "Module Complaint Details",
-   "options": "Complaint List"
+   "options": "Module"
   },
   {
    "depends_on": "eval:doc.module==1",
@@ -521,7 +524,7 @@
    "fieldname": "pusher_complaint_details",
    "fieldtype": "Link",
    "label": "Pusher Complaint Details",
-   "options": "Complaint List"
+   "options": "Pusher"
   },
   {
    "depends_on": "eval:doc.pusher==1",
@@ -540,7 +543,7 @@
    "fieldname": "case_back_complaint_details",
    "fieldtype": "Link",
    "label": "Case Back Complaint Details",
-   "options": "Complaint List"
+   "options": "Case Back"
   },
   {
    "depends_on": "eval:doc.case_back==1",
@@ -559,7 +562,7 @@
    "fieldname": "casing_ring_complaint_details",
    "fieldtype": "Link",
    "label": "Casing Ring Complaint Details",
-   "options": "Complaint List"
+   "options": "Casing Ring"
   },
   {
    "depends_on": "eval:doc.casing_ring==1",
@@ -578,7 +581,7 @@
    "fieldname": "case_tube_complaint_details",
    "fieldtype": "Link",
    "label": "Case Tube Complaint Details",
-   "options": "Complaint List"
+   "options": "Case Tube"
   },
   {
    "depends_on": "eval:doc.case_tube==1",
@@ -597,7 +600,7 @@
    "fieldname": "case_back_screw__complaint_details",
    "fieldtype": "Link",
    "label": "Case Back Screw  Complaint Details",
-   "options": "Complaint List"
+   "options": "Case Back Screw"
   },
   {
    "depends_on": "eval:doc.case_back_screw==1",
@@ -616,7 +619,7 @@
    "fieldname": "dial_ring_complaint_details",
    "fieldtype": "Link",
    "label": "Dial Ring Complaint Details",
-   "options": "Complaint List"
+   "options": "Dial Ring"
   },
   {
    "depends_on": "eval:doc.dial_ring==1",
@@ -635,7 +638,7 @@
    "fieldname": "middle_part_of_case_complaint_details",
    "fieldtype": "Link",
    "label": "Middle Part Of Case Complaint Details",
-   "options": "Complaint List"
+   "options": "Middle Part Of Case"
   },
   {
    "depends_on": "eval:doc.middle_part_of_case==1",
@@ -654,7 +657,7 @@
    "fieldname": "bezel_screw_complaint_details",
    "fieldtype": "Link",
    "label": "Bezel Screw Complaint Details",
-   "options": "Complaint List"
+   "options": "Bezel Screw"
   },
   {
    "depends_on": "eval:doc.bezel_screw==1",
@@ -673,7 +676,7 @@
    "fieldname": "g_gasket_complaint_details",
    "fieldtype": "Link",
    "label": "G Gasket Complaint Details",
-   "options": "Complaint List"
+   "options": "G Gasket"
   },
   {
    "depends_on": "eval:doc.g_gasket==1",
@@ -692,7 +695,7 @@
    "fieldname": "cb_gasket_complaint_details",
    "fieldtype": "Link",
    "label": "C.B Gasket Complaint Details",
-   "options": "Complaint List"
+   "options": "C B Gasket"
   },
   {
    "depends_on": "eval:doc.cb_gasket==1",
@@ -711,7 +714,7 @@
    "fieldname": "b_gasket_complaint_details",
    "fieldtype": "Link",
    "label": "B Gasket Complaint Details",
-   "options": "Complaint List"
+   "options": "B Gasket"
   },
   {
    "depends_on": "eval:doc.b_gasket==1",
@@ -730,7 +733,7 @@
    "fieldname": "anchor_complaint_details",
    "fieldtype": "Link",
    "label": "Anchor Complaint Details",
-   "options": "Complaint List"
+   "options": "Anchor"
   },
   {
    "depends_on": "eval:doc.anchor==1",
@@ -749,7 +752,7 @@
    "fieldname": "glass_decor_complaint_details",
    "fieldtype": "Link",
    "label": "Glass Decor Complaint Details",
-   "options": "Complaint List"
+   "options": "Glass Decor"
   },
   {
    "depends_on": "eval:doc.glass_decor==1",
@@ -768,7 +771,7 @@
    "fieldname": "bra_links_complaint_details",
    "fieldtype": "Link",
    "label": "Bra Links Complaint Details",
-   "options": "Complaint List"
+   "options": "Bra Links"
   },
   {
    "depends_on": "eval:doc.bra_links==1",
@@ -787,7 +790,7 @@
    "fieldname": "clasp_complaint_details",
    "fieldtype": "Link",
    "label": "Clasp Complaint Details",
-   "options": "Complaint List"
+   "options": "Clasp"
   },
   {
    "depends_on": "eval:doc.clasp==1",
@@ -806,7 +809,7 @@
    "fieldname": "push_pin_complaint_details",
    "fieldtype": "Link",
    "label": "Push Pin Complaint Details",
-   "options": "Complaint List"
+   "options": "Push Pin"
   },
   {
    "depends_on": "eval:doc.push_pin==1",
@@ -825,7 +828,7 @@
    "fieldname": "loop_with_screw_complaint_details",
    "fieldtype": "Link",
    "label": "Loop With Screw Complaint Details",
-   "options": "Complaint List"
+   "options": "Loop With Screw"
   },
   {
    "depends_on": "eval:doc.loop_with_screw==1",
@@ -844,7 +847,7 @@
    "fieldname": "pin_and_tube_complaint_details",
    "fieldtype": "Link",
    "label": "Pin and Tube Complaint Details",
-   "options": "Complaint List"
+   "options": "Pin and Tube"
   },
   {
    "depends_on": "eval:doc.pin_and_tube==1",
@@ -863,7 +866,7 @@
    "fieldname": "polishing_complaint_details",
    "fieldtype": "Link",
    "label": "Polishing Complaint Details",
-   "options": "Complaint List"
+   "options": "Polishing"
   },
   {
    "depends_on": "eval:doc.polishing==1",
@@ -882,7 +885,7 @@
    "fieldname": "drilling_complaint_details",
    "fieldtype": "Link",
    "label": "Drilling Complaint Details",
-   "options": "Complaint List"
+   "options": "Drilling"
   },
   {
    "depends_on": "eval:doc.drilling==1",
@@ -901,7 +904,7 @@
    "fieldname": "welding_complaint_details",
    "fieldtype": "Link",
    "label": "Welding Complaint Details",
-   "options": "Complaint List"
+   "options": "Welding"
   },
   {
    "depends_on": "eval:doc.welding==1",
@@ -920,7 +923,7 @@
    "fieldname": "back_washer_complaint_details",
    "fieldtype": "Link",
    "label": "Back Washer Complaint Details",
-   "options": "Complaint List"
+   "options": "Back Washer"
   },
   {
    "depends_on": "eval:doc.back_washer==1",
@@ -939,7 +942,7 @@
    "fieldname": "crown_seal_complaint_details",
    "fieldtype": "Link",
    "label": "Crown Seal Complaint Details",
-   "options": "Complaint List"
+   "options": "Crown Seal"
   },
   {
    "depends_on": "eval:doc.crown_seal==1",
@@ -955,12 +958,30 @@
    "label": "UOM",
    "options": "UOM",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.polishing==1",
+   "fieldname": "skip_job_work_creation1",
+   "fieldtype": "Check",
+   "label": "Skip Job Work Creation"
+  },
+  {
+   "default": "0",
+   "fieldname": "skip_job_work_creation2",
+   "fieldtype": "Check",
+   "label": "Skip Job Work Creation"
+  },
+  {
+   "fieldname": "skip_job_work_creation3",
+   "fieldtype": "Data",
+   "label": "Skip Job Work Creation"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-24 13:31:21.996658",
+ "modified": "2024-06-24 21:22:11.501810",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order Item",

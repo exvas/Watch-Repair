@@ -23,7 +23,7 @@ frappe.ui.form.on('Repair Order', {
 			};
 		});
 
-
+ 
 
         if (cur_frm.doc.docstatus === 1 && cur_frm.doc.status !== 'Closed' && cur_frm.doc.status == 'Pending') {
             frm.add_custom_button(('Close'), function() {

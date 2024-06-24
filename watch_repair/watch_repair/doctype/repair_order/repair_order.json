@@ -151,12 +151,12 @@
    "fieldtype": "Section Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "expected_delivery_date",
    "fieldtype": "Date",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Expected Delivery Date",
-   "reqd": 1
+   "label": "Expected Delivery Date"
   },
   {
    "allow_on_submit": 1,
@@ -190,7 +190,7 @@
    "link_fieldname": "repair_order"
   }
  ],
- "modified": "2024-05-31 16:46:48.538019",
+ "modified": "2024-06-22 12:44:46.087907",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",
