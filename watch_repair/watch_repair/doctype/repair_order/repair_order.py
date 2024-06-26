@@ -13,7 +13,7 @@ class RepairOrder(Document):
 
 		frappe.db.sql("""UPDATE `tabRepair Order` SET job_work_status='Not Completed',servicing_status = 'Not Completed' WHERE name=%s""", self.name)
 		frappe.db.commit()
-		 
+		  
 
 		
 		watch =frappe.get_doc('Watch Service Settings')
@@ -62,18 +62,19 @@ class RepairOrder(Document):
 			frappe.db.commit()
 
 			for item in self.repair_order_item:
-				for checkbox, complaint_field, remark_field in [
-					("polishing", "polishing_complaint_details", "technical_remark__polishing"),
 
-					("pin_and_tube", "pin_and_tube_complaint_details", "technical_remark_pin_and_tube"),
+				for checkbox, complaint_field, remark_field, skip_checkbox in [
+					("polishing", "polishing_complaint_details", "technical_remark__polishing", "skip_job_work_creation1"),
 
-					("loop_with_screw", "loop_with_screw_complaint_details", "technical_remark__loop_with_screw"),
+					("pin_and_tube", "pin_and_tube_complaint_details", "technical_remark_pin_and_tube", "skip_job_work_creation22"),
 
-					("push_pin", "push_pin_complaint_details", "technical_remark_push_pin"),
+					("loop_with_screw", "loop_with_screw_complaint_details", "technical_remark__loop_with_screw", "skip_job_work_creation33"),
 
-					("clasp", "clasp_complaint_details", "technical_remark_clasp"),
+					("push_pin", "push_pin_complaint_details", "technical_remark_push_pin", "skip_job_work_creation"),
 
-					("bra_links", "bra_links_complaint_details", "technical_remark_bra_links"),
+					("clasp", "clasp_complaint_details", "technical_remark_clasp", "skip_job_work_creationqb"),
+
+					("bra_links", "bra_links_complaint_details", "technical_remark_bra_links", "skip_job_work_creationww"),
 
 					("movement", "movement_complaint_details", "technical_remark_mc"),
 
@@ -141,7 +142,7 @@ class RepairOrder(Document):
 
 					("crown_seal", "crown_seal_complaint_details", "technical_remark_crown_seal"),
 					]:
-					if item.get(checkbox):
+					if item.get(checkbox) and (not item.get(skip_checkbox)):
 						Serv = frappe.new_doc("Servicing")
 						Serv.repair_order = self.name
 						Serv.company = self.company
