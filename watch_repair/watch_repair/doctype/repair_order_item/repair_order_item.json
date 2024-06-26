@@ -16,199 +16,199 @@
   "complaint_completion_status",
   "section_break_znhyi",
   "polishing",
-  "skip_job_work_creation1",
+  "skip_servicing_creation_polishing",
   "polishing_complaint_details",
   "technical_remark__polishing",
   "estimated_amount1",
   "pin_and_tube",
-  "skip_job_work_creation22",
+  "skip_servicing_creation_pin_and_tube",
   "pin_and_tube_complaint_details",
   "technical_remark_pin_and_tube",
   "estimated_amount111",
   "loop_with_screw",
-  "skip_job_work_creation33",
+  "skip_servicing_creation_loop_with_screw",
   "loop_with_screw_complaint_details",
   "technical_remark__loop_with_screw",
   "estimated_amount121",
   "push_pin",
-  "skip_job_work_creation",
+  "skip_servicing_creation_push_pin",
   "push_pin_complaint_details",
   "technical_remark_push_pin",
   "estimated_amount122",
   "clasp",
-  "skip_job_work_creationqb",
+  "skip_servicing_creation_clasp",
   "clasp_complaint_details",
   "technical_remark_clasp",
   "estimated_amount123",
   "bra_links",
-  "skip_job_work_creationww",
+  "skip_servicing_creation_bra_links",
   "bra_links_complaint_details",
   "technical_remark_bra_links",
   "estimated_amount124",
   "movement",
-  "skip_job_work_creationwe",
+  "skip_servicing_creation_movement",
   "movement_complaint_details",
   "technical_remark_mc",
   "estimated_amount125",
   "service",
-  "skip_job_work_creationwq",
+  "skip_servicing_creation_service",
   "service_complaint_details",
   "technical_remark_sc",
   "estimated_amount1239",
   "crown",
-  "skip_job_work_creationpo",
+  "skip_servicing_creation_crown",
   "crown_complaint_details",
   "technical_remark_ccc",
   "estimated_amount1qq",
   "crystal",
-  "skip_job_work_creation100",
+  "skip_servicing_creation_crystal",
   "crystal_complaint_details",
   "technical_remark_sc_ccd",
   "estimated_amount100",
   "dial",
-  "skip_job_work_creation101",
+  "skip_servicing_creation_dial",
   "dial_complaint_details",
   "technical_remark_scdc",
   "estimated_amount101",
   "hands",
-  "skip_job_work_creation102",
+  "skip_servicing_creation_hands",
   "hands_complaint_details",
   "technical_remark_schc",
   "estimated_amount102",
   "case",
-  "skip_job_work_creation103",
+  "skip_servicing_creation_case",
   "case_complaint_details",
   "technical_remark_scccs",
   "estimated_amount103",
   "column_break_fb6fm",
   "welding",
-  "skip_job_work_creation104",
+  "skip_servicing_creation_welding",
   "welding_complaint_details",
   "technical_remark_welding",
   "estimated_amount104",
   "drilling",
-  "skip_job_work_creation105",
+  "skip_servicing_creation_drilling",
   "drilling_complaint_details",
   "technical_remark_drilling",
   "estimated_amount105",
   "glass_decor",
-  "skip_job_work_creation106",
-  "glass_decor_complaint_details",
+  "skip_servicing_creation_",
+  "glass_decor_complaint_detailsglass_decor",
   "technical_remark_glass_decor",
   "estimated_amount106",
   "anchor",
-  "skip_job_work_creation107",
+  "skip_servicing_creation_anchor",
   "anchor_complaint_details",
   "technical_remark_anchor",
   "estimated_amount107",
   "b_gasket",
-  "skip_job_work_creation137",
+  "skip_servicing_creation_b_gasket",
   "b_gasket_complaint_details",
   "technical_remark_b_gasket",
   "estimated_amount137",
   "bezel",
-  "skip_job_work_creation108",
+  "skip_servicing_creation_bezel",
   "estimated_amount108",
   "bezel_complaint_details",
   "technical_remark_bcc",
   "bracelet",
-  "skip_job_work_creation109",
+  "skip_servicing_creation_bracelet",
   "bracelet_complaint_details",
   "technical_remark_bccbc",
   "estimated_amount109",
   "strap",
-  "skip_job_work_creation110",
+  "skip_servicing_creation_strap",
   "strap_complaint_details",
   "technical_remark_bccst",
   "estimated_amount110",
   "battery",
-  "skip_job_work_creation112",
+  "skip_servicing_creation_battery",
   "battery_complaint_details",
   "technical_remark_bccbcc",
   "estimated_amount112",
   "checking_time_day__date",
-  "skip_job_work_creation113",
+  "skip_servicing_creation_checking_time_day__date",
   "checking_time_day_date_complaint_details",
   "technical_remark_bccch",
   "estimated_amount113",
   "stopped",
-  "skip_job_work_creation115",
+  "skip_servicing_creation_stopped",
   "stopped_complaint_details",
   "technical_remark_bccsc",
   "estimated_amount115",
   "polish",
-  "skip_job_work_creation116",
+  "skip_servicing_creation_polish",
   "polish_complaint_details",
   "technical_remark_bccpc",
   "estimated_amount116",
   "other",
-  "skip_job_work_creation117",
+  "skip_servicing_creation_other",
   "other_complaint_details",
   "technical_remark_bccocd",
   "estimated_amount117",
   "column_break_xlnl7",
   "module",
-  "skip_job_work_creation118",
+  "skip_servicing_creation_module",
   "module_complaint_details",
   "technical_remark_module",
   "estimated_amount118",
   "pusher",
-  "skip_job_work_creation119",
+  "skip_servicing_creation_pusher",
   "pusher_complaint_details",
   "technical_remark_pusher",
   "estimated_amount119",
   "case_back",
-  "skip_job_work_creation1255",
+  "skip_servicing_creation_case_back",
   "case_back_complaint_details",
   "technical_remark_case_back",
   "estimated_amount1255",
   "casing_ring",
-  "skip_job_work_creation1241",
+  "skip_servicing_creation_casing_ring",
   "casing_ring_complaint_details",
   "technical_remark_casing_ring",
   "estimated_amount1241",
   "case_tube",
-  "skip_job_work_creation127",
+  "skip_servicing_creation_case_tube",
   "case_tube_complaint_details",
   "technical_remark_case_tube",
   "estimated_amount127",
   "case_back_screw",
-  "skip_job_work_creation128",
+  "skip_servicing_creation_case_back_screw",
   "case_back_screw__complaint_details",
   "technical_remark_case_back_screw",
   "estimated_amount128",
   "dial_ring",
-  "skip_job_work_creation129",
+  "skip_servicing_creation_dial_ring",
   "dial_ring_complaint_details",
   "technical_remark_dial_ring",
   "estimated_amount129",
   "middle_part_of_case",
-  "skip_job_work_creation130",
+  "skip_servicing_creation_middle_part_of_case",
   "middle_part_of_case_complaint_details",
   "technical_remark_middle_part_of_case",
   "estimated_amount130",
   "bezel_screw",
-  "skip_job_work_creation131",
+  "skip_servicing_creation_bezel_screw",
   "bezel_screw_complaint_details",
   "technical_remark_bezel_screw",
   "estimated_amount131",
   "g_gasket",
-  "skip_job_work_creation133",
+  "skip_servicing_creation_g_gasket",
   "g_gasket_complaint_details",
   "technical_remark_g_gasket",
   "estimated_amount133",
   "cb_gasket",
-  "skip_job_work_creation134",
+  "skip_servicing_creation_cb_gasket",
   "cb_gasket_complaint_details",
   "technical_remark_cb_gasket",
   "estimated_amount134",
   "back_washer",
-  "skip_job_work_creation135",
+  "skip_servicing_creation_back_washer",
   "back_washer_complaint_details",
   "technical_remark_back_washer",
   "estimated_amount135",
   "crown_seal",
-  "skip_job_work_creation136",
+  "skip_servicing_creation_crown_seal",
   "crown_seal_complaint_details",
   "technical_remark_crown_seal",
   "estimated_amount136"
@@ -824,13 +824,6 @@
   },
   {
    "depends_on": "eval:doc.glass_decor==1",
-   "fieldname": "glass_decor_complaint_details",
-   "fieldtype": "Link",
-   "label": "Glass Decor Complaint Details",
-   "options": "Glass Decor"
-  },
-  {
-   "depends_on": "eval:doc.glass_decor==1",
    "fieldname": "technical_remark_glass_decor",
    "fieldtype": "Data",
    "label": "Technical Remark"
@@ -1035,31 +1028,10 @@
    "read_only": 1
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.polishing==1",
-   "fieldname": "skip_job_work_creation1",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.polishing==1",
    "fieldname": "estimated_amount1",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.pin_and_tube==1",
-   "fieldname": "skip_job_work_creation22",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.loop_with_screw==1",
-   "fieldname": "skip_job_work_creation33",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.pin_and_tube==1",
@@ -1080,31 +1052,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.push_pin==1",
-   "fieldname": "skip_job_work_creation",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.clasp==1",
-   "fieldname": "skip_job_work_creationqb",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.clasp==1",
    "fieldname": "estimated_amount123",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.bra_links==1",
-   "fieldname": "skip_job_work_creationww",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.bra_links==1",
@@ -1113,24 +1064,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.movement==1",
-   "fieldname": "skip_job_work_creationwe",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.movement==1",
    "fieldname": "estimated_amount125",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.service==1",
-   "fieldname": "skip_job_work_creationwq",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.service==1",
@@ -1139,24 +1076,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.crown==1",
-   "fieldname": "skip_job_work_creationpo",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.crown==1",
    "fieldname": "estimated_amount1qq",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.crystal==1",
-   "fieldname": "skip_job_work_creation100",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.crystal==1",
@@ -1165,24 +1088,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.dial==1",
-   "fieldname": "skip_job_work_creation101",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.dial==1",
    "fieldname": "estimated_amount101",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.hands==1",
-   "fieldname": "skip_job_work_creation102",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.hands==1",
@@ -1191,24 +1100,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.case==1",
-   "fieldname": "skip_job_work_creation103",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.case==1",
    "fieldname": "estimated_amount103",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.welding==1",
-   "fieldname": "skip_job_work_creation104",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.welding==1",
@@ -1217,24 +1112,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.drilling==1",
-   "fieldname": "skip_job_work_creation105",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.drilling==1",
    "fieldname": "estimated_amount105",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.glass_decor==1",
-   "fieldname": "skip_job_work_creation106",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.glass_decor==1",
@@ -1243,24 +1124,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.anchor==1",
-   "fieldname": "skip_job_work_creation107",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.anchor==1",
    "fieldname": "estimated_amount107",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.bezel==1",
-   "fieldname": "skip_job_work_creation108",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.bezel==1",
@@ -1269,24 +1136,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.bracelet==1",
-   "fieldname": "skip_job_work_creation109",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.bracelet==1",
    "fieldname": "estimated_amount109",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.strap==1",
-   "fieldname": "skip_job_work_creation110",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.strap==1",
@@ -1295,24 +1148,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.battery==1",
-   "fieldname": "skip_job_work_creation112",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.battery==1",
    "fieldname": "estimated_amount112",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.checking_time_day__date==1",
-   "fieldname": "skip_job_work_creation113",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.checking_time_day__date==1",
@@ -1321,24 +1160,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.stopped==1",
-   "fieldname": "skip_job_work_creation115",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.stopped==1",
    "fieldname": "estimated_amount115",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.polish==1",
-   "fieldname": "skip_job_work_creation116",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.polish==1",
@@ -1347,24 +1172,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.other==1",
-   "fieldname": "skip_job_work_creation117",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.other==1",
    "fieldname": "estimated_amount117",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.module==1",
-   "fieldname": "skip_job_work_creation118",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.module==1",
@@ -1373,24 +1184,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.pusher==1",
-   "fieldname": "skip_job_work_creation119",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.pusher==1",
    "fieldname": "estimated_amount119",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.case_back==1",
-   "fieldname": "skip_job_work_creation1255",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.case_back==1",
@@ -1399,24 +1196,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.casing_ring==1",
-   "fieldname": "skip_job_work_creation1241",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.casing_ring==1",
    "fieldname": "estimated_amount1241",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.case_tube==1",
-   "fieldname": "skip_job_work_creation127",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.case_tube==1",
@@ -1425,24 +1208,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.case_back_screw==1",
-   "fieldname": "skip_job_work_creation128",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.case_back_screw==1",
    "fieldname": "estimated_amount128",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.dial_ring==1",
-   "fieldname": "skip_job_work_creation129",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.dial_ring==1",
@@ -1451,24 +1220,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.middle_part_of_case==1",
-   "fieldname": "skip_job_work_creation130",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.middle_part_of_case==1",
    "fieldname": "estimated_amount130",
    "fieldtype": "Data",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.bezel_screw==1",
-   "fieldname": "skip_job_work_creation131",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.bezel_screw==1",
@@ -1477,24 +1232,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.g_gasket==1",
-   "fieldname": "skip_job_work_creation133",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.g_gasket==1",
    "fieldname": "estimated_amount133",
    "fieldtype": "Data",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.cb_gasket==1",
-   "fieldname": "skip_job_work_creation134",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.cb_gasket==1",
@@ -1503,24 +1244,10 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.back_washer==1",
-   "fieldname": "skip_job_work_creation135",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.back_washer==1",
    "fieldname": "estimated_amount135",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.crown_seal==1",
-   "fieldname": "skip_job_work_creation136",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
   },
   {
    "depends_on": "eval:doc.crown_seal==1",
@@ -1529,23 +1256,296 @@
    "label": "Estimated Amount"
   },
   {
-   "default": "0",
-   "depends_on": "eval:doc.b_gasket==1",
-   "fieldname": "skip_job_work_creation137",
-   "fieldtype": "Check",
-   "label": "Skip Job Work Creation"
-  },
-  {
    "depends_on": "eval:doc.b_gasket==1",
    "fieldname": "estimated_amount137",
    "fieldtype": "Currency",
    "label": "Estimated Amount"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.polishing==1",
+   "fieldname": "skip_servicing_creation_polishing",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.pin_and_tube==1",
+   "fieldname": "skip_servicing_creation_pin_and_tube",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.loop_with_screw==1",
+   "fieldname": "skip_servicing_creation_loop_with_screw",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.push_pin==1",
+   "fieldname": "skip_servicing_creation_push_pin",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.clasp==1",
+   "fieldname": "skip_servicing_creation_clasp",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.bra_links==1",
+   "fieldname": "skip_servicing_creation_bra_links",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.movement==1",
+   "fieldname": "skip_servicing_creation_movement",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.service==1",
+   "fieldname": "skip_servicing_creation_service",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.crystal==1",
+   "fieldname": "skip_servicing_creation_crystal",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.dial==1",
+   "fieldname": "skip_servicing_creation_dial",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.hands==1",
+   "fieldname": "skip_servicing_creation_hands",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.case==1",
+   "fieldname": "skip_servicing_creation_case",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.welding==1",
+   "fieldname": "skip_servicing_creation_welding",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.drilling==1",
+   "fieldname": "skip_servicing_creation_drilling",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.glass_decor==1",
+   "fieldname": "skip_servicing_creation_",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "depends_on": "eval:doc.glass_decor==1",
+   "fieldname": "glass_decor_complaint_detailsglass_decor",
+   "fieldtype": "Link",
+   "label": "Glass Decor Complaint Details",
+   "options": "Glass Decor"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.anchor==1",
+   "fieldname": "skip_servicing_creation_anchor",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.b_gasket==1",
+   "fieldname": "skip_servicing_creation_b_gasket",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.crown==1",
+   "fieldname": "skip_servicing_creation_crown",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.bezel==1",
+   "fieldname": "skip_servicing_creation_bezel",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.bracelet==1",
+   "fieldname": "skip_servicing_creation_bracelet",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.strap==1",
+   "fieldname": "skip_servicing_creation_strap",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.battery==1",
+   "fieldname": "skip_servicing_creation_battery",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.checking_time_day__date==1",
+   "fieldname": "skip_servicing_creation_checking_time_day__date",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.stopped==1",
+   "fieldname": "skip_servicing_creation_stopped",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.polish==1",
+   "fieldname": "skip_servicing_creation_polish",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.other==1",
+   "fieldname": "skip_servicing_creation_other",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.module==1",
+   "fieldname": "skip_servicing_creation_module",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.pusher==1",
+   "fieldname": "skip_servicing_creation_pusher",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.case_back==1",
+   "fieldname": "skip_servicing_creation_case_back",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.casing_ring==1",
+   "fieldname": "skip_servicing_creation_casing_ring",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.case_tube==1",
+   "fieldname": "skip_servicing_creation_case_tube",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.case_back_screw==1",
+   "fieldname": "skip_servicing_creation_case_back_screw",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.dial_ring==1",
+   "fieldname": "skip_servicing_creation_dial_ring",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.middle_part_of_case==1",
+   "fieldname": "skip_servicing_creation_middle_part_of_case",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.bezel_screw==1",
+   "fieldname": "skip_servicing_creation_bezel_screw",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.g_gasket==1",
+   "fieldname": "skip_servicing_creation_g_gasket",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.cb_gasket==1",
+   "fieldname": "skip_servicing_creation_cb_gasket",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.back_washer==1",
+   "fieldname": "skip_servicing_creation_back_washer",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.crown_seal==1",
+   "fieldname": "skip_servicing_creation_crown_seal",
+   "fieldtype": "Check",
+   "label": "Skip Servicing Creation"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-06-25 18:00:00.207227",
+ "modified": "2024-06-26 19:48:02.444732",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order Item",
