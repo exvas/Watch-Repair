@@ -677,6 +677,8 @@ class JobWork(Document):
     #             self.save()
     #             self.reload()
 
+    
+
     @frappe.whitelist()
     def isreturn(self):
         if self.is_return == 1:
