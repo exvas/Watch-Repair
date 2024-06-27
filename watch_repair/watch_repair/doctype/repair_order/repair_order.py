@@ -19,6 +19,28 @@ class RepairOrder(Document):
 		watch =frappe.get_doc('Watch Service Settings')
 		job_work_map = {}
 
+		if self.is_advanced:
+			
+			pe = frappe.new_doc("Payment Entry")
+			pe.custom_repair_order = self.name
+			pe.payment_type = "Receive"
+			pe.mode_of_payment = self.mode_of_payment
+			pe.company = self.company
+			pe.party_type = "Customer"
+			pe.party = self.customer
+			pe.paid_amount = self.amount
+			
+			pe.received_amount = self.received_amount
+			pe.target_exchange_rate = self.target_exchange_rate
+			pe.paid_to_account_currency = self.account_currency
+			pe.paid_to = self.account_paid_to
+			
+
+			pe.insert()
+			pe.submit()
+			frappe.msgprint(" Payment Entry created successfully ")
+
+
 		if watch.auto_create_job_work:
 
 			frappe.db.sql("""UPDATE `tabRepair Order` SET job_work_status='Completed' WHERE name=%s""", self.name)
@@ -64,83 +86,83 @@ class RepairOrder(Document):
 			for item in self.repair_order_item:
 
 				for checkbox, complaint_field, remark_field, skip_checkbox in [
-					("polishing", "polishing_complaint_details", "technical_remark__polishing", "skip_job_work_creation1"),
+					("polishing", "polishing_complaint_details", "technical_remark__polishing", "skip_servicing_creation_polishing"),
 
-					("pin_and_tube", "pin_and_tube_complaint_details", "technical_remark_pin_and_tube", "skip_job_work_creation22"),
+					("pin_and_tube", "pin_and_tube_complaint_details", "technical_remark_pin_and_tube", "skip_servicing_creation_pin_and_tube"),
 
-					("loop_with_screw", "loop_with_screw_complaint_details", "technical_remark__loop_with_screw", "skip_job_work_creation33"),
+					("loop_with_screw", "loop_with_screw_complaint_details", "technical_remark__loop_with_screw", "skip_servicing_creation_loop_with_screw"),
 
-					("push_pin", "push_pin_complaint_details", "technical_remark_push_pin", "skip_job_work_creation"),
+					("push_pin", "push_pin_complaint_details", "technical_remark_push_pin", "skip_servicing_creation_push_pin"),
 
-					("clasp", "clasp_complaint_details", "technical_remark_clasp", "skip_job_work_creationqb"),
+					("clasp", "clasp_complaint_details", "technical_remark_clasp", "skip_servicing_creation_clasp"),
 
-					("bra_links", "bra_links_complaint_details", "technical_remark_bra_links", "skip_job_work_creationww"),
+					("bra_links", "bra_links_complaint_details", "technical_remark_bra_links", "skip_servicing_creation_bra_links"),
 
-					("movement", "movement_complaint_details", "technical_remark_mc"),
+					("movement", "movement_complaint_details", "technical_remark_mc", "skip_servicing_creation_movement"),
 
-					("service", "service_complaint_details", "technical_remark_sc"),
+					("service", "service_complaint_details", "technical_remark_sc", "skip_servicing_creation_service"),
 
-					("crown", "crown_complaint_details", "technical_remark_ccc"),
+					("crown", "crown_complaint_details", "technical_remark_ccc", "skip_servicing_creation_crown"),
 
-					("crystal", "crystal_complaint_details", "technical_remark_sc_ccd"),
+					("crystal", "crystal_complaint_details", "technical_remark_sc_ccd", "skip_servicing_creation_crystal" ),
 
-					("dial", "dial_complaint_details", "technical_remark_scdc"),
+					("dial", "dial_complaint_details", "technical_remark_scdc", "skip_servicing_creation_dial"),
 
-					("hands", "hands_complaint_details", "technical_remark_schc"),
+					("hands", "hands_complaint_details", "technical_remark_schc", "skip_servicing_creation_hands"),
 
-					("case", "case_complaint_details", "technical_remark_scccs"),
+					("case", "case_complaint_details", "technical_remark_scccs", "skip_servicing_creation_case"),
 
-					("welding", "welding_complaint_details", "technical_remark_welding"),
+					("welding", "welding_complaint_details", "technical_remark_welding", "skip_servicing_creation_welding"),
 
-					("drilling", "drilling_complaint_details", "technical_remark_drilling"),
+					("drilling", "drilling_complaint_details", "technical_remark_drilling", "skip_servicing_creation_drilling"),
 
-					("glass_decor", "glass_decor_complaint_details", "technical_remark_glass_decor"),
+					("glass_decor", "glass_decor_complaint_details", "technical_remark_glass_decor", "skip_servicing_creation_"),
 
-					("anchor", "anchor_complaint_details", "technical_remark_b_gasket"),
+					("anchor", "anchor_complaint_details", "technical_remark_anchor", "skip_servicing_creation_anchor"),
 
-					("b_gasket", "b_gasket_complaint_details", "technical_remark_b_gasket"),
+					("b_gasket", "b_gasket_complaint_details", "technical_remark_b_gasket", "skip_servicing_creation_b_gasket"),
 
-					("bezel", "bezel_complaint_details", "technical_remark_bcc"),
+					("bezel", "bezel_complaint_details", "technical_remark_bcc", "skip_servicing_creation_bezel"),
 
-					("bracelet", "bracelet_complaint_details", "technical_remark_bccbc"),
+					("bracelet", "bracelet_complaint_details", "technical_remark_bccbc", "skip_servicing_creation_bracelet"),
 
-					("strap", "strap_complaint_details", "technical_remark_bccst"),
+					("strap", "strap_complaint_details", "technical_remark_bccst", "skip_servicing_creation_strap"),
 
-					("battery", "battery_complaint_details", "technical_remark_bccbcc"),
+					("battery", "battery_complaint_details", "technical_remark_bccbcc", "skip_servicing_creation_battery"),
 
-					("checking_time_day_date", "checking_time_day_date_complaint_details", "technical_remark_bccch"),
+					("checking_time_day_date", "checking_time_day_date_complaint_details", "technical_remark_bccch", "skip_servicing_creation_checking_time_day__date"),
 
-					("stopped", "stopped_complaint_details", "technical_remark_bccsc"),
+					("stopped", "stopped_complaint_details", "technical_remark_bccsc", "skip_servicing_creation_stopped"),
 
-					("polish", "polish_complaint_details", "technical_remark_bccpc"),
+					("polish", "polish_complaint_details", "technical_remark_bccpc", "skip_servicing_creation_polish"),
 
-					("other", "polish_complaint_details", "technical_remark_bccocd"),
+					("other", "polish_complaint_details", "technical_remark_bccocd", "skip_servicing_creation_other"),
 
-					("module", "module_complaint_details", "technical_remark_module"),
+					("module", "module_complaint_details", "technical_remark_module", "skip_servicing_creation_module"),
 
-					("pusher", "pusher_complaint_details", "technical_remark_pusher"),
+					("pusher", "pusher_complaint_details", "technical_remark_pusher", "skip_servicing_creation_pusher"),
 
-					("case_back", "case_back_complaint_details", "technical_remark_case_back"),
+					("case_back", "case_back_complaint_details", "technical_remark_case_back", "skip_servicing_creation_case_back"),
 
-					("casing_ring", "casing_ring_complaint_details", "technical_remark_casing_ring"),
+					("casing_ring", "casing_ring_complaint_details", "technical_remark_casing_ring", "skip_servicing_creation_casing_ring"),
 
-					("case_tube", "case_tube_complaint_details", "technical_remark_case_tube"),
+					("case_tube", "case_tube_complaint_details", "technical_remark_case_tube" , "skip_servicing_creation_case_tube"),
 					
-					("case_back_screw", "case_back_screw__complaint_details", "technical_remark_case_back_screw"),
+					("case_back_screw", "case_back_screw__complaint_details", "technical_remark_case_back_screw", "skip_servicing_creation_case_back_screw"),
 
-					("dial_ring", "dial_ring_complaint_details", "technical_remark_dial_ring"),
+					("dial_ring", "dial_ring_complaint_details", "technical_remark_dial_ring", "skip_servicing_creation_dial_ring"),
 
-					("middle_part_of_case", "middle_part_of_case_complaint_details", "technical_remark_middle_part_of_case"),
+					("middle_part_of_case", "middle_part_of_case_complaint_details", "technical_remark_middle_part_of_case", "skip_servicing_creation_middle_part_of_case"),
 
-					("bezel_screw", "bezel_screw_complaint_details", "technical_remark_bezel_screw"),
+					("bezel_screw", "bezel_screw_complaint_details", "technical_remark_bezel_screw", "skip_servicing_creation_bezel_screw"),
 
-					("g_gasket", "g_gasket_complaint_details", "technical_remark_g_gasket"),
+					("g_gasket", "g_gasket_complaint_details", "technical_remark_g_gasket", "skip_servicing_creation_g_gasket"),
 
-					("cb_gasket", "cb_gasket_complaint_details", "technical_remark_cb_gasket"),
+					("cb_gasket", "cb_gasket_complaint_details", "technical_remark_cb_gasket", "skip_servicing_creation_cb_gasket"),
 
-					("back_washer", "back_washer_complaint_details", "technical_remark_back_washer"),
+					("back_washer", "back_washer_complaint_details", "technical_remark_back_washer", "skip_servicing_creation_back_washer"),
 
-					("crown_seal", "crown_seal_complaint_details", "technical_remark_crown_seal"),
+					("crown_seal", "crown_seal_complaint_details", "technical_remark_crown_seal", "skip_servicing_creation_crown_seal"),
 					]:
 					if item.get(checkbox) and (not item.get(skip_checkbox)):
 						Serv = frappe.new_doc("Servicing")

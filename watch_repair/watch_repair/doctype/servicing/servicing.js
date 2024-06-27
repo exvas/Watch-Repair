@@ -12,9 +12,46 @@ frappe.ui.form.on('Servicing', {
 				}
 			}
         })
+        if (cur_frm.doc.status === 'Pending') {
+            frm.add_custom_button(__('Close'), function() {
+
+                if (!cur_frm.doc.closing_reason) {
+                    frappe.msgprint(__("Close Reason is mandatory."));
+                    return;
+                }
+
+                console.log("Document Closed")
+                cur_frm.call({
+                    doc: cur_frm.doc,
+                    method: 'close',
+                    args: {},
+                    callback: function(response) {
+                        if (!response.exc) {
+                            cur_frm.reload_doc();
+                        }
+                    }
+                    
+                });
+            });
+        }
+            $('button[data-label="Close"]').addClass('btn-danger').addClass('btn-3d-effect'); 
+
+        // // CSS for btn-3d-effect class
+        // $('head').append('<style>' +
+        //     '.btn-3d-effect {' +
+        //     '   background-color: black; /* Change background color as needed */' +
+        //     // '   border: 1px solid #333; /* Change border color as needed */' +
+        //     '   box-shadow: 0 4px rgba(0, 0, 0, 0.6); /* Adjust box shadow for 3D effect */' +
+        //     '   transition: background-color 0.3s, box-shadow 0.3s;' + 
+        //     '}' +
+        //     '.btn-3d-effect:hover {' +
+        //     '   background-color: #c9302c; /* Change hover background color as needed */' +
+        //     '   box-shadow: 0 2px #91211b; /* Adjust hover box shadow for depth */' +
+        //     '}' +
+        //     '</style>');
     },
 
-
+ 
     
   
 });

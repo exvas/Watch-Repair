@@ -3,7 +3,7 @@ from frappe.model.document import Document
 
 class JobWork(Document):
 
-
+ 
 
     def on_submit(self):
 
@@ -581,6 +581,7 @@ class JobWork(Document):
 
         sales_inv.customer = self.customer
         sales_inv.set_posting_time = 1
+        sales_inv.company = self.company
         # sales_inv.due_date = self.posting_date
         sales_inv.custom_job_work = self.name
         sales_inv.set_warehouse = self.warehouse
@@ -660,29 +661,41 @@ class JobWork(Document):
         frappe.msgprint("Service Warranty Created")
 
     
+    # @frappe.whitelist()
+    # def isreturn(self):
+
+    #     if self.is_return == 1:
+            
+    #         service = frappe.db.get_value("Servicing", {"job_work": self.name}, "name")
+
+    #         if service:
+    #             serv = frappe.get_doc("Servicing",service)
+
+    #             if serv.docstatus == 0:
+    #                 frappe.delete_doc("Servicing", service)
+    #                 return "Servicing Deleted"
+    #             self.save()
+    #             self.reload()
+
     @frappe.whitelist()
     def isreturn(self):
-
         if self.is_return == 1:
-            
             service = frappe.db.get_value("Servicing", {"job_work": self.name}, "name")
-
-            if service:
-                serv = frappe.get_doc("Servicing",service)
-
-                if serv.docstatus == 0:
-                    frappe.delete_doc("Servicing", service)
-                    return "Servicing Deleted"
-                    # frappe.msgprint("Servicing Deleted")
-                self.save()
-                self.reload()
-
-            # frappe.db.sql("""UPDATE `tabJob Work` SET status='Return' WHERE name=%s""", self.name)
-
-            # # frappe.db.sql("""UPDATE `tabJob Work` SET return_reason = %s WHERE name=%s""",(return_reason, self.name))
             
-            # frappe.db.commit()
-        
+            if service:
+                serv = frappe.get_doc("Servicing", service)
+                
+                if serv.docstatus == 0:
+                    serv.submit()
+                    serv.status = 'Close'
+                    serv.save()
+                    frappe.db.commit()
+        self.reload()
+
+    
+
+
+
             
             
                 

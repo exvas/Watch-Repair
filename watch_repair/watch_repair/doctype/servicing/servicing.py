@@ -3,7 +3,7 @@ from frappe.model.document import Document
 
 class Servicing(Document):
 
-
+ 
     def on_submit(self):
         self.db_set('status', 'Completed')
 
@@ -70,4 +70,17 @@ class Servicing(Document):
         #             "available_qty":available_qty,
         #             "valuation_rate":valuation_rate
         #         })
+
+    @frappe.whitelist()
+    def close(self):
+
+        doc = frappe.get_doc("Servicing", self.name)
+        doc.submit()
+        frappe.db.sql("""UPDATE `tabServicing` SET status='Close' WHERE name=%s""", self.name)
+        frappe.db.commit()
+        self.reload()
+
+
+
+
          

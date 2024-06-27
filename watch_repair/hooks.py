@@ -256,6 +256,7 @@ fixtures = [
                     "Item-custom_is_customer_item",
                     "Item-custom_category",
                     "Item Group-custom_category_table",
+                    "Payment Entry-custom_repair_order",
                     
 
 
