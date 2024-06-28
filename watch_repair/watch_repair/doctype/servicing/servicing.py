@@ -38,9 +38,9 @@ class Servicing(Document):
         frappe.db.sql("""update `tabJob Work` set status='Pending' where name=%s""", self.job_work)	
         frappe.db.commit()
 
+# //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
+# //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @frappe.whitelist()
     def get_item(self,item):
         if not self.warehouse:
@@ -61,7 +61,9 @@ class Servicing(Document):
         if bin_entries:
             print("xxxx",bin_entries)
         return bin_entries
+    
 
+# ////////////////////////////////////////////////////////////////////////////////////////////////////
         # if bin_entries:
         #     available_qty = bin_entries[0].actual_qty 
         #     if available_qty > 0:
@@ -80,7 +82,22 @@ class Servicing(Document):
         frappe.db.commit()
         self.reload()
 
+# //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
-         
+
+
+# custom_app/custom_app/doctype/job_work_item/job_work_item.py
+# custom_app/custom_app/doctype/job_work_item/job_work_item.py
+# import frappe
+
+# @frappe.whitelist()
+# def get_item_groups(item):
+#     categories = []
+#     item_group_doc = frappe.get_doc('Watch Service Settings', item)
+#     if item_group_doc and item_group_doc.group:
+#         for entry in item_group_doc.group:
+#             categories.append(entry.item_group)
+#     return categories
+

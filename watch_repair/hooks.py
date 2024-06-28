@@ -257,6 +257,8 @@ fixtures = [
                     "Item-custom_category",
                     "Item Group-custom_category_table",
                     "Payment Entry-custom_repair_order",
+                    "Item Group-custom_allow_in_servicing",
+                    "Item-custom_allow_in_servicing",
                     
 
 

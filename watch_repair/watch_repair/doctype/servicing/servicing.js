@@ -12,6 +12,15 @@ frappe.ui.form.on('Servicing', {
 				}
 			}
         })
+        frm.fields_dict['job_work_item'].grid.get_field('item').get_query = function() {
+            return {
+                filters: {
+                    'custom_allow_in_servicing': 1
+                }
+            };
+        };
+
+
         if (cur_frm.doc.status === 'Pending') {
             frm.add_custom_button(__('Close'), function() {
 
@@ -57,7 +66,42 @@ frappe.ui.form.on('Servicing', {
 });
 
 
+
 frappe.ui.form.on('Job Work Item', {
+    // item: function(frm, cdt, cdn) {
+    //     var d = locals[cdt][cdn];
+    //     if (d.item) {
+    //         frappe.call({
+    //             method: "watch_repair.watch_repair.doctype.servicing.servicing.get_item_groups",
+    //             args: {
+    //                 item: d.item
+    //             },
+    //             callback: function(response) {
+    //                 if (response.message) {
+    //                     // Apply the filter to the item field in the child table
+    //                     frm.fields_dict["items"].grid.get_field("item").get_query = function() {
+    //                         return {
+    //                             filters: [
+    //                                 ['item_group', 'in', response.message]
+    //                             ]
+    //                         };
+    //                     };
+    //                     frm.refresh_field('items');
+    //                 }
+    //             }
+    //         });
+    //     } else {
+    //         frm.fields_dict["items"].grid.get_field("item").get_query = function() {
+    //             return {
+    //                 filters: [
+    //                     ['item_group', 'in', []]
+    //                 ]
+    //             };
+    //         };
+    //         frm.refresh_field('items');
+    //     }
+    // }
+
 
 
     item: function(frm, cdt, cdn) {
