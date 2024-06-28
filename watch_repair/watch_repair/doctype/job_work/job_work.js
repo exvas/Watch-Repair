@@ -1,12 +1,57 @@
 
  
  
+var itemname1=''
+
  
 
 frappe.ui.form.on('Job Work', {
 
 
     refresh: function(frm) {
+        frappe.db.get_doc("Watch Service Settings")
+            .then(doc => {
+                let itemGroups = [];
+
+                // Loop through the 'group' child table
+                if (doc.group_2 && doc.group_2.length > 0) {
+                    doc.group_2.forEach(row => {
+                        itemGroups.push(row.item_group);
+                    });
+                }
+
+                // Set the query for the 'item' field in the 'job_work_item' child table
+                frm.set_query("item", "job_work_item", function() {
+                    return {
+                        filters: [
+                            ["item_group", "in", itemGroups]
+                        ]
+                    };
+                });
+            });
+            frappe.db.get_doc("Watch Service Settings")
+            .then(doc => {
+                let itemGroups = [];
+
+                // Loop through the 'group' child table
+                if (doc.group_3 && doc.group_3.length > 0) {
+                    doc.group_3.forEach(row => {
+                        itemGroups.push(row.item_group);
+                    });
+                }
+
+                // Set the query for the 'item' field in the 'job_work_item' child table
+                frm.set_query("item", "job", function() {
+                    return {
+                        filters: [
+                            ["item_group", "in", itemGroups]
+                        ]
+                    };
+                });
+            });
+
+
+
 
         if (cur_frm.doc.docstatus === 1 && cur_frm.doc.status === 'Servicing Completed' && cur_frm.doc.stock_entry_status !== 'Stock Entry Created') {
 			frm.add_custom_button(__('Stock Entry '), function() {
@@ -100,6 +145,27 @@ frappe.ui.form.on('Job Work', {
             });
         }
 
+    },
+
+    total: function(frm) {
+        console.log("qqqqqqqqqqqqqq");
+        
+
+        if(frm.doc.job_work_item.item) {
+            // Set 'add_additional_cost' to 1 (checked)
+            frm.set_value('add_additional_cost', 1);
+            var a =frm.doc.total;
+
+            // Set 'amount' to the value of 'additional_cost'
+            frm.set_value('additional_cost', a);
+        }else {
+            // Set 'service_only' to 1 (checked)
+            frm.set_value('service_only', 1);
+            var a =frm.doc.total
+    
+            // Set 'service_cost' to the value of 'total'
+            frm.set_value('service_cost', a);
+        }
     },
 
 
@@ -245,3 +311,113 @@ frappe.ui.form.on('Job Work', {
     
 });
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+frappe.ui.form.on('Job Work Item', {
+
+
+
+    item: function(frm, cdt, cdn) {
+        var d = locals[cdt][cdn];
+        if (d.item) {
+            cur_frm.call({
+                doc: cur_frm.doc,
+                method: 'get_item',
+                args: {
+                    item: d.item,
+                },
+                callback: function(r) {
+                    if (r.message) {
+                        frappe.model.set_value(d.doctype,d.name,"available_qty",r.message[0].actual_qty);
+                        frappe.model.set_value(d.doctype,d.name,"valuation_rate",r.message[0].valuation_rate);
+                        frm.refresh_field('job_work_item');
+                    }
+                }
+            });
+        }
+    },
+
+
+
+});
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+frappe.ui.form.on('Services', {
+
+    // item: function(frm, cdt, cdn) {
+    //     var d = locals[cdt][cdn];
+    //     if (d.item) {
+          
+              
+    //             frappe.model.set_value(d.doctype, d.name, "amount", d.qty * d.rate);
+                
+    //             frm.refresh_field("job");
+    //     }
+    // },
+    qty: function(frm, cdt, cdn) {
+        var d = locals[cdt][cdn];
+        if (d.item) {
+          
+              
+                frappe.model.set_value(d.doctype, d.name, "amount", d.qty * d.rate);
+                
+                frm.refresh_field("job");
+        }
+    },
+    rate: function(frm, cdt, cdn) {
+        var d = locals[cdt][cdn];
+        if (d.item) {
+          
+              
+                frappe.model.set_value(d.doctype, d.name, "amount", d.qty * d.rate);
+                
+                frm.refresh_field("job");
+        }
+    },
+
+
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+frappe.ui.form.on("Services", {
+	refresh(frm) {
+
+	},
+
+    amount: function(frm,cdt,cdn){
+        var d =locals[cdt][cdn];
+        var k = 0;
+        frm.doc.job.forEach(function(d) {
+            k += d.amount;
+            
+        });
+        frm.set_value('total', k);
+        frm.refresh_field("total")
+        
+    },
+  
+
+    
+
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+frappe.ui.form.on("Services","job_remove",function(frm,cdt,cdn){
+	var d=locals[cdt][cdn];
+	var s=0;
+	frm.doc.job.forEach(function(d){
+		s+=d.amount;
+	});
+	frm.set_value('total',s)
+	frm.refresh_field("total")
+	
+});
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////

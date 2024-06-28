@@ -21,6 +21,7 @@
   "serial_no",
   "model_no",
   "get_servicing_meterials",
+  "view_service_table",
   "column_break_xdluq",
   "service_warranty",
   "status",
@@ -38,6 +39,8 @@
   "return_reason",
   "section_break_3wpmp",
   "job_work_item",
+  "job",
+  "total",
   "stock_entry_status",
   "amended_from",
   "connections_tab"
@@ -112,9 +115,7 @@
    "fieldname": "job_work_item",
    "fieldtype": "Table",
    "label": "Service Materials",
-   "mandatory_depends_on": "eval:!doc.service_only && !doc.is_return && !doc.add_additional_cost && !doc.is_free_service && !doc.is_return",
-   "options": "Job Work Item",
-   "read_only": 1
+   "options": "Job Work Item"
   },
   {
    "fieldname": "warehouse",
@@ -271,6 +272,26 @@
    "hidden": 1,
    "label": "Expense Account",
    "options": "Account"
+  },
+  {
+   "depends_on": "eval:doc.view_service_table==1",
+   "fieldname": "job",
+   "fieldtype": "Table",
+   "label": "Services",
+   "options": "Services"
+  },
+  {
+   "default": "0",
+   "fieldname": "view_service_table",
+   "fieldtype": "Check",
+   "label": "View Service Table"
+  },
+  {
+   "depends_on": "eval:doc.view_service_table==1",
+   "fieldname": "total",
+   "fieldtype": "Float",
+   "label": "Total",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -289,7 +310,7 @@
    "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-05-31 16:46:36.319987",
+ "modified": "2024-06-28 17:30:24.559938",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",

@@ -1,6 +1,12 @@
 // Copyright (c) 2024, sammish and contributors
 // For license information, please see license.txt
 
+
+
+var itemname1=''
+
+
+
 frappe.ui.form.on('Servicing', {
 	refresh: function(frm) {
 
@@ -12,13 +18,40 @@ frappe.ui.form.on('Servicing', {
 				}
 			}
         })
-        frm.fields_dict['job_work_item'].grid.get_field('item').get_query = function() {
-            return {
-                filters: {
-                    'custom_allow_in_servicing': 1
+
+        frappe.db.get_doc("Watch Service Settings")
+            .then(doc => {
+                let itemGroups = [];
+
+                // Loop through the 'group' child table
+                if (doc.group && doc.group.length > 0) {
+                    doc.group.forEach(row => {
+                        itemGroups.push(row.item_group);
+                    });
                 }
-            };
-        };
+
+                // Set the query for the 'item' field in the 'job_work_item' child table
+                frm.set_query("item", "job_work_item", function() {
+                    return {
+                        filters: [
+                            ["item_group", "in", itemGroups]
+                        ]
+                    };
+                });
+            });
+
+
+
+
+
+
+        // frm.fields_dict['job_work_item'].grid.get_field('item').get_query = function() {
+        //     return {
+        //         filters: {
+        //             'custom_allow_in_servicing': 1
+        //         }
+        //     };
+        // };
 
 
         if (cur_frm.doc.status === 'Pending') {
@@ -68,39 +101,6 @@ frappe.ui.form.on('Servicing', {
 
 
 frappe.ui.form.on('Job Work Item', {
-    // item: function(frm, cdt, cdn) {
-    //     var d = locals[cdt][cdn];
-    //     if (d.item) {
-    //         frappe.call({
-    //             method: "watch_repair.watch_repair.doctype.servicing.servicing.get_item_groups",
-    //             args: {
-    //                 item: d.item
-    //             },
-    //             callback: function(response) {
-    //                 if (response.message) {
-    //                     // Apply the filter to the item field in the child table
-    //                     frm.fields_dict["items"].grid.get_field("item").get_query = function() {
-    //                         return {
-    //                             filters: [
-    //                                 ['item_group', 'in', response.message]
-    //                             ]
-    //                         };
-    //                     };
-    //                     frm.refresh_field('items');
-    //                 }
-    //             }
-    //         });
-    //     } else {
-    //         frm.fields_dict["items"].grid.get_field("item").get_query = function() {
-    //             return {
-    //                 filters: [
-    //                     ['item_group', 'in', []]
-    //                 ]
-    //             };
-    //         };
-    //         frm.refresh_field('items');
-    //     }
-    // }
 
 
 

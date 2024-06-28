@@ -696,7 +696,33 @@ class JobWork(Document):
 
     
 
+# ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+# //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @frappe.whitelist()
+    def get_item(self,item):
+        if not self.warehouse:
+            frappe.throw("Please specify a Warehouse.")
+
+        warehouse = self.warehouse
+        bin_entries = frappe.get_all("Bin",
+                                     filters={
+                                    "item_code": item ,
+                                    "warehouse": warehouse
+                                },
+                                fields=["actual_qty", "valuation_rate"],
+                                limit=1)
+        
+        if not bin_entries:
+            frappe.throw(f"{item} Item was no quantity available in {warehouse} Warehouse.")
+                            
+        if bin_entries:
+            print("xxxx",bin_entries)
+        return bin_entries
+    
+
+# ////////////////////////////////////////////////////////////////////////////////////////////////////
 
             
             

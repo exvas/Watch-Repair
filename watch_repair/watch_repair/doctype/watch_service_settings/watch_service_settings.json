@@ -17,7 +17,11 @@
   "column_break_lwqow",
   "stock_entry_without_service_materials",
   "servicing_material_group_section",
-  "group"
+  "group",
+  "job_work_material_group_section",
+  "group_2",
+  "job_work_service_section",
+  "group_3"
  ],
  "fields": [
   {
@@ -78,12 +82,34 @@
    "fieldtype": "Table",
    "label": "Item Group",
    "options": "Group"
+  },
+  {
+   "fieldname": "job_work_material_group_section",
+   "fieldtype": "Section Break",
+   "label": "Job Work Material Group"
+  },
+  {
+   "fieldname": "group_2",
+   "fieldtype": "Table",
+   "label": "Item Group 2",
+   "options": "Group 2"
+  },
+  {
+   "fieldname": "job_work_service_section",
+   "fieldtype": "Section Break",
+   "label": "Job Work Service"
+  },
+  {
+   "fieldname": "group_3",
+   "fieldtype": "Table",
+   "label": "Item Group 3",
+   "options": "Group 3"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-06-27 17:22:15.626182",
+ "modified": "2024-06-28 17:19:59.024224",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Watch Service Settings",
