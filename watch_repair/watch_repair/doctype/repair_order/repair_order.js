@@ -2,7 +2,27 @@
 // For license information, please see license.txt
  
 frappe.ui.form.on('Repair Order', { 
+
+    abc: function(frm) {
+        // Only call the method if the checkbox is checked
+        if (frm.doc.abc) {
+            frm.call({
+                method:"table_update",
+                doc: frm.doc,
+                args: {
+                    docname: frm.doc.name,
+                    
+                },
+                callback: function(r) {
+                    if (r.message) {
+                        // frappe.msgprint(r.message);
+                    }
+                }
+            });
+        }
+    },
 	refresh: function(frm) {
+        console.log("ddddddddddddddddddddddddddddddddddddddddddddddddd")
 
 
         cur_frm.set_query("item", "repair_order_item", (frm, cdt, cdn) => {

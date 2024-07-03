@@ -1,0 +1,47 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-03 10:12:36.867642",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "job_work",
+  "material_name",
+  "qty"
+ ],
+ "fields": [
+  {
+   "fieldname": "job_work",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Job Work",
+   "options": "Job Work"
+  },
+  {
+   "fieldname": "material_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Material Name",
+   "options": "Item"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Qty"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-03 10:12:36.867642",
+ "modified_by": "Administrator",
+ "module": "Watch Repair",
+ "name": "Material 1",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

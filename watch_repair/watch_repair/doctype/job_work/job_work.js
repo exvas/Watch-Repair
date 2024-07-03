@@ -148,25 +148,53 @@ frappe.ui.form.on('Job Work', {
     },
 
     total: function(frm) {
-        console.log("qqqqqqqqqqqqqq");
-        
-
-        if(frm.doc.job_work_item.item) {
+        // Debugging statement to log the current state of frm.doc
+        console.log(frm.doc);
+    
+        let jobWorkItemHasItem = false;
+        let jobHasItem = false;
+    
+        // Check if any row in the job_work_item child table has the item field set
+        if (frm.doc.job_work_item) {
+            frm.doc.job_work_item.forEach(function(row) {
+                if (row.item) {
+                    jobWorkItemHasItem = true;
+                }
+            });
+        }
+    
+        // Check if any row in the job child table has the item field set
+        if (frm.doc.job) {
+            frm.doc.job.forEach(function(row) {
+                if (row.item) {
+                    jobHasItem = true;
+                }
+            });
+        }
+    
+        // Debugging statement to log the results of the checks
+        console.log("jobWorkItemHasItem: ", jobWorkItemHasItem);
+        console.log("jobHasItem: ", jobHasItem);
+    
+        if (jobWorkItemHasItem && jobHasItem) {
+            console.log("abcdefg");
             // Set 'add_additional_cost' to 1 (checked)
             frm.set_value('add_additional_cost', 1);
-            var a =frm.doc.total;
-
-            // Set 'amount' to the value of 'additional_cost'
+            var a = frm.doc.total;
+    
+            // Set 'additional_cost' to the value of 'total'
             frm.set_value('additional_cost', a);
-        }else {
+        } else {
+            console.log("else");
             // Set 'service_only' to 1 (checked)
             frm.set_value('service_only', 1);
-            var a =frm.doc.total
+            var a = frm.doc.total;
     
             // Set 'service_cost' to the value of 'total'
             frm.set_value('service_cost', a);
         }
     },
+    
 
 
     get_servicing_meterials: function(frm) {

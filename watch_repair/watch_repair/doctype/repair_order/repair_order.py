@@ -4,6 +4,8 @@
 import frappe
 from frappe.utils import today
 from frappe.model.document import Document
+from frappe import _
+
 
 class RepairOrder(Document): 
 	
@@ -199,7 +201,8 @@ class RepairOrder(Document):
 			self.reload()
 			frappe.msgprint("Servicing created successfully")
 		self.reload()
-
+# ////////////////////////////////////////////////////////////////////////////////////////////////////
+    
 
 
 #------------------  Create Buttotn Action JOB WORK Creation -----------------
@@ -421,12 +424,421 @@ class RepairOrder(Document):
 		frappe.db.commit()
 
 		return "Related Job Work and Servicing documents deleted successfully."
-		
-		
-		
-
 	
+# //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	# @frappe.whitelist()
+	# def table_update(self):
+	# 	if self.abc == 1:
+	# 		print("jjjjjjjjjjjjjjjjjjj")
+			
+	# 		# Fetch Job Work entries based on repair_order
+	# 		job_works = frappe.get_all('Job Work', filters={'repair_order': self.name}, fields=['name', 'posting_date'])
+			
+	# 		self.work_details = []
+			
+	# 		# Iterate over each Job Work entry
+	# 		for job_work in job_works:
+	# 			# Fetch corresponding Servicing entries for each Job Work entry
+	# 			servicings = frappe.get_all('Servicing', filters={'job_work': job_work.name}, fields=['name', 'posting_date'])
+				
+	# 			# If Servicing entries are found, append each Servicing entry with the Job Work entry
+	# 			if servicings:
+	# 				for servicing in servicings:
+	# 					self.append('work_details', {
+	# 						'job_work_refno': job_work.name,
+	# 						'posting_date': job_work.posting_date,
+	# 						'servicing_refno': servicing.name,
+	# 						'posting_date_1': servicing.posting_date
+	# 					})
+	# 			# If no Servicing entries are found, still append Job Work details
+	# 			else:
+	# 				self.append('work_details', {
+	# 					'job_work_refno': job_work.name,
+	# 					'posting_date': job_work.posting_date,
+	# 					'servicing_refno': '',
+	# 					'posting_date_1': ''
+	# 				})
+			
+	# 		# return "Checkbox is checked!"
+
+					
+	
+
+
+# //////////////////////////////////////////////////////////////////////////////////////////////////////
+	# @frappe.whitelist()
+	# # @frappe.whitelist()
+	# def table_update(self):
+	# 	if self.abc == 1:
+	# 		print("Checkbox checked!")
+			
+	# 		# Fetch Job Work entries based on repair_order
+	# 		job_works = frappe.get_all('Job Work', filters={'repair_order': self.name}, fields=['name', 'posting_date'])
+	# 		print("Job Works:", job_works)
+			
+	# 		self.work_details = []
+			
+	# 		# Iterate over each Job Work entry
+	# 		for job_work in job_works:
+	# 			# Fetch corresponding Servicing entries for each Job Work entry
+	# 			servicings = frappe.get_all('Servicing', filters={'job_work': job_work.name}, fields=['name', 'posting_date'])
+	# 			print("Servicings for Job Work", job_work.name, ":", servicings)
+				
+	# 			# Fetch job_work_item entries for the current Job Work entry
+	# 			job_work_items = frappe.get_all('Job Work Item', filters={'parent': job_work.name}, fields=['item','qty'])
+	# 			print("Job Work Items for Job Work", job_work.name, ":", job_work_items)
+	# 			serv = frappe.get_all('Services', filters={'parent':job_work.name}, fields=['item','amount'])
+	# 			# Check if Job Work Items are correctly fetched
+	# 			if not job_work_items:
+	# 				print(f"No job work items found for Job Work {job_work.name}")
+				
+	# 			# Iterate through Servicing entries
+	# 			for servicing in servicings:
+	# 				if job_work_items:
+	# 					# Append each item from job_work_items only once per servicing
+	# 					for item in job_work_items:
+	# 						print("Appending:", job_work.name, job_work.posting_date, servicing.name, servicing.posting_date, item.item)
+	# 						self.append('work_details', {
+	# 							'job_work_refno': job_work.name,
+	# 							'posting_date': job_work.posting_date,
+	# 							'servicing_refno': servicing.name,
+	# 							'posting_date_1': servicing.posting_date,
+	# 							'material_name': item.item,
+	# 							'qty':item.qty
+	# 						})
+	# 				else:
+	# 					# If no job_work_items, just append Job Work and Servicing details
+	# 					self.append('work_details', {
+	# 						'job_work_refno': job_work.name,
+	# 						'posting_date': job_work.posting_date,
+	# 						'servicing_refno': servicing.name,
+	# 						'posting_date_1': servicing.posting_date,
+	# 						'material_name': '',
+	# 						'qty':''
+	# 					})
+				
+	# 			# If no Servicing entries are found, append Job Work details with job_work_item entries
+	# 			if not servicings:
+	# 				if job_work_items:
+	# 					for item in job_work_items:
+	# 						self.append('work_details', {
+	# 							'job_work_refno': job_work.name,
+	# 							'posting_date': job_work.posting_date,
+	# 							'servicing_refno': '',
+	# 							'posting_date_1': '',
+	# 							'material_name': item.item,
+	# 							'qty':item.qty
+	# 						})
+	# 				else:
+	# 					self.append('work_details', {
+	# 						'job_work_refno': job_work.name,
+	# 						'posting_date': job_work.posting_date,
+	# 						'servicing_refno': '',
+	# 						'posting_date_1': '',
+	# 						'material_name': '',
+	# 						'qty':''
+	# 					})
+			
+	# 		return "Checkbox is checked!"
+
+
+# ///////////////////////////////////////////////////////////////////////////////////////////////////////
 		
+	# @frappe.whitelist()
+# @frappe.whitelist()
+	# def table_update(self):
+	# 	if self.abc == 1:
+	# 		print("Checkbox checked!")
+
+	# 		# Fetch Job Work entries based on repair_order
+	# 		job_works = frappe.get_all('Job Work', filters={'repair_order': self.name}, fields=['name', 'posting_date'])
+	# 		print("Job Works:", job_works)
+
+	# 		self.work_details = []
+
+	# 		# Iterate over each Job Work entry
+	# 		for job_work in job_works:
+	# 			# Fetch corresponding Servicing entries for each Job Work entry
+	# 			servicings = frappe.get_all('Servicing', filters={'job_work': job_work.name}, fields=['name', 'posting_date'])
+	# 			print("Servicings for Job Work", job_work.name, ":", servicings)
+
+	# 			# Fetch job_work_item entries for the current Job Work entry
+	# 			job_work_items = frappe.get_all('Job Work Item', filters={'parent': job_work.name}, fields=['item'])
+	# 			print("Job Work Items for Job Work", job_work.name, ":", job_work_items)
+
+	# 			# Track appended items to avoid duplication
+	# 			appended_items = set()
+
+	# 			# Iterate through Servicing entries
+	# 			for servicing in servicings:
+	# 				# Append each unique item from job_work_items
+	# 				for item in job_work_items:
+	# 					if item.item not in appended_items:
+	# 						appended_items.add(item.item)
+	# 						self.append('work_details', {
+	# 							'job_work_refno': job_work.name,
+	# 							'posting_date': job_work.posting_date,
+	# 							'servicing_refno': servicing.name,
+	# 							'posting_date_1': servicing.posting_date,
+	# 							'material_name': item.item
+	# 						})
+				
+	# 			# If no Servicing entries are found, append Job Work details with job_work_item entries
+	# 			if not servicings:
+	# 				for item in job_work_items:
+	# 					if item.item not in appended_items:
+	# 						appended_items.add(item.item)
+	# 						self.append('work_details', {
+	# 							'job_work_refno': job_work.name,
+	# 							'posting_date': job_work.posting_date,
+	# 							'servicing_refno': '',
+	# 							'posting_date_1': '',
+	# 							'material_name': item.item
+	# 						})
+
+	# 		return "Checkbox is checked!"
 
 
- 
+#  //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	# @frappe.whitelist()
+	# def table_update(self):
+	# 	if self.abc == 1:
+	# 		print("Checkbox checked!")
+			
+	# 		# Fetch Job Work entries based on repair_order
+	# 		job_works = frappe.get_all('Job Work', filters={'repair_order': self.name}, fields=['name', 'posting_date'])
+	# 		print("Job Works:", job_works)
+			
+	# 		self.work_details = []
+			
+	# 		# Iterate over each Job Work entry
+	# 		for job_work in job_works:
+	# 			# Fetch corresponding Servicing entries for each Job Work entry
+	# 			servicings = frappe.get_all('Servicing', filters={'job_work': job_work.name}, fields=['name', 'posting_date'])
+	# 			print("Servicings for Job Work", job_work.name, ":", servicings)
+				
+	# 			# Fetch Services entries for the current Job Work entry
+	# 			services = frappe.get_all('Services', filters={'parent': job_work.name}, fields=['item', 'amount'])
+	# 			print("Services for Job Work", job_work.name, ":", services)
+				
+	# 			# Fetch job_work_item entries for the current Job Work entry
+	# 			job_work_items = frappe.get_all('Job Work Item', filters={'parent': job_work.name}, fields=['item', 'qty'])
+	# 			print("Job Work Items for Job Work", job_work.name, ":", job_work_items)
+				
+	# 			# Check if Job Work Items are correctly fetched
+	# 			if not job_work_items:
+	# 				print(f"No job work items found for Job Work {job_work.name}")
+				
+	# 			# Iterate through Servicing entries
+	# 			for servicing in servicings:
+	# 				if job_work_items:
+	# 					# Append each item from job_work_items only once per servicing
+	# 					for item in job_work_items:
+	# 						print("Appending:", job_work.name, job_work.posting_date, servicing.name, servicing.posting_date, item.item)
+	# 						self.append('work_details', {
+	# 							'job_work_refno': job_work.name,
+	# 							'posting_date': job_work.posting_date,
+	# 							'servicing_refno': servicing.name,
+	# 							'posting_date_1': servicing.posting_date,
+	# 							'material_name': item.item,
+	# 							'qty': item.qty,
+	# 							'service_name': '', 
+	# 							'amount': ''  
+	# 						})
+	# 				else:
+	# 					# If no job_work_items, just append Job Work and Servicing details
+	# 					self.append('work_details', {
+	# 						'job_work_refno': job_work.name,
+	# 						'posting_date': job_work.posting_date,
+	# 						'servicing_refno': servicing.name,
+	# 						'posting_date_1': servicing.posting_date,
+	# 						'material_name': '',
+	# 						'qty': '',
+	# 						'service_name': '',  
+	# 						'amount': ''  
+	# 					})
+				
+	# 			# Iterate through Services entries
+	# 			for service in services:
+	# 				self.append('work_details', {
+	# 					'job_work_refno': job_work.name,
+	# 					'posting_date': job_work.posting_date,
+	# 					'servicing_refno': '',
+	# 					'posting_date_1': '',
+	# 					'material_name': '',
+	# 					'qty': '',  
+	# 					'service_name': service.item,  
+	# 					'amount': service.amount  
+	# 				})
+				
+	# 			# If no Servicing entries are found, append Job Work details with job_work_item entries
+	# 			if not servicings:
+	# 				if job_work_items:
+	# 					for item in job_work_items:
+	# 						self.append('work_details', {
+	# 							'job_work_refno': job_work.name,
+	# 							'posting_date': job_work.posting_date,
+	# 							'servicing_refno': '',
+	# 							'posting_date_1': '',
+	# 							'material_name': '',
+	# 							'qty': '',
+	# 							'service_name': '',  
+	# 							'amount': ''  
+	# 						})
+	# 				else:
+	# 					self.append('work_details', {
+	# 						'job_work_refno': job_work.name,
+	# 						'posting_date': job_work.posting_date,
+	# 						'servicing_refno': '',
+	# 						'posting_date_1': '',
+	# 						'material_name': '',
+	# 						'qty': '',
+	# 						'service_name': '',  
+	# 						'amount': ''  
+	# 					})
+			
+	# 		return "Checkbox is checked!"
+# ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	# @frappe.whitelist()
+	# def table_update(self):
+	# 	if self.abc == 1:
+	# 		print("Checkbox checked!")
+			
+	# 		# Fetch Job Work entries based on repair_order
+	# 		job_works = frappe.get_all('Job Work', filters={'repair_order': self.name}, fields=['name'])
+	# 		print("Job Works:", job_works)
+			
+	# 		self.work_details = []
+			
+	# 		# Iterate over each Job Work entry
+	# 		for job_work in job_works:
+	# 			# Fetch job_work_item entries for the current Job Work entry
+	# 			job_work_items = frappe.get_all('Job Work Item', filters={'parent': job_work.name}, fields=['item', 'qty'])
+	# 			print("Job Work Items for Job Work", job_work.name, ":", job_work_items)
+				
+	# 			# Check if Job Work Items are correctly fetched
+	# 			if not job_work_items:
+	# 				print(f"No job work items found for Job Work {job_work.name}")
+				
+	# 			# Append each item from job_work_items to the table_1
+	# 			for item in job_work_items:
+	# 				print("Appending:", job_work.name, item.item, item.qty)
+	# 				self.append('table_1', {
+	# 					'job_work': job_work.name,
+	# 					'material_name': item.item,
+	# 					'qty': item.qty
+	# 				})
+			
+	# 		return "Checkbox is checked!"
+# ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	# @frappe.whitelist()
+	# def table_update(self):
+	# 	if self.abc == 1:
+	# 		print("Checkbox checked!")
+			
+	# 		# Fetch Job Work entries based on repair_order
+	# 		serve = frappe.get_all('Job Work', filters={'repair_order': self.name}, fields=['name'])
+	# 		print("Job Works:", serve)
+			
+	# 		self.work_details = []
+			
+	# 		# Iterate over each Job Work entry
+	# 		for serve in serve:
+	# 			# Fetch job_work_item entries for the current Job Work entry
+	# 			job_work_items = frappe.get_all('Services', filters={'parent': serve.name}, fields=['item', 'amount'])
+	# 			# print("Job Work Items for Job Work", serve.name, ":", job_work_items)
+				
+	# 			# Check if Job Work Items are correctly fetched
+	# 			if not job_work_items:
+	# 				print(f"No job service items found for Job Work {serve.name}")
+				
+	# 			# Append each item from job_work_items to the table_1
+	# 			for item in job_work_items:
+	# 				# print("Appending:", serve.name, item.item, item.qty)
+	# 				self.append('table_2', {
+	# 					'job_work': serve.name,
+	# 					'item': item.item,
+	# 					'amount': item.amount
+	# 				})
+			
+	# 		return "Checkbox is checked!"
+
+	# ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	@frappe.whitelist()
+	def table_update(self):
+		if self.abc == 1:
+			print("Checkbox checked!")
+
+			# Fetch Job Work entries based on repair_order
+			job_works = frappe.get_all('Job Work', filters={'repair_order': self.name}, fields=['name', 'posting_date'])
+			print("Job Works:", job_works)
+			
+			self.work_details = []
+
+			# Iterate over each Job Work entry
+			for job_work in job_works:
+				# Fetch job_work_item entries for the current Job Work entry
+				job_work_items = frappe.get_all('Job Work Item', filters={'parent': job_work.name}, fields=['item', 'qty'])
+				print("Job Work Items for Job Work", job_work.name, ":", job_work_items)
+				
+				# Check if Job Work Items are correctly fetched
+				if not job_work_items:
+					print(f"No job work items found for Job Work {job_work.name}")
+
+				# Append each item from job_work_items to the table_1
+				for item in job_work_items:
+					print("Appending to table_1:", job_work.name, item.item, item.qty)
+					self.append('table_1', {
+						'job_work': job_work.name,
+						'material_name': item.item,
+						'qty': item.qty
+					})
+
+				# Fetch corresponding Servicing entries for each Job Work entry
+				servicings = frappe.get_all('Servicing', filters={'job_work': job_work.name}, fields=['name', 'posting_date'])
+				print("Servicings for Job Work", job_work.name, ":", servicings)
+
+				# If Servicing entries are found, append each Servicing entry with the Job Work entry
+				if servicings:
+					for servicing in servicings:
+						self.append('work_details', {
+							'job_work_refno': job_work.name,
+							'posting_date': job_work.posting_date,
+							'servicing_refno': servicing.name,
+							'posting_date_1': servicing.posting_date
+						})
+				# If no Servicing entries are found, still append Job Work details
+				else:
+					self.append('work_details', {
+						'job_work_refno': job_work.name,
+						'posting_date': job_work.posting_date,
+						'servicing_refno': '',
+						'posting_date_1': ''
+					})
+
+				# Fetch job work services for the current Job Work entry
+				job_work_services = frappe.get_all('Services', filters={'parent': job_work.name}, fields=['item', 'amount'])
+				print("Services for Job Work", job_work.name, ":", job_work_services)
+
+				# Check if job work services are correctly fetched
+				if not job_work_services:
+					print(f"No job service items found for Job Work {job_work.name}")
+
+				# Append each item from job_work_services to the table_2
+				for service in job_work_services:
+					print("Appending to table_2:", job_work.name, service.item, service.amount)
+					self.append('table_2', {
+						'job_work': job_work.name,
+						'item': service.item,
+						'amount': service.amount
+					})
+
+			return "Checkbox is checked!"
