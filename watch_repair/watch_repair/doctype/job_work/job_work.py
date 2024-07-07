@@ -689,7 +689,7 @@ class JobWork(Document):
                 
                 if serv.docstatus == 0:
                     serv.submit()
-                    serv.status = 'Close'
+                    serv.status = 'Closed'
                     serv.save()
                     frappe.db.commit()
         self.reload()

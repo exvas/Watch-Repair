@@ -111,6 +111,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "job_work_item",
    "fieldtype": "Table",
    "label": "Service Materials",
@@ -309,7 +310,7 @@
    "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-07-03 11:01:01.652157",
+ "modified": "2024-07-07 20:32:09.742657",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",

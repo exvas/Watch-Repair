@@ -78,7 +78,7 @@ class Servicing(Document):
 
         doc = frappe.get_doc("Servicing", self.name)
         doc.submit()
-        frappe.db.sql("""UPDATE `tabServicing` SET status='Close' WHERE name=%s""", self.name)
+        frappe.db.sql("""UPDATE `tabServicing` SET status='Closed' WHERE name=%s""", self.name)
         frappe.db.commit()
         self.reload()
 
