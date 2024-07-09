@@ -117,6 +117,7 @@ frappe.ui.form.on('Job Work Item', {
                     if (r.message) {
                         frappe.model.set_value(d.doctype,d.name,"available_qty",r.message[0].actual_qty);
                         frappe.model.set_value(d.doctype,d.name,"valuation_rate",r.message[0].valuation_rate);
+                        frappe.model.set_value(d.doctype,d.name,"qty", "1");
                         frm.refresh_field('job_work_item');
                     }
                 }
