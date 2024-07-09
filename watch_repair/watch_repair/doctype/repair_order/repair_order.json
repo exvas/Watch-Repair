@@ -15,11 +15,9 @@
   "contact_no",
   "is_advanced",
   "amount",
-  "received_amount",
   "mode_of_payment",
   "account_paid_to",
-  "account_currency",
-  "target_exchange_rate",
+  "bank_reference_no",
   "column_break_6vopj",
   "status",
   "naming_series",
@@ -215,26 +213,8 @@
    "fieldname": "account_paid_to",
    "fieldtype": "Link",
    "label": "Account Paid To",
-   "options": "Account"
-  },
-  {
-   "depends_on": "eval:doc.is_advanced == 1",
-   "fieldname": "account_currency",
-   "fieldtype": "Link",
-   "label": "Account Currency",
-   "options": "Currency"
-  },
-  {
-   "depends_on": "eval:doc.is_advanced == 1",
-   "fieldname": "received_amount",
-   "fieldtype": "Currency",
-   "label": "Received Amount"
-  },
-  {
-   "depends_on": "eval:doc.is_advanced == 1",
-   "fieldname": "target_exchange_rate",
-   "fieldtype": "Float",
-   "label": "Target Exchange Rate"
+   "options": "Account",
+   "read_only": 1
   },
   {
    "allow_on_submit": 1,
@@ -270,6 +250,13 @@
    "label": "Table 2",
    "options": "Material 2",
    "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.mode_of_payment == \"Bank Draft\"",
+   "fieldname": "bank_reference_no",
+   "fieldtype": "Data",
+   "label": "Bank Reference No",
+   "mandatory_depends_on": "eval:doc.mode_of_payment == \"Bank Draft\""
   }
  ],
  "index_web_pages_for_search": 1,
@@ -288,7 +275,7 @@
    "link_fieldname": "custom_repair_order"
   }
  ],
- "modified": "2024-07-09 20:45:51.475152",
+ "modified": "2024-07-09 23:03:04.382686",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",

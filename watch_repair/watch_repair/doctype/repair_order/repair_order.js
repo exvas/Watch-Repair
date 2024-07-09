@@ -42,7 +42,7 @@ frappe.ui.form.on('Repair Order', {
 				}
 			};
 		});
-
+ 
  
 
         if (cur_frm.doc.docstatus === 1 && cur_frm.doc.status !== 'Closed' && cur_frm.doc.status == 'Pending') {
@@ -218,12 +218,36 @@ frappe.ui.form.on('Repair Order', {
             frappe.msgprint(__('Please select at least one Complaint item checkbox in each row of Complaint Details before saving.'));
             frappe.validated = false;
         }
-    }
+    },
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+    mode_of_payment: function(frm) {
+        var selectedModeOfPayment = frm.doc.mode_of_payment; 
+
+        frappe.call({
+            method: 'frappe.client.get',
+            args: {
+                doctype: 'Mode of Payment',  
+                name: selectedModeOfPayment
+            },
+            callback: function(response) {
+                if (response.message) {
+                    var modeOfPaymentDoc = response.message;
+
+                    var accountsTable = modeOfPaymentDoc.accounts || [];
+
+                    var defaultAccount = accountsTable.length > 0 ? accountsTable[0].default_account : '';
+
+                    frm.set_value('account_paid_to', defaultAccount);
+                } else {
+                    frm.set_value('account_paid_to', '');  
+                }
+            }
+        });
+    },
 
 
 

@@ -5,7 +5,7 @@ import frappe
 from frappe.utils import today
 from frappe.model.document import Document
 from frappe import _
-
+ 
 
 class RepairOrder(Document): 
 	
@@ -21,7 +21,7 @@ class RepairOrder(Document):
 		watch =frappe.get_doc('Watch Service Settings')
 		job_work_map = {}
 
-		if self.is_advanced:
+		if self.is_advanced and self.mode_of_payment == "Cash":
 			
 			pe = frappe.new_doc("Payment Entry")
 			pe.custom_repair_order = self.name
@@ -32,15 +32,40 @@ class RepairOrder(Document):
 			pe.party = self.customer
 			pe.paid_amount = self.amount
 			
-			pe.received_amount = self.received_amount
-			pe.target_exchange_rate = self.target_exchange_rate
-			pe.paid_to_account_currency = self.account_currency
+			pe.received_amount = self.amount
+			pe.target_exchange_rate = 1
+			# pe.paid_to_account_currency = "BHD"
 			pe.paid_to = self.account_paid_to
 			
 
 			pe.insert()
 			pe.submit()
-			frappe.msgprint(" Payment Entry created successfully ")
+			frappe.msgprint(" Payment Entry created successfully for Cash ")
+
+		elif self.is_advanced and self.mode_of_payment == "Bank Draft":
+	
+			pe = frappe.new_doc("Payment Entry")
+			pe.custom_repair_order = self.name
+			pe.payment_type = "Receive"
+			pe.mode_of_payment = self.mode_of_payment
+			pe.company = self.company
+			pe.party_type = "Customer"
+			pe.party = self.customer
+			pe.paid_amount = self.amount
+			pe.received_amount = self.amount
+			pe.target_exchange_rate = 1
+			# pe.paid_to_account_currency = "BHD"
+			pe.paid_to = self.account_paid_to
+			pe.reference_no = self.bank_reference_no
+			pe.reference_date = self.posting_date
+			
+			pe.insert()
+			pe.submit()
+			frappe.msgprint("Payment Entry created successfully for Bank Draft")
+			
+		else:
+			pass
+				
 
 
 		if watch.auto_create_job_work:
