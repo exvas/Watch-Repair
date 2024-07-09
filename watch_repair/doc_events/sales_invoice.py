@@ -61,10 +61,10 @@ def on_trash(doc, method):
     job_work_id = doc.custom_job_work
     if job_work_id:
         frappe.db.sql("""
-            UPDATE tabJob Work
-            SET status = 'To Invoice'
-            WHERE name = %s
-        """, job_work_id)
+    UPDATE `tabJob Work`
+    SET status = 'To Invoice'
+    WHERE name = %s
+""", (job_work_id,))
         frappe.db.commit()
 
 
