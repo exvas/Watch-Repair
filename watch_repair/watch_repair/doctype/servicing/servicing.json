@@ -195,7 +195,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-10 21:36:30.320074",
+ "modified": "2024-07-10 21:53:44.608952",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Servicing",
@@ -233,6 +233,10 @@
   {
    "color": "Red",
    "title": "Closed"
+  },
+  {
+   "color": "Blue",
+   "title": "Delivered"
   }
  ],
  "track_changes": 1

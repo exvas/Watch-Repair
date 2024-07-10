@@ -275,7 +275,7 @@
    "link_fieldname": "custom_repair_order"
   }
  ],
- "modified": "2024-07-10 21:36:08.306185",
+ "modified": "2024-07-10 21:49:56.632425",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",
@@ -320,7 +320,7 @@
   },
   {
    "color": "Blue",
-   "title": "Delivered  "
+   "title": "Delivered"
   }
  ],
  "track_changes": 1

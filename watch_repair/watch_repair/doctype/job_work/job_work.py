@@ -576,6 +576,9 @@ class JobWork(Document):
 
         frappe.db.sql("""UPDATE `tabJob Work` SET status= 'Delivered' WHERE name=%s""",self.name)
         # frappe.db.sql("""UPDATE `tabServicing` SET status= 'Delivered' WHERE name=%s""",self.name)
+        servicing_name = frappe.db.get_value('Servicing', {'job_work': self.name}, 'name')
+        if servicing_name:
+            frappe.db.sql("""UPDATE `tabServicing` SET status = 'Delivered' WHERE name = %s""", servicing_name)
         frappe.db.commit()
 
         sales_inv = frappe.new_doc("Sales Invoice")

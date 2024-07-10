@@ -310,7 +310,7 @@
    "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-07-10 21:46:44.808084",
+ "modified": "2024-07-10 21:50:49.632970",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",
@@ -335,7 +335,7 @@
  "states": [
   {
    "color": "Red",
-   "title": "Delivered  "
+   "title": "Delivered"
   },
   {
    "color": "Blue",
