@@ -92,7 +92,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "Pending\nWorking In Progress\nCompleted\nClosed\nReturn",
+   "options": "Pending\nWorking In Progress\nWork Completed\nClosed\nReturn\nDelivered",
    "read_only": 1
   },
   {
@@ -275,7 +275,7 @@
    "link_fieldname": "custom_repair_order"
   }
  ],
- "modified": "2024-07-09 23:03:04.382686",
+ "modified": "2024-07-10 21:36:08.306185",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",
@@ -308,7 +308,7 @@
   },
   {
    "color": "Green",
-   "title": "Completed"
+   "title": "Work Completed"
   },
   {
    "color": "Red",
@@ -317,6 +317,10 @@
   {
    "color": "Red",
    "title": "Return"
+  },
+  {
+   "color": "Blue",
+   "title": "Delivered  "
   }
  ],
  "track_changes": 1

@@ -3,7 +3,7 @@ from frappe.model.document import Document
 
 class JobWork(Document):
 
- 
+  
 
     def on_submit(self):
 
@@ -237,8 +237,8 @@ class JobWork(Document):
 
         for item in repair_order.repair_order_item:
             if item.item == self.service_item:
-                if self.status == 'Completed':
-                    item.complaint_completion_status = 'Completed'
+                if self.status == 'Work Completed':
+                    item.complaint_completion_status = 'Work Completed'
                 elif self.status == 'Return':
                     item.complaint_completion_status = 'Return'
         repair_order.save()
@@ -248,10 +248,10 @@ class JobWork(Document):
 
         complaint_completion_statuses = [item.complaint_completion_status for item in repair_order.repair_order_item]
 
-        if all(status == 'Completed' for status in complaint_completion_statuses):
-            new_status = 'Completed'
-        elif 'Return' in complaint_completion_statuses and 'Completed' in complaint_completion_statuses:
-            new_status = 'Completed'
+        if all(status == 'Work Completed' for status in complaint_completion_statuses):
+            new_status = 'Work Completed'
+        elif 'Return' in complaint_completion_statuses and 'Work Completed' in complaint_completion_statuses:
+            new_status = 'Work Completed'
         else:
             if self.status == 'To Invoice':
                 new_status = 'Working In Progress'
@@ -260,7 +260,7 @@ class JobWork(Document):
                 new_status = 'Completed'
             else:
                 # self.status == 'Completed'
-                new_status = 'Completed'
+                new_status = 'Work Completed'
 
         if repair_order.status != new_status:
             repair_order.db_set('status', new_status)
@@ -292,7 +292,7 @@ class JobWork(Document):
                         if self.is_return and self.status == 'Return':
                             item.complaint_completion_status = 'Return'
                     
-                    if item.complaint_completion_status != 'Completed':
+                    if item.complaint_completion_status != 'Work Completed':
                         all_completed = False
 
                 repair_order.save()
@@ -300,12 +300,12 @@ class JobWork(Document):
                 frappe.db.commit()
 
                 if all_completed:
-                    repair_order_status = 'Completed'
+                    repair_order_status = 'Work Completed'
                     for item in repair_order.repair_order_item:
                         if item.complaint_completion_status == 'Return':
-                            repair_order_status = 'Completed'
+                            repair_order_status = 'Work Completed'
                             break
-                        elif item.complaint_completion_status != 'Completed':
+                        elif item.complaint_completion_status != 'Work Completed':
                             repair_order_status = 'Work In Progress'
                             
 
@@ -574,7 +574,8 @@ class JobWork(Document):
     @frappe.whitelist()
     def create_sales_invoice(self):
 
-        frappe.db.sql("""UPDATE `tabJob Work` SET status= 'Completed' WHERE name=%s""",self.name)
+        frappe.db.sql("""UPDATE `tabJob Work` SET status= 'Delivered' WHERE name=%s""",self.name)
+        # frappe.db.sql("""UPDATE `tabServicing` SET status= 'Delivered' WHERE name=%s""",self.name)
         frappe.db.commit()
 
         sales_inv = frappe.new_doc("Sales Invoice")
@@ -604,7 +605,7 @@ class JobWork(Document):
 
         for item in repair_order.repair_order_item:
             if item.item == self.service_item:
-               item.complaint_completion_status = 'Completed'
+               item.complaint_completion_status = 'Delivered'
                 
         repair_order.save()
 
@@ -613,19 +614,19 @@ class JobWork(Document):
 
         complaint_completion_statuses = [item.complaint_completion_status for item in repair_order.repair_order_item]
 
-        if all(status == 'Completed' for status in complaint_completion_statuses):
-            new_status = 'Completed'
-        elif 'Return' in complaint_completion_statuses and 'Completed' in complaint_completion_statuses:
-            new_status = 'Completed'
+        if all(status == 'Delivered' for status in complaint_completion_statuses):
+            new_status = 'Delivered'
+        elif 'Return' in complaint_completion_statuses and 'Work Completed' in complaint_completion_statuses:
+            new_status = 'Work Completed'
         else:
             if self.status == 'To Invoice':
                 new_status = 'Working In Progress'
 
             elif self.status == 'Return':
-                new_status = 'Completed'
+                new_status = 'Work Completed'
             else:
                 # self.status == 'Completed'
-                new_status = 'Completed'
+                new_status = 'Work Completed'
 
         if repair_order.status != new_status:
             repair_order.db_set('status', new_status)

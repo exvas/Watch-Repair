@@ -2,7 +2,7 @@ import frappe
 from frappe.model.document import Document
 
 class Servicing(Document):
-
+ 
  
     def on_submit(self):
         self.db_set('status', 'Completed')
@@ -11,7 +11,7 @@ class Servicing(Document):
 
         for item in repair_order.repair_order_item:
             if item.item == self.item:
-                item.complaint_completion_status = 'Working In Progress'
+                item.complaint_completion_status = 'Work Completed'
         repair_order.save()
 
         job_work = frappe.get_doc('Job Work', self.job_work)
@@ -20,7 +20,7 @@ class Servicing(Document):
 
         statuses = [servicing['status'] for servicing in all_servicings]
         
-        if all(status == 'Completed' for status in statuses):
+        if all(status == 'Work Completed' for status in statuses):
             new_status = 'Servicing Completed'
         else:
             new_status = 'Working In Progress'
