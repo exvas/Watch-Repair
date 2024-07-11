@@ -686,19 +686,28 @@ class JobWork(Document):
     @frappe.whitelist()
     def isreturn(self):
         if self.is_return == 1:
-            service = frappe.db.get_value("Servicing", {"job_work": self.name}, "name")
+            print("Processing servicing for return case...")
             
-            if service:
-                serv = frappe.get_doc("Servicing", service)
+            # Fetch all Servicing records linked to the current Job Work
+            service_names = frappe.db.get_all("Servicing", filters={"job_work": self.name}, pluck="name")
+            
+            for service_name in service_names:
+                service = frappe.get_doc("Servicing", service_name)
                 
-                if serv.docstatus == 0:
-                    serv.submit()
-                    serv.status = 'Closed'
-                    serv.save()
-                    frappe.db.commit()
-        self.reload()
+                if service.docstatus == 0:
+                    service.submit()
+                    service.status = 'Close'
+                    service.save()
+            
+            # Commit the changes to the database
+            frappe.db.commit()
+            
+            # Reload the current document
+            self.reload()
+            
+            return {"message": "All linked Servicing records have been updated and closed."}
 
-    
+
 
 # ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

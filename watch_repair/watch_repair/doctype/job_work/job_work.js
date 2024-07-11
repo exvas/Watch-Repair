@@ -291,51 +291,38 @@ frappe.ui.form.on('Job Work', {
 
 
     validate: function(frm){
-        console.log("validate check ---------")
-        if (frm.doc.is_return ) {
-            frm.set_value('status', 'Return');
-           
-            // frappe.prompt(
-            //     [
-            //         {
-            //             label: 'Return Reason',
-            //             fieldname: 'return_reason',
-            //             fieldtype: 'Small Text',
-            //             reqd: 1
-            //         }
-            //     ],
-            //     function(values){
-                    // frm.set_value('return_reason', values.return_reason);
-                    // frm.save_or_update();
-                    cur_frm.call({
-                        doc: cur_frm.doc,
-                        method: 'isreturn',
-                        args: {
-                            // return_reason: values.return_reason
-                        },
-                        callback: function(response) {
-                            if(response.message) {
-                                frappe.show_alert({
-                                    message: response.message,
-                                    indicator: 'green'
-                                });
-                               
-                            }
-                        }
-                    });
-                // },
-                // 'Return Reason',
-                // 'Submit Return'
-            // );
-        }
-        if(frm.doc.service_only==1){
+        console.log("validate check ---------");
 
+        if (frm.doc.is_return) {
+            console.log("Processing return case...");
+            frm.set_value('status', 'Return');
+        }
+    },
+    on_submit: function(frm) {
+        console.log("Form submission triggered");
+    
+        if (frm.doc.is_return === 1) {
+            console.log("Processing return case...");
+            frm.set_value('status', 'Return');
+    
+            cur_frm.call({
+                doc: cur_frm.doc,
+                method: 'isreturn',
+                callback: function(response) {
+                    frm.set_value('status', 'Return');
+                    frm.save_or_update();
+                }
+            });
+        }
+    
+        if (frm.doc.service_only == 1) {
             if (frm.doc.service_cost === 0) {
                 frappe.msgprint(__('Please enter a non-zero amount for Service Cost'));
                 frappe.validated = false;
             }
         }
-    },
+    }
+    
     
 });
 
