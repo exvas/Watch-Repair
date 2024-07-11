@@ -228,10 +228,10 @@
   {
    "allow_on_submit": 1,
    "default": "0",
-   "depends_on": "eval:doc.status==\"Completed\"",
+   "depends_on": "eval:doc.status == \"Work Completed\" || doc.status == \"Delivered\"\n",
    "fieldname": "abc",
    "fieldtype": "Check",
-   "label": "View Full Details Of The Repair Order"
+   "label": "View Full Details Of The Repair Ordere"
   },
   {
    "allow_on_submit": 1,
@@ -275,7 +275,7 @@
    "link_fieldname": "custom_repair_order"
   }
  ],
- "modified": "2024-07-10 21:49:56.632425",
+ "modified": "2024-07-11 23:09:50.129106",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",

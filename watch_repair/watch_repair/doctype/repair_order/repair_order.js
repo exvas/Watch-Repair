@@ -148,7 +148,27 @@ frappe.ui.form.on('Repair Order', {
 		}
 		
 	  
-  
+        let show_close_button = false;
+
+        // Iterate through each item in the repair_order_item child table
+        $.each(frm.doc.repair_order_item || [], function(i, item) {
+            if (item.complaint_completion_status === 'Return') {
+                show_close_button = true;
+                return false;  // Exit the loop early if condition is met
+            }
+        });
+
+        // If any item has complaint_completion_status set to 'Return', display the 'Close' button
+        if (show_close_button) {
+            frm.add_custom_button(__('Return'), function() {
+                // Set the status of the Repair Order to 'Return'
+                frm.set_value('status', 'Return');
+                
+                // Save the form
+                frm.save_or_update();
+            });
+        }
+
   
   
   
