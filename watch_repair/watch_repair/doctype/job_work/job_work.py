@@ -1,6 +1,6 @@
 import frappe
 from frappe.model.document import Document 
-
+ 
 class JobWork(Document):
 
   
@@ -257,10 +257,10 @@ class JobWork(Document):
                 new_status = 'Working In Progress'
 
             elif self.status == 'Return':
-                new_status = 'Completed'
+                new_status = 'Work Completed'
             else:
                 # self.status == 'Completed'
-                new_status = 'Work Completed'
+                new_status = 'Working In Progress'  #latest change
 
         if repair_order.status != new_status:
             repair_order.db_set('status', new_status)
@@ -575,7 +575,7 @@ class JobWork(Document):
     def create_sales_invoice(self):
 
         frappe.db.sql("""UPDATE `tabJob Work` SET status= 'Delivered' WHERE name=%s""",self.name)
-        # frappe.db.sql("""UPDATE `tabServicing` SET status= 'Delivered' WHERE name=%s""",self.name)
+        
         servicing_name = frappe.db.get_value('Servicing', {'job_work': self.name}, 'name')
         if servicing_name:
             frappe.db.sql("""UPDATE `tabServicing` SET status = 'Delivered' WHERE name = %s""", servicing_name)
