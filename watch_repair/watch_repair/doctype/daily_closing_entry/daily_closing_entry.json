@@ -1,0 +1,298 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-07-17 17:30:22.413572",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "column_break_ov6tw",
+  "poting_date",
+  "get",
+  "naming_series",
+  "section_break_heyvl",
+  "daily_closing_entry_repair_order",
+  "section_break_uapu2",
+  "open",
+  "to_invoice",
+  "column_break_luh0t",
+  "deliverd",
+  "to_customer_approval",
+  "total",
+  "invoice_tab",
+  "daily_closing_entry_invoice",
+  "section_break_tuuur",
+  "unpaid",
+  "column_break_g7ewk",
+  "paid",
+  "advance_tab",
+  "daily_closing_entry_advance",
+  "section_break_ygr04",
+  "total_advance_amount",
+  "section_break_0xcw5",
+  "daily_closing_entry_item_group",
+  "section_break_35xe6",
+  "total_amount",
+  "tab_break_s43el",
+  "daily_closing_mop",
+  "section_break_dzxr9",
+  "total_amount1",
+  "payout_tab",
+  "daily_closing_payout",
+  "denomination_tab",
+  "daily_closing_physical",
+  "section_break_2bdzs",
+  "net_total",
+  "column_break_p5opb",
+  "difference",
+  "grand_toatl",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ov6tw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "poting_date",
+   "fieldtype": "Date",
+   "label": "Poting Date"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Section Break",
+   "label": "Series",
+   "options": "DCE.YY.MM.DD.#"
+  },
+  {
+   "fieldname": "section_break_heyvl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "daily_closing_entry_repair_order",
+   "fieldtype": "Table",
+   "label": "Repair Order Status",
+   "options": "Daily Closing Entry Repair Order"
+  },
+  {
+   "fieldname": "section_break_uapu2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "open",
+   "fieldtype": "Int",
+   "label": "Open"
+  },
+  {
+   "fieldname": "to_invoice",
+   "fieldtype": "Int",
+   "label": "To Invoice"
+  },
+  {
+   "fieldname": "column_break_luh0t",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "deliverd",
+   "fieldtype": "Int",
+   "label": "Deliverd"
+  },
+  {
+   "fieldname": "to_customer_approval",
+   "fieldtype": "Data",
+   "label": "To Customer Approval"
+  },
+  {
+   "fieldname": "daily_closing_entry_invoice",
+   "fieldtype": "Table",
+   "label": "Invoice Status",
+   "options": "Daily Closing Entry Invoice"
+  },
+  {
+   "fieldname": "section_break_tuuur",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "daily_closing_entry_advance",
+   "fieldtype": "Table",
+   "label": "Advance",
+   "options": "Daily Closing Entry Advance"
+  },
+  {
+   "fieldname": "section_break_ygr04",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "daily_closing_entry_item_group",
+   "fieldtype": "Table",
+   "label": "Item Group",
+   "options": "Daily Closing Entry Item Group"
+  },
+  {
+   "fieldname": "unpaid",
+   "fieldtype": "Data",
+   "label": "Unpaid Amount"
+  },
+  {
+   "fieldname": "column_break_g7ewk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "paid",
+   "fieldtype": "Data",
+   "label": "Paid Amount"
+  },
+  {
+   "fieldname": "total_advance_amount",
+   "fieldtype": "Currency",
+   "label": "Total Advance Amount"
+  },
+  {
+   "fieldname": "section_break_0xcw5",
+   "fieldtype": "Tab Break",
+   "label": "Item Group"
+  },
+  {
+   "fieldname": "invoice_tab",
+   "fieldtype": "Tab Break",
+   "label": "Invoice"
+  },
+  {
+   "fieldname": "advance_tab",
+   "fieldtype": "Tab Break",
+   "label": "Advance"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Data",
+   "label": "Total"
+  },
+  {
+   "fieldname": "section_break_35xe6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "tab_break_s43el",
+   "fieldtype": "Tab Break",
+   "label": "Mode Of Payment"
+  },
+  {
+   "fieldname": "daily_closing_mop",
+   "fieldtype": "Table",
+   "label": "MOP Details",
+   "options": "Daily Closing mop"
+  },
+  {
+   "fieldname": "section_break_dzxr9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_amount1",
+   "fieldtype": "Currency",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "payout_tab",
+   "fieldtype": "Tab Break",
+   "label": "Payout"
+  },
+  {
+   "fieldname": "daily_closing_payout",
+   "fieldtype": "Table",
+   "label": "Payout Details",
+   "options": "Daily Closing Payout"
+  },
+  {
+   "fieldname": "denomination_tab",
+   "fieldtype": "Tab Break",
+   "label": "Denomination"
+  },
+  {
+   "fieldname": "daily_closing_physical",
+   "fieldtype": "Table",
+   "label": "Physical Denomination",
+   "options": "Daily Closing Physical"
+  },
+  {
+   "fieldname": "section_break_2bdzs",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "net_total",
+   "fieldtype": "Currency",
+   "label": "Net Total"
+  },
+  {
+   "fieldname": "column_break_p5opb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "difference",
+   "fieldtype": "Currency",
+   "label": "Difference"
+  },
+  {
+   "fieldname": "grand_toatl",
+   "fieldtype": "Currency",
+   "label": "Grand Toatl"
+  },
+  {
+   "fieldname": "get",
+   "fieldtype": "Button",
+   "label": "Get"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Daily Closing Entry",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-07-17 18:18:43.982436",
+ "modified_by": "Administrator",
+ "module": "Watch Repair",
+ "name": "Daily Closing Entry",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
