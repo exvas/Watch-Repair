@@ -42,6 +42,12 @@
   "total_amount1",
   "payout_tab",
   "daily_closing_payout",
+  "section_break_x4xc7",
+  "daily_closing_payout_jv",
+  "section_break_wtat5",
+  "total_debit",
+  "column_break_rabcx",
+  "total_credit",
   "denomination_tab",
   "daily_closing_physical",
   "section_break_2bdzs",
@@ -216,7 +222,7 @@
   {
    "fieldname": "daily_closing_payout",
    "fieldtype": "Table",
-   "label": "Payout Details",
+   "label": "Expense",
    "options": "Daily Closing Payout"
   },
   {
@@ -267,12 +273,40 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "section_break_x4xc7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "daily_closing_payout_jv",
+   "fieldtype": "Table",
+   "label": "Bank Details",
+   "options": "Daily Closing Payout jv"
+  },
+  {
+   "fieldname": "section_break_wtat5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_debit",
+   "fieldtype": "Currency",
+   "label": "Total Debit"
+  },
+  {
+   "fieldname": "column_break_rabcx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_credit",
+   "fieldtype": "Currency",
+   "label": "Total Credit"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-17 18:18:43.982436",
+ "modified": "2024-07-18 07:57:59.738629",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Daily Closing Entry",
