@@ -38,7 +38,8 @@ frappe.ui.form.on('Repair Order', {
 		frm.set_query('warehouse', function() {
 			return {
 				filters: {
-					company: frm.doc.company
+					company: frm.doc.company,
+                    is_group: 0
 				}
 			};
 		});
@@ -270,8 +271,259 @@ frappe.ui.form.on('Repair Order', {
     },
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    kfc: function(frm) {
+        if (frm.doc.kfc) {
+        let details = "";
+        frm.doc.repair_order_item.forEach(item => {
+            details += `<strong>Item:</strong> ${item.item || ''}<br>
+                        <strong>Item Name:</strong> ${item.item_name || ''}<br>
+                        <strong>Quantity:</strong> ${item.qty || ''}<br><br>`;
 
+            // Check for each complaint and add its details if enabled
+            if (item.polishing) {
+                details += `<strong>Complaint:</strong> Polishing<br>
+                            <strong>Complaint Details:</strong> ${item.polishing_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark__polishing || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount1 || ''}<br><br>`;
+            }
+            if (item.pin_and_tube) {
+                details += `<strong>Complaint:</strong> Pin and Tube<br>
+                            <strong>Complaint Details:</strong> ${item.pin_and_tube_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_pin_and_tube || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount111 || ''}<br><br>`;
+            }
+            if (item.loop_with_screw) {
+                details += `<strong>Complaint:</strong> Loop with Screw<br>
+                            <strong>Complaint Details:</strong> ${item.loop_with_screw_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_loop_with_screw || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount121 || ''}<br><br>`;
+            }
+            if (item.push_pin) {
+                details += `<strong>Complaint:</strong> Push Pin<br>
+                            <strong>Complaint Details:</strong> ${item.push_pin_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_push_pin || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount122 || ''}<br><br>`;
+            }
+            if (item.clasp) {
+                details += `<strong>Complaint:</strong> Clasp<br>
+                            <strong>Complaint Details:</strong> ${item.clasp_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_clasp || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount123 || ''}<br><br>`;
+            }
+            if (item.bra_links) {
+                details += `<strong>Complaint:</strong> Bra Links<br>
+                            <strong>Complaint Details:</strong> ${item.bra_links_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_bra_links || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount124 || ''}<br><br>`;
+            }
+            if (item.movement) {
+                details += `<strong>Complaint:</strong> Movement<br>
+                            <strong>Complaint Details:</strong> ${item.movement_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_mc || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount125 || ''}<br><br>`;
+            }
+            if (item.service) {
+                details += `<strong>Complaint:</strong> Service<br>
+                            <strong>Complaint Details:</strong> ${item.service_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_sc || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount1239 || ''}<br><br>`;
+            }
+            if (item.crown) {
+                details += `<strong>Complaint:</strong> Crown<br>
+                            <strong>Complaint Details:</strong> ${item.crown_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_ccc || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount1qq || ''}<br><br>`;
+            }
+            if (item.crystal) {
+                details += `<strong>Complaint:</strong> Crystal<br>
+                            <strong>Complaint Details:</strong> ${item.crystal_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_sc_ccd || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount100 || ''}<br><br>`;
+            }
+            if (item.dial) {
+                details += `<strong>Complaint:</strong> Dial<br>
+                            <strong>Complaint Details:</strong> ${item.dial_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_scdc || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount101 || ''}<br><br>`;
+            }
+            if (item.hands) {
+                details += `<strong>Complaint:</strong> Hands<br>
+                            <strong>Complaint Details:</strong> ${item.hands_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_schc || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount102 || ''}<br><br>`;
+            }
+            if (item.case) {
+                details += `<strong>Complaint:</strong> Case<br>
+                            <strong>Complaint Details:</strong> ${item.case_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_scccs || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount103 || ''}<br><br>`;
+            }
+            if (item.welding) {
+                details += `<strong>Complaint:</strong> Welding<br>
+                            <strong>Complaint Details:</strong> ${item.welding_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_welding || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount104 || ''}<br><br>`;
+            }
+            if (item.drilling) {
+                details += `<strong>Complaint:</strong> Drilling<br>
+                            <strong>Complaint Details:</strong> ${item.drilling_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_drilling || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount105 || ''}<br><br>`;
+            }
+            if (item.glass_decor) {
+                details += `<strong>Complaint:</strong> Glass Decor<br>
+                            <strong>Complaint Details:</strong> ${item.glass_decor_complaint_detailsglass_decor || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_glass_decor || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount106 || ''}<br><br>`;
+            }
+            if (item.anchor) {
+                details += `<strong>Complaint:</strong> Anchor<br>
+                            <strong>Complaint Details:</strong> ${item.anchor_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_anchor || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount107 || ''}<br><br>`;
+            }
+            if (item.b_gasket) {
+                details += `<strong>Complaint:</strong> B Gasket<br>
+                            <strong>Complaint Details:</strong> ${item.b_gasket_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_b_gasket || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount137 || ''}<br><br>`;
+            }
+            if (item.bezel) {
+                details += `<strong>Complaint:</strong> Bezel<br>
+                            <strong>Complaint Details:</strong> ${item.bezel_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_bcc || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount108 || ''}<br><br>`;
+            }
+            if (item.bracelet) {
+                details += `<strong>Complaint:</strong> Bracelet<br>
+                            <strong>Complaint Details:</strong> ${item.bracelet_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_bccbc || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount109 || ''}<br><br>`;
+            }
+            if (item.strap) {
+                details += `<strong>Complaint:</strong> Strap<br>
+                            <strong>Complaint Details:</strong> ${item.strap_complaint_details || ''}<br>
+                            <strong>Technical Remark:</strong> ${item.technical_remark_bccst || ''}<br>
+                            <strong>Estimated Amount:</strong> ${item.estimated_amount110 || ''}<br><br>`;
+            }
+                if (item.battery) {
+                    details += `<strong>Complaint:</strong> Battery<br>
+                                <strong>Complaint Details:</strong> ${item.battery_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_bccbcc || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount112 || ''}<br><br>`;
+                }
+                if (item.checking_time_day__date) {
+                    details += `<strong>Complaint:</strong> Checking Time Day/Date<br>
+                                <strong>Complaint Details:</strong> ${item.checking_time_day_date_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_bccch || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount113 || ''}<br><br>`;
+                }
+                if (item.stopped) {
+                    details += `<strong>Complaint:</strong> Stopped<br>
+                                <strong>Complaint Details:</strong> ${item.stopped_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_bccsc || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount115 || ''}<br><br>`;
+                }
+                if (item.polish) {
+                    details += `<strong>Complaint:</strong> Polish<br>
+                                <strong>Complaint Details:</strong> ${item.polish_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_bccpc || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount116 || ''}<br><br>`;
+                }
+                if (item.other) {
+                    details += `<strong>Complaint:</strong> Other<br>
+                                <strong>Complaint Details:</strong> ${item.other_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_bccocd || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount117 || ''}<br><br>`;
+                }
+                if (item.module) {
+                    details += `<strong>Complaint:</strong> Module<br>
+                                <strong>Complaint Details:</strong> ${item.module_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_module || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount118 || ''}<br><br>`;
+                }
+                if (item.pusher) {
+                    details += `<strong>Complaint:</strong> Pusher<br>
+                                <strong>Complaint Details:</strong> ${item.pusher_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_pusher || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount119 || ''}<br><br>`;
+                }
+                if (item.case_back) {
+                    details += `<strong>Complaint:</strong> Case Back<br>
+                                <strong>Complaint Details:</strong> ${item.case_back_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_case_back || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount1255 || ''}<br><br>`;
+                }
+                if (item.casing_ring) {
+                    details += `<strong>Complaint:</strong> Casing Ring<br>
+                                <strong>Complaint Details:</strong> ${item.casing_ring_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_casing_ring || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount1241 || ''}<br><br>`;
+                }
+                if (item.case_tube) {
+                    details += `<strong>Complaint:</strong> Case Tube<br>
+                                <strong>Complaint Details:</strong> ${item.case_tube_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_case_tube || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount127 || ''}<br><br>`;
+                }
+                if (item.case_back_screw) {
+                    details += `<strong>Complaint:</strong> Case Back Screw<br>
+                                <strong>Complaint Details:</strong> ${item.case_back_screw__complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_case_back_screw || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount128 || ''}<br><br>`;
+                }
+                if (item.dial_ring) {
+                    details += `<strong>Complaint:</strong> Dial Ring<br>
+                                <strong>Complaint Details:</strong> ${item.dial_ring_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_dial_ring || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount129 || ''}<br><br>`;
+                }
+                if (item.middle_part_of_case) {
+                    details += `<strong>Complaint:</strong> Middle Part of Case<br>
+                                <strong>Complaint Details:</strong> ${item.middle_part_of_case_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_middle_part_of_case || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount130 || ''}<br><br>`;
+                }
+                if (item.bezel_screw) {
+                    details += `<strong>Complaint:</strong> Bezel Screw<br>
+                                <strong>Complaint Details:</strong> ${item.bezel_screw_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_bezel_screw || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount131 || ''}<br><br>`;
+                }
+                if (item.g_gasket) {
+                    details += `<strong>Complaint:</strong> G Gasket<br>
+                                <strong>Complaint Details:</strong> ${item.g_gasket_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_g_gasket || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount133 || ''}<br><br>`;
+                }
+                if (item.cb_gasket) {
+                    details += `<strong>Complaint:</strong> CB Gasket<br>
+                                <strong>Complaint Details:</strong> ${item.cb_gasket_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_cb_gasket || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount134 || ''}<br><br>`;
+                }
+                if (item.back_washer) {
+                    details += `<strong>Complaint:</strong> Back Washer<br>
+                                <strong>Complaint Details:</strong> ${item.back_washer_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_back_washer || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount135 || ''}<br><br>`;
+                }
+                if (item.crown_seal) {
+                    details += `<strong>Complaint:</strong> Crown Seal<br>
+                                <strong>Complaint Details:</strong> ${item.crown_seal_complaint_details || ''}<br>
+                                <strong>Technical Remark:</strong> ${item.technical_remark_crown_seal || ''}<br>
+                                <strong>Estimated Amount:</strong> ${item.estimated_amount136 || ''}<br><br>`;
+                }
+               
 
+                details += "<hr>";
+            });
+            frm.set_value('details', details);
+        } else {
+            frm.set_value('details', '');
+        }
+    }
 
   });
  

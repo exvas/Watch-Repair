@@ -389,6 +389,13 @@ frappe.ui.form.on('Services', {
                 frm.refresh_field("job");
         }
     },
+    item: function(frm, cdt, cdn){
+        var d = locals[cdt][cdn];
+        if (d.item) {
+            frappe.model.set_value(d.doctype, d.name,"qty", "1");
+            frm.refresh_field("job")
+        }
+    }
 
 
 });

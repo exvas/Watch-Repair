@@ -588,6 +588,7 @@ class JobWork(Document):
         sales_inv.company = self.company
         # sales_inv.due_date = self.posting_date
         sales_inv.custom_job_work = self.name
+        sales_inv.custom_repair_order = self.repair_order
         sales_inv.set_warehouse = self.warehouse
         sales_inv.append('items', {
                         'item_code':self.service_item,

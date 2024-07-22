@@ -30,6 +30,8 @@
   "work_details",
   "table_1",
   "table_2",
+  "kfc",
+  "details",
   "section_break_45r5x",
   "job_work_status",
   "column_break_mcuhl",
@@ -232,7 +234,7 @@
    "default": "0",
    "fieldname": "abc",
    "fieldtype": "Check",
-   "label": "View Full Details Of The Repair Ordere"
+   "label": "View Full Details Of The Repair Order"
   },
   {
    "allow_on_submit": 1,
@@ -258,6 +260,20 @@
    "fieldtype": "Data",
    "label": "Bank Reference No",
    "mandatory_depends_on": "eval:doc.mode_of_payment == \"Bank Draft\""
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "kfc",
+   "fieldtype": "Check",
+   "label": "Fetch Full Details From Repair Order Item Table"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "details",
+   "fieldtype": "Text Editor",
+   "label": "Details",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -276,7 +292,7 @@
    "link_fieldname": "custom_repair_order"
   }
  ],
- "modified": "2024-07-22 16:07:03.785905",
+ "modified": "2024-07-22 23:58:44.084152",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",

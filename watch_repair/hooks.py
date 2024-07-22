@@ -259,7 +259,7 @@ fixtures = [
                     "Payment Entry-custom_repair_order",
                     "Item Group-custom_allow_in_servicing",
                     "Item-custom_allow_in_servicing",
-                    
+                    "Sales Invoice-custom_repair_order",
 
 
 
