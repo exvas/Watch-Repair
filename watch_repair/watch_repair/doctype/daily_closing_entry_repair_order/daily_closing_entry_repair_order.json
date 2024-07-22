@@ -1,0 +1,54 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-17 17:32:51.663241",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "repair_order",
+  "job_work",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "repair_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Repair Order",
+   "options": "Repair Order"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Status"
+  },
+  {
+   "fieldname": "job_work",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Job Work",
+   "options": "Job Work"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-17 18:20:13.595570",
+ "modified_by": "Administrator",
+ "module": "Watch Repair",
+ "name": "Daily Closing Entry Repair Order",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

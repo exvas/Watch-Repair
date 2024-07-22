@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"K72LF82dA7\",\"type\":\"card\",\"data\":{\"card_name\":\"Service Module\",\"col\":4}}]",
+ "content": "[{\"id\":\"wGYojzzSVv\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Repair Order\",\"col\":3}},{\"id\":\"wn3doqRfLt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Work\",\"col\":3}},{\"id\":\"CELeD1ittt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Servicing\",\"col\":3}},{\"id\":\"hyXISgQ-tC\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Warranty\",\"col\":3}},{\"id\":\"PH5yojiCEX\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sales Invoice\",\"col\":3}},{\"id\":\"163pH0IGWL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Daily Closing Entry\",\"col\":3}},{\"id\":\"_DrMXVExp4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Purchase Invoice\",\"col\":3}},{\"id\":\"VbCchMWQz6\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"QFCgMe4axw\",\"type\":\"card\",\"data\":{\"card_name\":\"Service Module\",\"col\":4}},{\"id\":\"tSWjHhES57\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}},{\"id\":\"ffQOCFC3pr\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}}]",
  "creation": "2024-05-16 15:04:20.566971",
  "custom_blocks": [],
  "docstatus": 0,
@@ -16,7 +16,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Service Module",
-   "link_count": 5,
+   "link_count": 3,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -54,9 +54,38 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Service Warranty",
+   "label": "Settings",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Selling Settings",
    "link_count": 0,
-   "link_to": "Service Warranty",
+   "link_to": "Selling Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Accounts Settings",
+   "link_count": 0,
+   "link_to": "Accounts Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Buying Settings",
+   "link_count": 0,
+   "link_to": "Buying Settings",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -70,9 +99,58 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Masters",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Chart Of Accounts",
+   "link_count": 0,
+   "link_to": "Account",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Item",
+   "link_count": 0,
+   "link_to": "Item",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Customer",
+   "link_count": 0,
+   "link_to": "Customer",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Supplier",
+   "link_count": 0,
+   "link_to": "Supplier",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-05-21 09:56:49.017900",
+ "modified": "2024-07-17 18:32:29.143857",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Watch Service",
@@ -83,6 +161,63 @@
  "quick_lists": [],
  "roles": [],
  "sequence_id": 23.0,
- "shortcuts": [],
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Purchase Invoice",
+   "link_to": "Purchase Invoice",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Job Work",
+   "link_to": "Job Work",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Repair Order",
+   "link_to": "Repair Order",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Sales Invoice",
+   "link_to": "Sales Invoice",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Servicing",
+   "link_to": "Servicing",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Daily Closing Entry",
+   "link_to": "Daily Closing Entry",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Service Warranty",
+   "link_to": "Service Warranty",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
  "title": "Watch Service"
 }
