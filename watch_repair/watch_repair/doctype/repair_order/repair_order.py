@@ -21,7 +21,7 @@ class RepairOrder(Document):
 		watch =frappe.get_doc('Watch Service Settings')
 		job_work_map = {}
 
-		if self.is_advanced and self.mode_of_payment == "Cash":
+		if self.is_advanced == 1:
 			
 			pe = frappe.new_doc("Payment Entry")
 			pe.custom_repair_order = self.name
