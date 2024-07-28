@@ -94,8 +94,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "Pending\nWorking In Progress\nWork Completed\nClosed\nReturn\nDelivered",
-   "read_only": 1
+   "options": "Pending\nWorking In Progress\nWork Completed\nClosed\nReturn\nDelivered\nOpen"
   },
   {
    "fetch_from": "customer.mobile_no",
@@ -292,7 +291,7 @@
    "link_fieldname": "custom_repair_order"
   }
  ],
- "modified": "2024-07-22 23:58:44.084152",
+ "modified": "2024-07-27 18:10:48.685694",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",
@@ -338,6 +337,10 @@
   {
    "color": "Blue",
    "title": "Delivered"
+  },
+  {
+   "color": "Blue",
+   "title": "Open"
   }
  ],
  "track_changes": 1

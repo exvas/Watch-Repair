@@ -8,11 +8,12 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
+  "section_break_ktmx",
   "company",
   "column_break_ov6tw",
   "poting_date",
   "get",
-  "naming_series",
   "section_break_heyvl",
   "daily_closing_entry_repair_order",
   "section_break_uapu2",
@@ -78,9 +79,9 @@
   },
   {
    "fieldname": "naming_series",
-   "fieldtype": "Section Break",
+   "fieldtype": "Select",
    "label": "Series",
-   "options": "DCE.YY.MM.DD.#"
+   "options": "DCE-.DD.-"
   },
   {
    "fieldname": "section_break_heyvl",
@@ -301,12 +302,16 @@
    "fieldname": "total_credit",
    "fieldtype": "Currency",
    "label": "Total Credit"
+  },
+  {
+   "fieldname": "section_break_ktmx",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-18 07:57:59.738629",
+ "modified": "2024-07-28 12:11:22.849117",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Daily Closing Entry",

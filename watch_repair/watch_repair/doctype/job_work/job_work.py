@@ -595,6 +595,7 @@ class JobWork(Document):
                         'qty':self.qty,
                         'uom':self.uom,
                         'custom_name':self.name,
+                        'custom_item_groups':self.item_group,
                     })
 
        

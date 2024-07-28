@@ -260,6 +260,8 @@ fixtures = [
                     "Item Group-custom_allow_in_servicing",
                     "Item-custom_allow_in_servicing",
                     "Sales Invoice-custom_repair_order",
+                    "Sales Invoice Item-custom_item_groups",
+                    "Journal Entry-custom_pay_out"
 
 
 

@@ -5,7 +5,7 @@
 
 var itemname1=''
 
- 
+  
 
 frappe.ui.form.on('Servicing', {
 	refresh: function(frm) {
@@ -92,6 +92,40 @@ frappe.ui.form.on('Servicing', {
         //     '}' +
         //     '</style>');
     },
+
+
+    technician: function(frm) {
+        frm.doc.status = 'Open';   
+        frm.refresh_field('status');
+        
+        if (frm.doc.job_work) {
+            frappe.call({
+                method: 'frappe.client.get',
+                args: {
+                    doctype: 'Job Work',
+                    name: frm.doc.job_work
+                },
+                callback: function(response) {
+                    let job_work = response.message;
+                    if (job_work) {
+                        frappe.call({
+                            method: 'frappe.client.set_value',
+                            args: {
+                                doctype: 'Job Work',
+                                name: frm.doc.job_work,
+                                fieldname: 'status',
+                                value: 'Open'
+                            },
+                            callback: function() {
+                                frappe.msgprint(__('Job Work status updated to Open.'));
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    },
+    
 
  
     

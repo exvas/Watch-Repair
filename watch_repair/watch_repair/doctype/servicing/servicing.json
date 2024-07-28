@@ -71,7 +71,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Pending\nWorking In Progress\nCompleted\nCancelled\nClose\nDelivered",
+   "options": "Pending\nWorking In Progress\nCompleted\nCancelled\nClose\nDelivered\nOpen",
    "read_only": 1
   },
   {
@@ -195,7 +195,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-10 21:53:44.608952",
+ "modified": "2024-07-27 15:10:49.295570",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Servicing",
@@ -237,6 +237,10 @@
   {
    "color": "Blue",
    "title": "Delivered"
+  },
+  {
+   "color": "Blue",
+   "title": "Open"
   }
  ],
  "track_changes": 1

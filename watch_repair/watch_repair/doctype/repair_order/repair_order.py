@@ -88,6 +88,7 @@ class RepairOrder(Document):
 
 				jw.service_item = item.item
 				jw.service_item_name = item.item_name
+				jw.item_group = item.item_group
 				jw.qty = item.qty
 				jw.uom = item.uom
 				jw.serial_no = item.serial_no

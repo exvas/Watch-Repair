@@ -16,6 +16,7 @@
   "expense_account",
   "service_item",
   "service_item_name",
+  "item_group",
   "uom",
   "qty",
   "serial_no",
@@ -141,8 +142,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "Pending\nWorking In Progress\nCompleted\nServicing Completed\nCancelled\nTo Invoice\nReturn\nDelivered",
-   "read_only": 1
+   "options": "Pending\nWorking In Progress\nCompleted\nServicing Completed\nCancelled\nTo Invoice\nReturn\nDelivered\nOpen\nTo Customer Approval"
   },
   {
    "fieldname": "serial_no",
@@ -293,6 +293,13 @@
    "fieldtype": "Float",
    "label": "Total",
    "read_only": 1
+  },
+  {
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "label": "Item Group",
+   "options": "Item Group",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -311,7 +318,7 @@
    "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-07-11 16:02:43.551792",
+ "modified": "2024-07-28 11:20:16.804252",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",
@@ -365,6 +372,14 @@
   {
    "color": "Red",
    "title": "Return"
+  },
+  {
+   "color": "Blue",
+   "title": "Open"
+  },
+  {
+   "color": "Yellow",
+   "title": "To Customer Approval"
   }
  ],
  "track_changes": 1
