@@ -144,6 +144,9 @@ scheduler_events = {
 	"all": [
 		"watch_repair.schedular.schedule_jobs"
 	],
+
+
+    
 	# "daily": [
 	# 	"watch_repair.service_warranty.update_warranty_status"
 	# ],
