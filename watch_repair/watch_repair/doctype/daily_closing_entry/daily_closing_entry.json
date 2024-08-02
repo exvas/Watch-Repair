@@ -55,7 +55,7 @@
   "net_total",
   "column_break_p5opb",
   "difference",
-  "grand_toatl",
+  "grand_total",
   "amended_from"
  ],
  "fields": [
@@ -244,7 +244,8 @@
   {
    "fieldname": "net_total",
    "fieldtype": "Currency",
-   "label": "Net Total"
+   "label": "Net Total",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_p5opb",
@@ -254,11 +255,6 @@
    "fieldname": "difference",
    "fieldtype": "Currency",
    "label": "Difference"
-  },
-  {
-   "fieldname": "grand_toatl",
-   "fieldtype": "Currency",
-   "label": "Grand Toatl"
   },
   {
    "fieldname": "get",
@@ -306,12 +302,17 @@
   {
    "fieldname": "section_break_ktmx",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "grand_total",
+   "fieldtype": "Currency",
+   "label": "Grand Total"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-28 12:11:22.849117",
+ "modified": "2024-07-31 14:39:41.277152",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Daily Closing Entry",
