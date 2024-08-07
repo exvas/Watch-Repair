@@ -11,13 +11,19 @@ frappe.ui.form.on('Daily Closing Entry', {
 
     get: function(frm) {
         let posting_date = frm.doc.posting_date;
+        console.log("posting_date",frm.doc.posting_date)
+
+        if (!posting_date) {
+            frappe.msgprint(__('Please select a valid posting date.'));
+            return;
+        }
         
         frappe.call({
             method: 'frappe.client.get_list',
             args: {
                 doctype: 'Job Work',
                 filters: {
-                    'date': frm.doc.posting_date,
+                    'posting_date': frm.doc.posting_date,
                     // 'docstatus': 1  
                 },
                 fields: ['name', 'status', 'posting_date']
@@ -295,7 +301,7 @@ frappe.ui.form.on('Daily Closing Entry', {
             }
         });
     },
-    
+     
 
 //     get: function(frm) {
 //         frappe.call({

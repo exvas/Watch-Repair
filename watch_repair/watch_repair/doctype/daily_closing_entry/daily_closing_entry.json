@@ -12,7 +12,7 @@
   "section_break_ktmx",
   "company",
   "column_break_ov6tw",
-  "poting_date",
+  "posting_date",
   "get",
   "section_break_heyvl",
   "daily_closing_entry_repair_order",
@@ -70,12 +70,6 @@
   {
    "fieldname": "column_break_ov6tw",
    "fieldtype": "Column Break"
-  },
-  {
-   "default": "Today",
-   "fieldname": "poting_date",
-   "fieldtype": "Date",
-   "label": "Poting Date"
   },
   {
    "fieldname": "naming_series",
@@ -307,12 +301,18 @@
    "fieldname": "grand_total",
    "fieldtype": "Currency",
    "label": "Grand Total"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-31 14:39:41.277152",
+ "modified": "2024-08-07 16:31:57.530991",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Daily Closing Entry",
