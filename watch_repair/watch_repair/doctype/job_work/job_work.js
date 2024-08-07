@@ -69,7 +69,7 @@ frappe.ui.form.on('Job Work', {
             }, __("Create"));
 		}
 
-        if (cur_frm.doc.status === 'To Invoice') {
+        if (cur_frm.doc.status === 'To Invoice' || cur_frm.doc.status === 'To Customer Approval') {
 			frm.add_custom_button(__('Sales Invoice '), function() {
                 console.log("testing")
                 cur_frm.call({
