@@ -69,7 +69,7 @@ class RepairOrder(Document):
 
 
 		if watch.auto_create_job_work:
-
+ 
 			frappe.db.sql("""UPDATE `tabRepair Order` SET job_work_status='Completed' WHERE name=%s""", self.name)
 			frappe.db.commit()
 

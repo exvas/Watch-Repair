@@ -526,4 +526,4 @@ frappe.ui.form.on('Repair Order', {
     }
 
   });
- 
+  

@@ -24,6 +24,7 @@
   "get_servicing_meterials",
   "view_service_table",
   "column_break_xdluq",
+  "customer_approvel",
   "service_warranty",
   "status",
   "naming_series",
@@ -300,6 +301,13 @@
    "label": "Item Group",
    "options": "Item Group",
    "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "customer_approvel",
+   "fieldtype": "Check",
+   "label": "Customer Approvel"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -318,7 +326,7 @@
    "link_fieldname": "custom_job_work"
   }
  ],
- "modified": "2024-07-28 11:20:16.804252",
+ "modified": "2024-08-07 12:12:02.850254",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Job Work",

@@ -124,9 +124,37 @@ frappe.ui.form.on('Servicing', {
                 }
             });
         }
+    
+        if (frm.doc.repair_order) {
+            frappe.call({
+                method: 'frappe.client.get',
+                args: {
+                    doctype: 'Repair Order',
+                    name: frm.doc.repair_order
+                },
+                callback: function(response) {
+                    let repair_order = response.message;
+                    if (repair_order) {
+                        frappe.call({
+                            method: 'frappe.client.set_value',
+                            args: {
+                                doctype: 'Repair Order',
+                                name: frm.doc.repair_order,
+                                fieldname: 'status',
+                                value: 'Open'
+                            },
+                            callback: function() {
+                                frappe.msgprint(__('Repair Order status updated to Open.'));
+                            }
+                        });
+                    }
+                }
+            });
+        }
     },
     
-
+    
+ 
  
     
   

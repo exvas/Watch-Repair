@@ -147,6 +147,65 @@ frappe.ui.form.on('Job Work', {
 
     },
 
+
+    // customer_approvel: function(frm) {
+    //     if (frm.doc.customer_approvel) {
+    //         frm.set_value('status', 'To Customer Approval');
+    
+    //         if (frm.doc.repair_order) {
+    //             cur_frm.call({
+    //                 doc: cur_frm.doc,
+    //                 method: "rp_status_change",
+    //                 args: {},
+    //                 callback: function(response) {
+    //                     if (response.message) {
+    //                         frappe.msgprint(response.message);
+    //                     }
+    //                 }
+    //             });
+    //         }
+    //     } else {
+    //         frm.set_value('status', 'Open');
+    //     }
+    // },
+
+
+    customer_approvel: function(frm) {
+        if (frm.doc.customer_approvel) {
+            frm.set_value('status', 'To Customer Approval');
+    
+            if (frm.doc.repair_order) {
+                cur_frm.call({
+                    doc: cur_frm.doc,
+                    method: 'rp_status_change',
+                    args: {status: 'To Customer Approval'},
+                    callback: function(response) {
+                        if (response.message) {
+                            frappe.msgprint(response.message);
+                        }
+                    }
+                });
+            }
+        } else {
+            frm.set_value('status', 'Open');
+    
+            if (frm.doc.repair_order) {
+                cur_frm.call({
+                    doc: cur_frm.doc,
+                    method: 'rp_status_change',
+                    args: {status: 'Open'},
+                    callback: function(response) {
+                        if (response.message) {
+                            frappe.msgprint(response.message);
+                        }
+                    }
+                });
+            }
+        }
+    },
+    
+    
+
     total: function(frm) {
         // Debugging statement to log the current state of frm.doc
         console.log(frm.doc);
@@ -265,7 +324,7 @@ frappe.ui.form.on('Job Work', {
     //             }
     //         });
     //     }
-    // },
+    // }, 
 
     before_submit: function(frm) {
         console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")

@@ -2,7 +2,7 @@ import frappe
 from frappe.model.document import Document 
  
 class JobWork(Document):
-
+ 
   
 
     def on_submit(self):
@@ -740,6 +740,39 @@ class JobWork(Document):
 # ////////////////////////////////////////////////////////////////////////////////////////////////////
 
             
+    # @frappe.whitelist()
+    # def rp_status_change(self):
+    #     if not self.repair_order:
+    #         frappe.throw("No repair order linked.")
+        
+    #     repair_order = frappe.get_doc('Repair Order', self.repair_order)
+        
+    #     if repair_order.docstatus == 1:
+    #         frappe.db.sql("""
+    #             UPDATE `tabRepair Order`
+    #             SET status = 'To Customer Approval'
+    #             WHERE name = %s
+    #         """, self.repair_order)
             
+    #         frappe.db.commit()
+        
+    @frappe.whitelist()
+    def rp_status_change(self, status):
+        if not self.repair_order:
+            frappe.throw("No repair order linked.")
+
+        repair_order = frappe.get_doc('Repair Order', self.repair_order)
+        
+        if repair_order.docstatus == 1:
+            frappe.db.sql("""
+                UPDATE `tabRepair Order`
+                SET status = %s
+                WHERE name = %s
+            """, (status, self.repair_order))
+            
+            frappe.db.commit()
+
+
+
                 
         
