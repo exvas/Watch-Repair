@@ -13,11 +13,13 @@
   "expense_account",
   "customer_name",
   "contact_no",
+  "cpr",
   "is_advanced",
   "amount",
   "mode_of_payment",
   "account_paid_to",
   "bank_reference_no",
+  "paid_amount",
   "column_break_6vopj",
   "status",
   "naming_series",
@@ -26,12 +28,14 @@
   "warehouse",
   "section_break_weixh",
   "repair_order_item",
+  "total_estimated_cost",
   "abc",
   "work_details",
   "table_1",
   "table_2",
   "kfc",
   "details",
+  "remarks",
   "section_break_45r5x",
   "job_work_status",
   "column_break_mcuhl",
@@ -273,6 +277,30 @@
    "fieldtype": "Text Editor",
    "label": "Details",
    "read_only": 1
+  },
+  {
+   "fieldname": "total_estimated_cost",
+   "fieldtype": "Currency",
+   "label": "Total Estimated Cost",
+   "read_only": 1
+  },
+  {
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fetch_from": "customer.custom_cpr",
+   "fieldname": "cpr",
+   "fieldtype": "Data",
+   "label": "CPR",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -291,7 +319,7 @@
    "link_fieldname": "custom_repair_order"
   }
  ],
- "modified": "2024-08-07 12:24:38.996549",
+ "modified": "2024-08-16 12:02:05.006299",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",
