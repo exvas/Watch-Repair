@@ -22,9 +22,7 @@ frappe.ui.form.on('Repair Order', {
         }
     },
 	refresh: function(frm) {
-        console.log("ddddddddddddddddddddddddddddddddddddddddddddddddd")
-
-
+       
         cur_frm.set_query("item", "repair_order_item", (frm, cdt, cdn) => {
 			let d = locals[cdt][cdn];
             return {
@@ -32,7 +30,7 @@ frappe.ui.form.on('Repair Order', {
 					"custom_is_customer_item":1,
 				}
 			}
-        })
+        });
 	   
 	    
 		frm.set_query('warehouse', function() {
