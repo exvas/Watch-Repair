@@ -168,21 +168,21 @@ frappe.ui.form.on('Repair Order', {
             });
         }
 
-        if (frm.doc.customer) {
-            frappe.db.get_value('Payment Entry', { party: frm.doc.customer }, 'paid_amount', (r) => {
-                if (r && r.paid_amount) {
-                    frm.set_value('paid_amount', r.paid_amount);
-                } else {
-                    frm.set_value('paid_amount', '');
-                }
-            });
-        } else {
-            frm.set_value('paid_amount', '');
-        }
+        // if (frm.doc.customer) {
+        //     frappe.db.get_value('Payment Entry', { party: frm.doc.customer }, 'paid_amount', (r) => {
+        //         if (r && r.paid_amount) {
+        //             frm.set_value('paid_amount', r.paid_amount);
+        //         } else {
+        //             frm.set_value('paid_amount', '');
+        //         }
+        //     });
+        // } else {
+        //     frm.set_value('paid_amount', '');
+        // }
 
 
 
-        calculate_total_estimated_cost(frm);
+        
 
   
   
@@ -194,8 +194,12 @@ frappe.ui.form.on('Repair Order', {
     repair_order_item_remove: function(frm) {
         calculate_total_estimated_cost(frm);
     },
+    after_save:function(frm){
+        calculate_total_estimated_cost(frm);
 
-	  company: function(frm) {
+    },
+
+	company: function(frm) {
 		  frm.set_query('warehouse', function() {
 			  return {
 				  filters: {
@@ -206,6 +210,20 @@ frappe.ui.form.on('Repair Order', {
 		  });
 		  frm.set_value('warehouse', ''); 
 	  },
+    customer: function(frm) {
+        if (frm.doc.customer) {
+            frappe.db.get_value('Payment Entry', { party: frm.doc.customer }, 'paid_amount', (r) => {
+                if (r && r.paid_amount) {
+                    frm.set_value('paid_amount', r.paid_amount);
+                } else {
+                    frm.set_value('paid_amount', '');
+                }
+            });
+        } else {
+            frm.set_value('paid_amount', '');
+        }
+        
+    },
 
 //////////////////////////////////////////////////////////////////////////
 //////// For Must Select a check box in child table  ////////////////
