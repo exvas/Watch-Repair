@@ -287,7 +287,7 @@
   {
    "fieldname": "paid_amount",
    "fieldtype": "Currency",
-   "label": "Paid Amount",
+   "label": "Party Balance",
    "read_only": 1
   },
   {
@@ -319,7 +319,7 @@
    "link_fieldname": "custom_repair_order"
   }
  ],
- "modified": "2024-08-16 12:02:05.006299",
+ "modified": "2024-08-27 12:49:45.269050",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",
