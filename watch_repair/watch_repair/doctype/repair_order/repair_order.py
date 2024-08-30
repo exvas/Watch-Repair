@@ -5,11 +5,39 @@ import frappe
 from frappe.utils import today
 from frappe.model.document import Document
 from frappe import _
- 
+from frappe.utils.pdf import get_pdf
+from frappe.utils.file_manager import save_file
 
-class RepairOrder(Document): 
-	
 
+class RepairOrder(Document):
+
+	@frappe.whitelist()
+	def send_whatsapp(self):
+		if self.contact_no:
+			whatsapp_message = frappe.db.get_single_value("Watch Service Settings", "whatsapp_message")
+			fieldnames = frappe.db.sql(""" SELECT * FROM `tabWhatsapp Field Names` WHERE parent='Watch Service Settings' """,as_dict=1)
+			default_format = frappe.db.get_value(
+				"Property Setter",
+				{
+					"property": "default_print_format",
+					"doc_type": self.doctype
+				},
+				"value"
+			)
+			print(default_format)
+			data = frappe.get_doc(self.doctype, self.name)
+			html = frappe.get_print(self.doctype, self.name, default_format if default_format else "Updated Repair Order")
+
+			# Generate PDF from HTML
+			pdf_data = get_pdf(html)
+
+			# Define file name
+			file_name = f"{data.customer_name + self.name.split('-')[-1]}.pdf"
+
+			# Save the PDF as a file
+			file_doc = save_file(file_name, pdf_data, self.doctype, self.name, is_private=0)
+			return file_doc,whatsapp_message,fieldnames
+		return "","",""
 	@frappe.whitelist()
 	def on_submit(self):
 

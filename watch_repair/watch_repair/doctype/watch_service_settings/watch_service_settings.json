@@ -21,7 +21,11 @@
   "job_work_material_group_section",
   "group_2",
   "job_work_service_section",
-  "group_3"
+  "group_3",
+  "whatsapp_settings_section",
+  "whatsapp_message",
+  "column_break_trcw",
+  "table_bpqe"
  ],
  "fields": [
   {
@@ -104,12 +108,32 @@
    "fieldtype": "Table",
    "label": "Item Group 3",
    "options": "Group 3"
+  },
+  {
+   "fieldname": "whatsapp_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Whatsapp Settings"
+  },
+  {
+   "fieldname": "whatsapp_message",
+   "fieldtype": "Small Text",
+   "label": "Whatsapp Message"
+  },
+  {
+   "fieldname": "column_break_trcw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "table_bpqe",
+   "fieldtype": "Table",
+   "label": "Fields",
+   "options": "Whatsapp Field Names"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-06-28 17:19:59.024224",
+ "modified": "2024-08-30 08:18:31.743951",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Watch Service Settings",

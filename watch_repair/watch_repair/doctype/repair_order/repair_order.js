@@ -1,6 +1,12 @@
 // Copyright (c) 2024, sammish and contributors
 // For license information, please see license.txt
-  
+  function formatString(str, args) {
+			return str.replace(/{(\d+)}/g, function(match, number) {
+				return typeof args[number] !== 'undefined'
+					? args[number]
+					: match;
+			});
+		}
 frappe.ui.form.on('Repair Order', { 
 
     abc: function(frm) {
@@ -22,7 +28,27 @@ frappe.ui.form.on('Repair Order', {
         }
     },
 	refresh: function(frm) {
-       
+        if(cur_frm.doc.docstatus){
+            cur_frm.add_custom_button("Send Whatsapp", () => {
+                cur_frm.call({
+                    doc: cur_frm.doc,
+                    method: "send_whatsapp",
+                    freeze: true,
+                    freeze_message: "Sending Order...",
+                    callback: function (r) {
+                        if(r.message[0]){
+                            var field_names = r.message[2].map(x => cur_frm.doc[x.field_names.toString()]);
+                            var message = "https://wa.me/" +  cur_frm.doc.contact_no +"?text="
+                            message += formatString(r.message[1],field_names);
+                            message += "Please Find your invoice here \n "+window.origin+r.message[0].file_url
+                            window.open(message)
+                        }
+
+                    }
+                })
+
+            })
+        }
         cur_frm.set_query("item", "repair_order_item", (frm, cdt, cdn) => {
 			let d = locals[cdt][cdn];
             return {
