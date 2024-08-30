@@ -236,19 +236,39 @@ frappe.ui.form.on('Repair Order', {
 		  });
 		  frm.set_value('warehouse', ''); 
 	  },
+    // customer: function(frm) {
+    //     if (frm.doc.customer) {
+    //         frappe.db.get_value('Payment Entry', { party: frm.doc.customer }, 'paid_amount', (r) => {
+    //             if (r && r.paid_amount) {
+    //                 frm.set_value('paid_amount', r.paid_amount);
+    //             } else {
+    //                 frm.set_value('paid_amount', '');
+    //             }
+    //         });
+    //     } else {
+    //         frm.set_value('paid_amount', '');
+    //     }
+        
+    // },
     customer: function(frm) {
         if (frm.doc.customer) {
-            frappe.db.get_value('Payment Entry', { party: frm.doc.customer }, 'paid_amount', (r) => {
-                if (r && r.paid_amount) {
-                    frm.set_value('paid_amount', r.paid_amount);
-                } else {
-                    frm.set_value('paid_amount', '');
+            frappe.call({
+                method: 'watch_repair.watch_repair.doctype.repair_order.repair_order.outstanding_amount',
+                args: {
+                    customer: frm.doc.customer,
+                    collection: frm.doc.name
+                },
+                callback: function(r) {
+                    if (r && r.message) {
+                        frm.set_value('paid_amount', r.message);
+                    } else {
+                        frm.set_value('paid_amount', '');
+                    }
                 }
             });
         } else {
             frm.set_value('paid_amount', '');
         }
-        
     },
 
 //////////////////////////////////////////////////////////////////////////

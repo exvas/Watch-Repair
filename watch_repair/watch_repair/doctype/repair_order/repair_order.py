@@ -896,3 +896,42 @@ class RepairOrder(Document):
 					})
 
 			return "Checkbox is checked!"
+
+
+
+import frappe
+
+
+@frappe.whitelist()
+def outstanding_amount(customer, collection):
+    query = f"""
+    select
+    si.outstanding_amount as outstanding_amount
+    from
+    `tabSales Invoice` as si
+    where
+    si.customer = "{customer}" and si.docstatus = 1 and si.status != "Paid"
+    """
+    results = frappe.db.sql(query, as_dict=1)
+    outstanding_amount_si = 0
+    if results:
+        for result in results:  
+            outstanding_amount_si += result['outstanding_amount']
+    
+    payment_entries = frappe.get_all('Payment Entry', {"payment_type": "Receive", "party": customer, "docstatus": 1}, "unallocated_amount")
+    total_unallocated_amount = sum([i['unallocated_amount'] for i in payment_entries])
+    
+    credits = frappe.get_all('Journal Entry Account', {'party': customer, "docstatus": 1, "party_type": "Customer"}, 'credit_in_account_currency')
+    debits = frappe.get_all('Journal Entry Account', {'party': customer, "docstatus": 1, "party_type": "Customer"}, 'debit_in_account_currency')
+    
+    credit_in_account_currency = sum([credit['credit_in_account_currency'] for credit in credits])
+    debit_in_account_currency = sum([debit['debit_in_account_currency'] for debit in debits])
+    
+    outstanding_amount = outstanding_amount_si + debit_in_account_currency - total_unallocated_amount - credit_in_account_currency
+    
+    # records = frappe.db.get_all('Repair Order', {'customer_id': customer, 'parent': collection}, 'collected_amount')
+    # collected_amount = sum([record['collected_amount'] for record in records])
+    
+    # outstanding_amount -= collected_amount
+    
+    return outstanding_amount
