@@ -98,14 +98,14 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "Pending\nWorking In Progress\nWork Completed\nClosed\nReturn\nDelivered\nOpen\nTo Customer Approval"
+   "options": "Pending\nWorking In Progress\nWork Completed\nClosed\nReturn\nDelivered\nOpen\nTo Customer Approval",
+   "read_only": 1
   },
   {
    "fetch_from": "customer.mobile_no",
    "fieldname": "contact_no",
    "fieldtype": "Data",
-   "label": "Contact No",
-   "read_only": 1
+   "label": "Contact No"
   },
   {
    "fieldname": "section_break_weixh",
@@ -319,7 +319,7 @@
    "link_fieldname": "custom_repair_order"
   }
  ],
- "modified": "2024-08-27 12:49:45.269050",
+ "modified": "2024-08-31 14:31:53.600489",
  "modified_by": "Administrator",
  "module": "Watch Repair",
  "name": "Repair Order",
