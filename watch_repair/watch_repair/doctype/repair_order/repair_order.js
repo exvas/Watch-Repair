@@ -225,6 +225,16 @@ frappe.ui.form.on('Repair Order', {
 
     },
 
+    amount: function(frm) {
+        // Check if is_advanced is enabled and paid_amount has a value
+        if (frm.doc.is_advanced == 1 && frm.doc.paid_amount) {
+            // Subtract the entered amount from paid_amount
+            let new_paid_amount = frm.doc.paid_amount - frm.doc.amount;
+            frm.set_value('paid_amount', new_paid_amount);
+        }
+    },
+
+
 	company: function(frm) {
 		  frm.set_query('warehouse', function() {
 			  return {
@@ -330,28 +340,32 @@ frappe.ui.form.on('Repair Order', {
 
 
     mode_of_payment: function(frm) {
-        var selectedModeOfPayment = frm.doc.mode_of_payment; 
-
-        frappe.call({
-            method: 'frappe.client.get',
-            args: {
-                doctype: 'Mode of Payment',  
-                name: selectedModeOfPayment
-            },
-            callback: function(response) {
-                if (response.message) {
-                    var modeOfPaymentDoc = response.message;
-
-                    var accountsTable = modeOfPaymentDoc.accounts || [];
-
-                    var defaultAccount = accountsTable.length > 0 ? accountsTable[0].default_account : '';
-
-                    frm.set_value('account_paid_to', defaultAccount);
-                } else {
-                    frm.set_value('account_paid_to', '');  
+        if (frm.doc.company && frm.doc.mode_of_payment) {
+            // Fetch Mode of Payment details
+            frappe.call({
+                method: 'frappe.client.get',
+                args: {
+                    doctype: 'Mode of Payment',
+                    name: frm.doc.mode_of_payment
+                },
+                callback: function(response) {
+                    var mode_of_payment = response.message;
+                    if (mode_of_payment && mode_of_payment.accounts) {
+                        // Find the account where company matches
+                        var account = mode_of_payment.accounts.find(acc => acc.company === frm.doc.company);
+                        if (account) {
+                            // Set the default account in the account_paid_to field
+                            frm.set_value('account_paid_to', account.default_account);
+                        } else {
+                            frappe.msgprint(__('No account found for the selected company in Mode of Payment.'));
+                            frm.set_value('account_paid_to', '');
+                        }
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            frm.set_value('account_paid_to', '');
+        }
     },
 
 

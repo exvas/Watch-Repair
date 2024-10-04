@@ -49,7 +49,7 @@ class RepairOrder(Document):
 		watch =frappe.get_doc('Watch Service Settings')
 		job_work_map = {}
 
-		if self.is_advanced == 1:
+		if self.is_advanced == 1 and self.type == "Cash":
 			
 			pe = frappe.new_doc("Payment Entry")
 			pe.custom_repair_order = self.name
@@ -70,7 +70,7 @@ class RepairOrder(Document):
 			pe.submit()
 			frappe.msgprint(" Payment Entry created successfully for Cash ")
 
-		elif self.is_advanced and self.mode_of_payment == "Bank Draft":
+		elif self.is_advanced == 1 and self.type == "Bank":
 	
 			pe = frappe.new_doc("Payment Entry")
 			pe.custom_repair_order = self.name
