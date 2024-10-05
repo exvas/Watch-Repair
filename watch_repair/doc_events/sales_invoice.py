@@ -81,3 +81,37 @@ def enable_items_on_sales_invoice_cancel(doc, method):
         item_code = item.item_code
         frappe.db.set_value('Item', item_code, 'disabled', 0)
         frappe.db.commit()  # Ensure the change is committed to the database
+
+
+
+
+
+
+
+
+
+# def update_job_work_status(doc, method):
+#     print("submit")
+    
+#     # Loop through the items and update the status of the Job Work for each item
+#     for item in doc.items:
+#         if item.custom_name:
+#             try:
+#                 job_work = frappe.get_doc("Job Work", item.custom_name)
+#                 job_work.status = "Completed"
+#                 job_work.save()
+#                 frappe.db.commit()
+#             except Exception as e:
+#                 frappe.log_error(message=str(e), title="Error in updating Job Work status")
+
+#     # Check if the custom job work exists and update its status to 'Delivered'
+#     job = doc.custom_job_work  # Use the custom job field from the document
+#     if job:
+#         # Check if the job exists in the Job Work Doctype
+#         job_work_name = frappe.db.get_value('Job Work', {'name': job}, 'name')
+        
+#         if job_work_name:
+#             # Update the status of the Job Work entry
+#             frappe.db.sql("""UPDATE `tabJob Work` SET status = 'Delivered' WHERE name = %s""", job_work_name)
+#             frappe.db.commit()
+

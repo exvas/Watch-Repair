@@ -54,7 +54,7 @@ frappe.ui.form.on('Servicing', {
         // };
 
 
-        if (cur_frm.doc.status === 'Pending') {
+        if (cur_frm.doc.status === 'Pending' || cur_frm.doc.status === 'Open') {
             frm.add_custom_button(__('Close'), function() {
 
                 if (!cur_frm.doc.closing_reason) {
